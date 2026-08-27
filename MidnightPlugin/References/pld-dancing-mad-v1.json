@@ -1,0 +1,4647 @@
+{
+  "schemaVersion": 1,
+  "encounterKey": "dancing-mad",
+  "territoryId": 1331,
+  "job": "PLD",
+  "patch": "7.5",
+  "version": "dancing-mad-pld-rank-one-v1",
+  "provenance": {
+    "reportCode": "2NMD8tkyVC3XcFxY",
+    "fightId": 9,
+    "player": "DMU PLD Top 1",
+    "rank": 1,
+    "capturedAt": "2026-08-14T00:00:00.000Z",
+    "source": "Midnight reviewed fight_actions export; action IDs enriched from rotation-actions-v8"
+  },
+  "matcher": {
+    "timingDriftThresholdMs": 400,
+    "timingToleranceMs": 2000,
+    "gapPenalty": 2,
+    "replacementPenalty": 1,
+    "sequenceBreakPenalty": 5,
+    "possibleDowntimeThresholdMs": 2000
+  },
+  "anchorOrder": [
+    "pull"
+  ],
+  "anchors": [
+    {
+      "key": "pull",
+      "label": "Pull",
+      "timeMs": 90,
+      "phase": "P1: Kefka",
+      "confidence": "exact"
+    }
+  ],
+  "actions": [
+    {
+      "actionId": 9,
+      "actionName": "Fast Blade",
+      "timingClass": "gcd",
+      "timeMs": 892,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 802
+    },
+    {
+      "actionId": 0,
+      "actionName": "Fight or Flight",
+      "timingClass": "ogcd",
+      "timeMs": 1606,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 1516
+    },
+    {
+      "actionId": 36921,
+      "actionName": "Imperator",
+      "timingClass": "ogcd",
+      "timeMs": 2319,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 2229
+    },
+    {
+      "actionId": 0,
+      "actionName": "Riot Blade",
+      "timingClass": "gcd",
+      "timeMs": 3388,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 3298
+    },
+    {
+      "actionId": 0,
+      "actionName": "Circle of Scorn",
+      "timingClass": "ogcd",
+      "timeMs": 4189,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 4099
+    },
+    {
+      "actionId": 0,
+      "actionName": "Expiacion",
+      "timingClass": "ogcd",
+      "timeMs": 4855,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 4765
+    },
+    {
+      "actionId": 0,
+      "actionName": "Royal Authority",
+      "timingClass": "gcd",
+      "timeMs": 5877,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 5787
+    },
+    {
+      "actionId": 0,
+      "actionName": "Intervene",
+      "timingClass": "ogcd",
+      "timeMs": 6547,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 6457
+    },
+    {
+      "actionId": 0,
+      "actionName": "Confiteor",
+      "timingClass": "gcd",
+      "timeMs": 8372,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 8282
+    },
+    {
+      "actionId": 0,
+      "actionName": "Intervene",
+      "timingClass": "ogcd",
+      "timeMs": 9083,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 8993
+    },
+    {
+      "actionId": 0,
+      "actionName": "Blade of Faith",
+      "timingClass": "gcd",
+      "timeMs": 10859,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 10769
+    },
+    {
+      "actionId": 7533,
+      "actionName": "Provoke",
+      "timingClass": "ogcd",
+      "timeMs": 11527,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 11437
+    },
+    {
+      "actionId": 7382,
+      "actionName": "Intervention",
+      "timingClass": "ogcd",
+      "timeMs": 12282,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 12192
+    },
+    {
+      "actionId": 0,
+      "actionName": "Blade of Truth",
+      "timingClass": "gcd",
+      "timeMs": 13349,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 13259
+    },
+    {
+      "actionId": 0,
+      "actionName": "Blade of Valor",
+      "timingClass": "gcd",
+      "timeMs": 15885,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 15795
+    },
+    {
+      "actionId": 36922,
+      "actionName": "Blade of Honor",
+      "timingClass": "ogcd",
+      "timeMs": 16552,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 16462
+    },
+    {
+      "actionId": 0,
+      "actionName": "Goring Blade",
+      "timingClass": "gcd",
+      "timeMs": 18375,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 18285
+    },
+    {
+      "actionId": 25746,
+      "actionName": "Holy Sheltron",
+      "timingClass": "ogcd",
+      "timeMs": 19174,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 19084
+    },
+    {
+      "actionId": 7384,
+      "actionName": "Holy Spirit",
+      "timingClass": "gcd",
+      "timeMs": 20906,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 20816
+    },
+    {
+      "actionId": 3540,
+      "actionName": "Divine Veil",
+      "timingClass": "ogcd",
+      "timeMs": 21618,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 21528
+    },
+    {
+      "actionId": 0,
+      "actionName": "Atonement",
+      "timingClass": "gcd",
+      "timeMs": 23395,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 23305
+    },
+    {
+      "actionId": 0,
+      "actionName": "Supplication",
+      "timingClass": "gcd",
+      "timeMs": 25933,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 25843
+    },
+    {
+      "actionId": 0,
+      "actionName": "Sepulchre",
+      "timingClass": "gcd",
+      "timeMs": 28417,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 28327
+    },
+    {
+      "actionId": 9,
+      "actionName": "Fast Blade",
+      "timingClass": "gcd",
+      "timeMs": 30904,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 30814
+    },
+    {
+      "actionId": 0,
+      "actionName": "Riot Blade",
+      "timingClass": "gcd",
+      "timeMs": 33395,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 33305
+    },
+    {
+      "actionId": 0,
+      "actionName": "Circle of Scorn",
+      "timingClass": "ogcd",
+      "timeMs": 34152,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 34062
+    },
+    {
+      "actionId": 0,
+      "actionName": "Expiacion",
+      "timingClass": "ogcd",
+      "timeMs": 34865,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 34775
+    },
+    {
+      "actionId": 0,
+      "actionName": "Royal Authority",
+      "timingClass": "gcd",
+      "timeMs": 35979,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 35889
+    },
+    {
+      "actionId": 7535,
+      "actionName": "Reprisal",
+      "timingClass": "ogcd",
+      "timeMs": 36646,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 36556
+    },
+    {
+      "actionId": 0,
+      "actionName": "Atonement",
+      "timingClass": "gcd",
+      "timeMs": 38471,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 38381
+    },
+    {
+      "actionId": 7382,
+      "actionName": "Intervention",
+      "timingClass": "ogcd",
+      "timeMs": 39230,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 39140
+    },
+    {
+      "actionId": 0,
+      "actionName": "Supplication",
+      "timingClass": "gcd",
+      "timeMs": 40968,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 40878
+    },
+    {
+      "actionId": 0,
+      "actionName": "Sepulchre",
+      "timingClass": "gcd",
+      "timeMs": 43459,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 43369
+    },
+    {
+      "actionId": 7384,
+      "actionName": "Holy Spirit",
+      "timingClass": "gcd",
+      "timeMs": 45951,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 45861
+    },
+    {
+      "actionId": 9,
+      "actionName": "Fast Blade",
+      "timingClass": "gcd",
+      "timeMs": 48529,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 48439
+    },
+    {
+      "actionId": 0,
+      "actionName": "Riot Blade",
+      "timingClass": "gcd",
+      "timeMs": 51017,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 50927
+    },
+    {
+      "actionId": 0,
+      "actionName": "Royal Authority",
+      "timingClass": "gcd",
+      "timeMs": 53507,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 53417
+    },
+    {
+      "actionId": 7531,
+      "actionName": "Rampart",
+      "timingClass": "ogcd",
+      "timeMs": 54218,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 54128
+    },
+    {
+      "actionId": 0,
+      "actionName": "Atonement",
+      "timingClass": "gcd",
+      "timeMs": 56000,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 55910
+    },
+    {
+      "actionId": 9,
+      "actionName": "Fast Blade",
+      "timingClass": "gcd",
+      "timeMs": 58535,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 58445
+    },
+    {
+      "actionId": 36920,
+      "actionName": "Guardian",
+      "timingClass": "ogcd",
+      "timeMs": 59247,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 59157
+    },
+    {
+      "actionId": 7385,
+      "actionName": "Passage of Arms",
+      "timingClass": "ogcd",
+      "timeMs": 59959,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 59869
+    },
+    {
+      "actionId": 0,
+      "actionName": "Riot Blade",
+      "timingClass": "gcd",
+      "timeMs": 61026,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 60936
+    },
+    {
+      "actionId": 0,
+      "actionName": "Fight or Flight",
+      "timingClass": "ogcd",
+      "timeMs": 61781,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 61691
+    },
+    {
+      "actionId": 36921,
+      "actionName": "Imperator",
+      "timingClass": "ogcd",
+      "timeMs": 62493,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 62403
+    },
+    {
+      "actionId": 0,
+      "actionName": "Goring Blade",
+      "timingClass": "gcd",
+      "timeMs": 63516,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 63426
+    },
+    {
+      "actionId": 0,
+      "actionName": "Circle of Scorn",
+      "timingClass": "ogcd",
+      "timeMs": 64226,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 64136
+    },
+    {
+      "actionId": 0,
+      "actionName": "Expiacion",
+      "timingClass": "ogcd",
+      "timeMs": 64893,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 64803
+    },
+    {
+      "actionId": 0,
+      "actionName": "Confiteor",
+      "timingClass": "gcd",
+      "timeMs": 66005,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 65915
+    },
+    {
+      "actionId": 0,
+      "actionName": "Intervene",
+      "timingClass": "ogcd",
+      "timeMs": 66671,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 66581
+    },
+    {
+      "actionId": 25746,
+      "actionName": "Holy Sheltron",
+      "timingClass": "ogcd",
+      "timeMs": 67339,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 67249
+    },
+    {
+      "actionId": 0,
+      "actionName": "Blade of Faith",
+      "timingClass": "gcd",
+      "timeMs": 68497,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 68407
+    },
+    {
+      "actionId": 22,
+      "actionName": "Bulwark",
+      "timingClass": "ogcd",
+      "timeMs": 69163,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 69073
+    },
+    {
+      "actionId": 0,
+      "actionName": "Intervene",
+      "timingClass": "ogcd",
+      "timeMs": 69873,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 69783
+    },
+    {
+      "actionId": 0,
+      "actionName": "Blade of Truth",
+      "timingClass": "gcd",
+      "timeMs": 70987,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 70897
+    },
+    {
+      "actionId": 0,
+      "actionName": "Blade of Valor",
+      "timingClass": "gcd",
+      "timeMs": 73523,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 73433
+    },
+    {
+      "actionId": 36922,
+      "actionName": "Blade of Honor",
+      "timingClass": "ogcd",
+      "timeMs": 74238,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 74148
+    },
+    {
+      "actionId": 0,
+      "actionName": "Supplication",
+      "timingClass": "gcd",
+      "timeMs": 76018,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 75928
+    },
+    {
+      "actionId": 0,
+      "actionName": "Sepulchre",
+      "timingClass": "gcd",
+      "timeMs": 78518,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 78428
+    },
+    {
+      "actionId": 7384,
+      "actionName": "Holy Spirit",
+      "timingClass": "gcd",
+      "timeMs": 81011,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 80921
+    },
+    {
+      "actionId": 0,
+      "actionName": "Royal Authority",
+      "timingClass": "gcd",
+      "timeMs": 83546,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 83456
+    },
+    {
+      "actionId": 0,
+      "actionName": "Atonement",
+      "timingClass": "gcd",
+      "timeMs": 86035,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 85945
+    },
+    {
+      "actionId": 0,
+      "actionName": "Supplication",
+      "timingClass": "gcd",
+      "timeMs": 88572,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 88482
+    },
+    {
+      "actionId": 0,
+      "actionName": "Sepulchre",
+      "timingClass": "gcd",
+      "timeMs": 91064,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 90974
+    },
+    {
+      "actionId": 30,
+      "actionName": "Hallowed Ground",
+      "timingClass": "ogcd",
+      "timeMs": 92309,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 92219
+    },
+    {
+      "actionId": 7384,
+      "actionName": "Holy Spirit",
+      "timingClass": "gcd",
+      "timeMs": 93556,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 93466
+    },
+    {
+      "actionId": 0,
+      "actionName": "Circle of Scorn",
+      "timingClass": "ogcd",
+      "timeMs": 94267,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 94177
+    },
+    {
+      "actionId": 0,
+      "actionName": "Expiacion",
+      "timingClass": "ogcd",
+      "timeMs": 94976,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 94886
+    },
+    {
+      "actionId": 9,
+      "actionName": "Fast Blade",
+      "timingClass": "gcd",
+      "timeMs": 96042,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 95952
+    },
+    {
+      "actionId": 0,
+      "actionName": "Riot Blade",
+      "timingClass": "gcd",
+      "timeMs": 98577,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 98487
+    },
+    {
+      "actionId": 0,
+      "actionName": "Royal Authority",
+      "timingClass": "gcd",
+      "timeMs": 101066,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 100976
+    },
+    {
+      "actionId": 0,
+      "actionName": "Atonement",
+      "timingClass": "gcd",
+      "timeMs": 103557,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 103467
+    },
+    {
+      "actionId": 7535,
+      "actionName": "Reprisal",
+      "timingClass": "ogcd",
+      "timeMs": 104445,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 104355
+    },
+    {
+      "actionId": 0,
+      "actionName": "Supplication",
+      "timingClass": "gcd",
+      "timeMs": 106047,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 105957
+    },
+    {
+      "actionId": 9,
+      "actionName": "Fast Blade",
+      "timingClass": "gcd",
+      "timeMs": 108580,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 108490
+    },
+    {
+      "actionId": 0,
+      "actionName": "Riot Blade",
+      "timingClass": "gcd",
+      "timeMs": 111069,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 110979
+    },
+    {
+      "actionId": 7384,
+      "actionName": "Holy Spirit",
+      "timingClass": "gcd",
+      "timeMs": 113600,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 113510
+    },
+    {
+      "actionId": 7382,
+      "actionName": "Intervention",
+      "timingClass": "ogcd",
+      "timeMs": 114401,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 114311
+    },
+    {
+      "actionId": 0,
+      "actionName": "Sepulchre",
+      "timingClass": "gcd",
+      "timeMs": 116179,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 116089
+    },
+    {
+      "actionId": 0,
+      "actionName": "Royal Authority",
+      "timingClass": "gcd",
+      "timeMs": 118672,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 118582
+    },
+    {
+      "actionId": 3540,
+      "actionName": "Divine Veil",
+      "timingClass": "ogcd",
+      "timeMs": 120625,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 120535
+    },
+    {
+      "actionId": 0,
+      "actionName": "Atonement",
+      "timingClass": "gcd",
+      "timeMs": 121381,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 121291
+    },
+    {
+      "actionId": 0,
+      "actionName": "Fight or Flight",
+      "timingClass": "ogcd",
+      "timeMs": 122136,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 122046
+    },
+    {
+      "actionId": 36921,
+      "actionName": "Imperator",
+      "timingClass": "ogcd",
+      "timeMs": 122845,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 122755
+    },
+    {
+      "actionId": 0,
+      "actionName": "Confiteor",
+      "timingClass": "gcd",
+      "timeMs": 123867,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 123777
+    },
+    {
+      "actionId": 0,
+      "actionName": "Circle of Scorn",
+      "timingClass": "ogcd",
+      "timeMs": 124577,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 124487
+    },
+    {
+      "actionId": 0,
+      "actionName": "Expiacion",
+      "timingClass": "ogcd",
+      "timeMs": 125333,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 125243
+    },
+    {
+      "actionId": 0,
+      "actionName": "Goring Blade",
+      "timingClass": "gcd",
+      "timeMs": 126355,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 126265
+    },
+    {
+      "actionId": 0,
+      "actionName": "Intervene",
+      "timingClass": "ogcd",
+      "timeMs": 127065,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 126975
+    },
+    {
+      "actionId": 0,
+      "actionName": "Intervene",
+      "timingClass": "ogcd",
+      "timeMs": 128088,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 127998
+    },
+    {
+      "actionId": 0,
+      "actionName": "Blade of Faith",
+      "timingClass": "gcd",
+      "timeMs": 128845,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 128755
+    },
+    {
+      "actionId": 0,
+      "actionName": "Blade of Truth",
+      "timingClass": "gcd",
+      "timeMs": 131380,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 131290
+    },
+    {
+      "actionId": 0,
+      "actionName": "Blade of Valor",
+      "timingClass": "gcd",
+      "timeMs": 133875,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 133785
+    },
+    {
+      "actionId": 36922,
+      "actionName": "Blade of Honor",
+      "timingClass": "ogcd",
+      "timeMs": 134633,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 134543
+    },
+    {
+      "actionId": 0,
+      "actionName": "Supplication",
+      "timingClass": "gcd",
+      "timeMs": 136365,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 136275
+    },
+    {
+      "actionId": 0,
+      "actionName": "Sepulchre",
+      "timingClass": "gcd",
+      "timeMs": 138856,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 138766
+    },
+    {
+      "actionId": 7384,
+      "actionName": "Holy Spirit",
+      "timingClass": "gcd",
+      "timeMs": 141347,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 141257
+    },
+    {
+      "actionId": 7382,
+      "actionName": "Intervention",
+      "timingClass": "ogcd",
+      "timeMs": 142146,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 142056
+    },
+    {
+      "actionId": 9,
+      "actionName": "Fast Blade",
+      "timingClass": "gcd",
+      "timeMs": 143880,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 143790
+    },
+    {
+      "actionId": 0,
+      "actionName": "Riot Blade",
+      "timingClass": "gcd",
+      "timeMs": 146368,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 146278
+    },
+    {
+      "actionId": 0,
+      "actionName": "Royal Authority",
+      "timingClass": "gcd",
+      "timeMs": 148901,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 148811
+    },
+    {
+      "actionId": 0,
+      "actionName": "Atonement",
+      "timingClass": "gcd",
+      "timeMs": 151390,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 151300
+    },
+    {
+      "actionId": 0,
+      "actionName": "Supplication",
+      "timingClass": "gcd",
+      "timeMs": 153970,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 153880
+    },
+    {
+      "actionId": 0,
+      "actionName": "Circle of Scorn",
+      "timingClass": "ogcd",
+      "timeMs": 154769,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 154679
+    },
+    {
+      "actionId": 0,
+      "actionName": "Expiacion",
+      "timingClass": "ogcd",
+      "timeMs": 155525,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 155435
+    },
+    {
+      "actionId": 0,
+      "actionName": "Sepulchre",
+      "timingClass": "gcd",
+      "timeMs": 156458,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 156368
+    },
+    {
+      "actionId": 7384,
+      "actionName": "Holy Spirit",
+      "timingClass": "gcd",
+      "timeMs": 159615,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 159525
+    },
+    {
+      "actionId": 7384,
+      "actionName": "Holy Spirit",
+      "timingClass": "gcd",
+      "timeMs": 163088,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 162998
+    },
+    {
+      "actionId": 9,
+      "actionName": "Fast Blade",
+      "timingClass": "gcd",
+      "timeMs": 164602,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 164512
+    },
+    {
+      "actionId": 0,
+      "actionName": "Riot Blade",
+      "timingClass": "gcd",
+      "timeMs": 167090,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 167000
+    },
+    {
+      "actionId": 0,
+      "actionName": "Royal Authority",
+      "timingClass": "gcd",
+      "timeMs": 169624,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 169534
+    },
+    {
+      "actionId": 0,
+      "actionName": "Atonement",
+      "timingClass": "gcd",
+      "timeMs": 172109,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 172019
+    },
+    {
+      "actionId": 7535,
+      "actionName": "Reprisal",
+      "timingClass": "ogcd",
+      "timeMs": 173618,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 173528
+    },
+    {
+      "actionId": 0,
+      "actionName": "Supplication",
+      "timingClass": "gcd",
+      "timeMs": 180433,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 180343
+    },
+    {
+      "actionId": 0,
+      "actionName": "Fight or Flight",
+      "timingClass": "ogcd",
+      "timeMs": 182124,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 182034
+    },
+    {
+      "actionId": 0,
+      "actionName": "Goring Blade",
+      "timingClass": "gcd",
+      "timeMs": 182923,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 182833
+    },
+    {
+      "actionId": 36921,
+      "actionName": "Imperator",
+      "timingClass": "ogcd",
+      "timeMs": 183589,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 183499
+    },
+    {
+      "actionId": 0,
+      "actionName": "Circle of Scorn",
+      "timingClass": "ogcd",
+      "timeMs": 184744,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 184654
+    },
+    {
+      "actionId": 0,
+      "actionName": "Confiteor",
+      "timingClass": "gcd",
+      "timeMs": 185456,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 185366
+    },
+    {
+      "actionId": 0,
+      "actionName": "Expiacion",
+      "timingClass": "ogcd",
+      "timeMs": 187142,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 187052
+    },
+    {
+      "actionId": 0,
+      "actionName": "Blade of Faith",
+      "timingClass": "gcd",
+      "timeMs": 187985,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 187895
+    },
+    {
+      "actionId": 0,
+      "actionName": "Intervene",
+      "timingClass": "ogcd",
+      "timeMs": 188651,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 188561
+    },
+    {
+      "actionId": 0,
+      "actionName": "Blade of Truth",
+      "timingClass": "gcd",
+      "timeMs": 190564,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 190474
+    },
+    {
+      "actionId": 0,
+      "actionName": "Blade of Valor",
+      "timingClass": "gcd",
+      "timeMs": 193050,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 192960
+    },
+    {
+      "actionId": 36922,
+      "actionName": "Blade of Honor",
+      "timingClass": "ogcd",
+      "timeMs": 193715,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 193625
+    },
+    {
+      "actionId": 0,
+      "actionName": "Intervene",
+      "timingClass": "ogcd",
+      "timeMs": 194425,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 194335
+    },
+    {
+      "actionId": 7384,
+      "actionName": "Holy Spirit",
+      "timingClass": "gcd",
+      "timeMs": 195539,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 195449
+    },
+    {
+      "actionId": 0,
+      "actionName": "Sepulchre",
+      "timingClass": "gcd",
+      "timeMs": 208305,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 208215
+    },
+    {
+      "actionId": 7531,
+      "actionName": "Rampart",
+      "timingClass": "ogcd",
+      "timeMs": 209688,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 209598
+    },
+    {
+      "actionId": 9,
+      "actionName": "Fast Blade",
+      "timingClass": "gcd",
+      "timeMs": 210801,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 210711
+    },
+    {
+      "actionId": 36920,
+      "actionName": "Guardian",
+      "timingClass": "ogcd",
+      "timeMs": 211561,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 211471
+    },
+    {
+      "actionId": 22,
+      "actionName": "Bulwark",
+      "timingClass": "ogcd",
+      "timeMs": 212364,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 212274
+    },
+    {
+      "actionId": 0,
+      "actionName": "Riot Blade",
+      "timingClass": "gcd",
+      "timeMs": 213300,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 213210
+    },
+    {
+      "actionId": 7382,
+      "actionName": "Intervention",
+      "timingClass": "ogcd",
+      "timeMs": 214502,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 214412
+    },
+    {
+      "actionId": 0,
+      "actionName": "Royal Authority",
+      "timingClass": "gcd",
+      "timeMs": 215792,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 215702
+    },
+    {
+      "actionId": 0,
+      "actionName": "Circle of Scorn",
+      "timingClass": "ogcd",
+      "timeMs": 216459,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 216369
+    },
+    {
+      "actionId": 0,
+      "actionName": "Expiacion",
+      "timingClass": "ogcd",
+      "timeMs": 217216,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 217126
+    },
+    {
+      "actionId": 0,
+      "actionName": "Atonement",
+      "timingClass": "gcd",
+      "timeMs": 218334,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 218244
+    },
+    {
+      "actionId": 25746,
+      "actionName": "Holy Sheltron",
+      "timingClass": "ogcd",
+      "timeMs": 219006,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 218916
+    },
+    {
+      "actionId": 0,
+      "actionName": "Supplication",
+      "timingClass": "gcd",
+      "timeMs": 220835,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 220745
+    },
+    {
+      "actionId": 0,
+      "actionName": "Sepulchre",
+      "timingClass": "gcd",
+      "timeMs": 223337,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 223247
+    },
+    {
+      "actionId": 7537,
+      "actionName": "Shirk",
+      "timingClass": "ogcd",
+      "timeMs": 224052,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 223962
+    },
+    {
+      "actionId": 7384,
+      "actionName": "Holy Spirit",
+      "timingClass": "gcd",
+      "timeMs": 225842,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 225752
+    },
+    {
+      "actionId": 9,
+      "actionName": "Fast Blade",
+      "timingClass": "gcd",
+      "timeMs": 228348,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 228258
+    },
+    {
+      "actionId": 0,
+      "actionName": "Riot Blade",
+      "timingClass": "gcd",
+      "timeMs": 230891,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 230801
+    },
+    {
+      "actionId": 7385,
+      "actionName": "Passage of Arms",
+      "timingClass": "ogcd",
+      "timeMs": 231653,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 231563
+    },
+    {
+      "actionId": 0,
+      "actionName": "Royal Authority",
+      "timingClass": "gcd",
+      "timeMs": 233348,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 233258
+    },
+    {
+      "actionId": 0,
+      "actionName": "Atonement",
+      "timingClass": "gcd",
+      "timeMs": 235848,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 235758
+    },
+    {
+      "actionId": 3540,
+      "actionName": "Divine Veil",
+      "timingClass": "ogcd",
+      "timeMs": 237147,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 237057
+    },
+    {
+      "actionId": 9,
+      "actionName": "Fast Blade",
+      "timingClass": "gcd",
+      "timeMs": 238392,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 238302
+    },
+    {
+      "actionId": 0,
+      "actionName": "Riot Blade",
+      "timingClass": "gcd",
+      "timeMs": 240890,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 240800
+    },
+    {
+      "actionId": 0,
+      "actionName": "Fight or Flight",
+      "timingClass": "ogcd",
+      "timeMs": 242314,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 242224
+    },
+    {
+      "actionId": 0,
+      "actionName": "Goring Blade",
+      "timingClass": "gcd",
+      "timeMs": 243384,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 243294
+    },
+    {
+      "actionId": 36921,
+      "actionName": "Imperator",
+      "timingClass": "ogcd",
+      "timeMs": 244096,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 244006
+    },
+    {
+      "actionId": 0,
+      "actionName": "Intervene",
+      "timingClass": "ogcd",
+      "timeMs": 244763,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 244673
+    },
+    {
+      "actionId": 0,
+      "actionName": "Confiteor",
+      "timingClass": "gcd",
+      "timeMs": 245875,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 245785
+    },
+    {
+      "actionId": 0,
+      "actionName": "Circle of Scorn",
+      "timingClass": "ogcd",
+      "timeMs": 246588,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 246498
+    },
+    {
+      "actionId": 0,
+      "actionName": "Expiacion",
+      "timingClass": "ogcd",
+      "timeMs": 247301,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 247211
+    },
+    {
+      "actionId": 0,
+      "actionName": "Blade of Faith",
+      "timingClass": "gcd",
+      "timeMs": 248370,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 248280
+    },
+    {
+      "actionId": 0,
+      "actionName": "Intervene",
+      "timingClass": "ogcd",
+      "timeMs": 250062,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 249972
+    },
+    {
+      "actionId": 0,
+      "actionName": "Blade of Truth",
+      "timingClass": "gcd",
+      "timeMs": 250951,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 250861
+    },
+    {
+      "actionId": 0,
+      "actionName": "Blade of Valor",
+      "timingClass": "gcd",
+      "timeMs": 253442,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 253352
+    },
+    {
+      "actionId": 36922,
+      "actionName": "Blade of Honor",
+      "timingClass": "ogcd",
+      "timeMs": 254110,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 254020
+    },
+    {
+      "actionId": 7382,
+      "actionName": "Intervention",
+      "timingClass": "ogcd",
+      "timeMs": 254778,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 254688
+    },
+    {
+      "actionId": 0,
+      "actionName": "Supplication",
+      "timingClass": "gcd",
+      "timeMs": 255934,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 255844
+    },
+    {
+      "actionId": 0,
+      "actionName": "Sepulchre",
+      "timingClass": "gcd",
+      "timeMs": 258425,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 258335
+    },
+    {
+      "actionId": 7384,
+      "actionName": "Holy Spirit",
+      "timingClass": "gcd",
+      "timeMs": 261009,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 260919
+    },
+    {
+      "actionId": 0,
+      "actionName": "Royal Authority",
+      "timingClass": "gcd",
+      "timeMs": 263502,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 263412
+    },
+    {
+      "actionId": 0,
+      "actionName": "Atonement",
+      "timingClass": "gcd",
+      "timeMs": 265994,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 265904
+    },
+    {
+      "actionId": 7535,
+      "actionName": "Reprisal",
+      "timingClass": "ogcd",
+      "timeMs": 267549,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 267459
+    },
+    {
+      "actionId": 0,
+      "actionName": "Supplication",
+      "timingClass": "gcd",
+      "timeMs": 268486,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 268396
+    },
+    {
+      "actionId": 7384,
+      "actionName": "Holy Spirit",
+      "timingClass": "gcd",
+      "timeMs": 270981,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 270891
+    },
+    {
+      "actionId": 0,
+      "actionName": "Sepulchre",
+      "timingClass": "gcd",
+      "timeMs": 273517,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 273427
+    },
+    {
+      "actionId": 9,
+      "actionName": "Fast Blade",
+      "timingClass": "gcd",
+      "timeMs": 276011,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 275921
+    },
+    {
+      "actionId": 0,
+      "actionName": "Circle of Scorn",
+      "timingClass": "ogcd",
+      "timeMs": 276722,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 276632
+    },
+    {
+      "actionId": 0,
+      "actionName": "Expiacion",
+      "timingClass": "ogcd",
+      "timeMs": 277390,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 277300
+    },
+    {
+      "actionId": 0,
+      "actionName": "Riot Blade",
+      "timingClass": "gcd",
+      "timeMs": 278502,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 278412
+    },
+    {
+      "actionId": 0,
+      "actionName": "Royal Authority",
+      "timingClass": "gcd",
+      "timeMs": 280996,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 280906
+    },
+    {
+      "actionId": 0,
+      "actionName": "Atonement",
+      "timingClass": "gcd",
+      "timeMs": 283626,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 283536
+    },
+    {
+      "actionId": 0,
+      "actionName": "Supplication",
+      "timingClass": "gcd",
+      "timeMs": 286122,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 286032
+    },
+    {
+      "actionId": 0,
+      "actionName": "Sepulchre",
+      "timingClass": "gcd",
+      "timeMs": 288662,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 288572
+    },
+    {
+      "actionId": 9,
+      "actionName": "Fast Blade",
+      "timingClass": "gcd",
+      "timeMs": 291158,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 291068
+    },
+    {
+      "actionId": 0,
+      "actionName": "Riot Blade",
+      "timingClass": "gcd",
+      "timeMs": 293697,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 293607
+    },
+    {
+      "actionId": 7384,
+      "actionName": "Holy Spirit",
+      "timingClass": "gcd",
+      "timeMs": 296185,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 296095
+    },
+    {
+      "actionId": 0,
+      "actionName": "Royal Authority",
+      "timingClass": "gcd",
+      "timeMs": 298677,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 298587
+    },
+    {
+      "actionId": 0,
+      "actionName": "Atonement",
+      "timingClass": "gcd",
+      "timeMs": 301165,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 301075
+    },
+    {
+      "actionId": 0,
+      "actionName": "Fight or Flight",
+      "timingClass": "ogcd",
+      "timeMs": 302365,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 302275
+    },
+    {
+      "actionId": 0,
+      "actionName": "Goring Blade",
+      "timingClass": "gcd",
+      "timeMs": 303746,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 303656
+    },
+    {
+      "actionId": 36921,
+      "actionName": "Imperator",
+      "timingClass": "ogcd",
+      "timeMs": 304546,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 304456
+    },
+    {
+      "actionId": 0,
+      "actionName": "Confiteor",
+      "timingClass": "gcd",
+      "timeMs": 306243,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 306153
+    },
+    {
+      "actionId": 0,
+      "actionName": "Circle of Scorn",
+      "timingClass": "ogcd",
+      "timeMs": 306955,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 306865
+    },
+    {
+      "actionId": 0,
+      "actionName": "Expiacion",
+      "timingClass": "ogcd",
+      "timeMs": 307621,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 307531
+    },
+    {
+      "actionId": 0,
+      "actionName": "Blade of Faith",
+      "timingClass": "gcd",
+      "timeMs": 308732,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 308642
+    },
+    {
+      "actionId": 0,
+      "actionName": "Intervene",
+      "timingClass": "ogcd",
+      "timeMs": 309533,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 309443
+    },
+    {
+      "actionId": 0,
+      "actionName": "Blade of Truth",
+      "timingClass": "gcd",
+      "timeMs": 311225,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 311135
+    },
+    {
+      "actionId": 0,
+      "actionName": "Blade of Valor",
+      "timingClass": "gcd",
+      "timeMs": 313725,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 313635
+    },
+    {
+      "actionId": 36922,
+      "actionName": "Blade of Honor",
+      "timingClass": "ogcd",
+      "timeMs": 314479,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 314389
+    },
+    {
+      "actionId": 0,
+      "actionName": "Intervene",
+      "timingClass": "ogcd",
+      "timeMs": 315103,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 315013
+    },
+    {
+      "actionId": 0,
+      "actionName": "Supplication",
+      "timingClass": "gcd",
+      "timeMs": 316215,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 316125
+    },
+    {
+      "actionId": 0,
+      "actionName": "Sepulchre",
+      "timingClass": "gcd",
+      "timeMs": 318707,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 318617
+    },
+    {
+      "actionId": 7384,
+      "actionName": "Holy Spirit",
+      "timingClass": "gcd",
+      "timeMs": 321200,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 321110
+    },
+    {
+      "actionId": 9,
+      "actionName": "Fast Blade",
+      "timingClass": "gcd",
+      "timeMs": 323701,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 323611
+    },
+    {
+      "actionId": 7533,
+      "actionName": "Provoke",
+      "timingClass": "ogcd",
+      "timeMs": 324548,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 324458
+    },
+    {
+      "actionId": 0,
+      "actionName": "Riot Blade",
+      "timingClass": "gcd",
+      "timeMs": 326240,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 326150
+    },
+    {
+      "actionId": 0,
+      "actionName": "Royal Authority",
+      "timingClass": "gcd",
+      "timeMs": 328734,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 328644
+    },
+    {
+      "actionId": 3540,
+      "actionName": "Divine Veil",
+      "timingClass": "ogcd",
+      "timeMs": 329893,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 329803
+    },
+    {
+      "actionId": 0,
+      "actionName": "Atonement",
+      "timingClass": "gcd",
+      "timeMs": 331231,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 331141
+    },
+    {
+      "actionId": 0,
+      "actionName": "Supplication",
+      "timingClass": "gcd",
+      "timeMs": 333771,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 333681
+    },
+    {
+      "actionId": 7535,
+      "actionName": "Reprisal",
+      "timingClass": "ogcd",
+      "timeMs": 335104,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 335014
+    },
+    {
+      "actionId": 0,
+      "actionName": "Sepulchre",
+      "timingClass": "gcd",
+      "timeMs": 336306,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 336216
+    },
+    {
+      "actionId": 0,
+      "actionName": "Circle of Scorn",
+      "timingClass": "ogcd",
+      "timeMs": 336976,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 336886
+    },
+    {
+      "actionId": 0,
+      "actionName": "Expiacion",
+      "timingClass": "ogcd",
+      "timeMs": 337643,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 337553
+    },
+    {
+      "actionId": 7384,
+      "actionName": "Holy Spirit",
+      "timingClass": "gcd",
+      "timeMs": 338800,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 338710
+    },
+    {
+      "actionId": 25746,
+      "actionName": "Holy Sheltron",
+      "timingClass": "ogcd",
+      "timeMs": 339913,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 339823
+    },
+    {
+      "actionId": 7384,
+      "actionName": "Holy Spirit",
+      "timingClass": "gcd",
+      "timeMs": 342270,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 342180
+    },
+    {
+      "actionId": 7384,
+      "actionName": "Holy Spirit",
+      "timingClass": "gcd",
+      "timeMs": 344764,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 344674
+    },
+    {
+      "actionId": 9,
+      "actionName": "Fast Blade",
+      "timingClass": "gcd",
+      "timeMs": 346277,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 346187
+    },
+    {
+      "actionId": 0,
+      "actionName": "Riot Blade",
+      "timingClass": "gcd",
+      "timeMs": 348768,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 348678
+    },
+    {
+      "actionId": 0,
+      "actionName": "Royal Authority",
+      "timingClass": "gcd",
+      "timeMs": 351301,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 351211
+    },
+    {
+      "actionId": 0,
+      "actionName": "Atonement",
+      "timingClass": "gcd",
+      "timeMs": 353791,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 353701
+    },
+    {
+      "actionId": 0,
+      "actionName": "Supplication",
+      "timingClass": "gcd",
+      "timeMs": 356282,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 356192
+    },
+    {
+      "actionId": 0,
+      "actionName": "Sepulchre",
+      "timingClass": "gcd",
+      "timeMs": 358820,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 358730
+    },
+    {
+      "actionId": 7531,
+      "actionName": "Rampart",
+      "timingClass": "ogcd",
+      "timeMs": 360470,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 360380
+    },
+    {
+      "actionId": 7384,
+      "actionName": "Holy Spirit",
+      "timingClass": "gcd",
+      "timeMs": 361316,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 361226
+    },
+    {
+      "actionId": 0,
+      "actionName": "Fight or Flight",
+      "timingClass": "ogcd",
+      "timeMs": 362339,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 362249
+    },
+    {
+      "actionId": 0,
+      "actionName": "Goring Blade",
+      "timingClass": "gcd",
+      "timeMs": 363850,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 363760
+    },
+    {
+      "actionId": 36921,
+      "actionName": "Imperator",
+      "timingClass": "ogcd",
+      "timeMs": 364518,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 364428
+    },
+    {
+      "actionId": 36920,
+      "actionName": "Guardian",
+      "timingClass": "ogcd",
+      "timeMs": 365318,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 365228
+    },
+    {
+      "actionId": 0,
+      "actionName": "Confiteor",
+      "timingClass": "gcd",
+      "timeMs": 366345,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 366255
+    },
+    {
+      "actionId": 0,
+      "actionName": "Circle of Scorn",
+      "timingClass": "ogcd",
+      "timeMs": 367280,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 367190
+    },
+    {
+      "actionId": 0,
+      "actionName": "Expiacion",
+      "timingClass": "ogcd",
+      "timeMs": 367946,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 367856
+    },
+    {
+      "actionId": 0,
+      "actionName": "Blade of Faith",
+      "timingClass": "gcd",
+      "timeMs": 368882,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 368792
+    },
+    {
+      "actionId": 0,
+      "actionName": "Intervene",
+      "timingClass": "ogcd",
+      "timeMs": 370484,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 370394
+    },
+    {
+      "actionId": 0,
+      "actionName": "Blade of Truth",
+      "timingClass": "gcd",
+      "timeMs": 371373,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 371283
+    },
+    {
+      "actionId": 22,
+      "actionName": "Bulwark",
+      "timingClass": "ogcd",
+      "timeMs": 372040,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 371950
+    },
+    {
+      "actionId": 0,
+      "actionName": "Intervene",
+      "timingClass": "ogcd",
+      "timeMs": 372706,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 372616
+    },
+    {
+      "actionId": 0,
+      "actionName": "Blade of Valor",
+      "timingClass": "gcd",
+      "timeMs": 373863,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 373773
+    },
+    {
+      "actionId": 36922,
+      "actionName": "Blade of Honor",
+      "timingClass": "ogcd",
+      "timeMs": 374531,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 374441
+    },
+    {
+      "actionId": 25746,
+      "actionName": "Holy Sheltron",
+      "timingClass": "ogcd",
+      "timeMs": 375196,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 375106
+    },
+    {
+      "actionId": 9,
+      "actionName": "Fast Blade",
+      "timingClass": "gcd",
+      "timeMs": 376353,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 376263
+    },
+    {
+      "actionId": 0,
+      "actionName": "Riot Blade",
+      "timingClass": "gcd",
+      "timeMs": 378889,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 378799
+    },
+    {
+      "actionId": 3541,
+      "actionName": "Clemency",
+      "timingClass": "gcd",
+      "timeMs": 382361,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 382271
+    },
+    {
+      "actionId": 0,
+      "actionName": "Fight or Flight",
+      "timingClass": "ogcd",
+      "timeMs": 425843,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 425753
+    },
+    {
+      "actionId": 0,
+      "actionName": "Goring Blade",
+      "timingClass": "gcd",
+      "timeMs": 427624,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 427534
+    },
+    {
+      "actionId": 36921,
+      "actionName": "Imperator",
+      "timingClass": "ogcd",
+      "timeMs": 428292,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 428202
+    },
+    {
+      "actionId": 0,
+      "actionName": "Circle of Scorn",
+      "timingClass": "ogcd",
+      "timeMs": 429052,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 428962
+    },
+    {
+      "actionId": 0,
+      "actionName": "Confiteor",
+      "timingClass": "gcd",
+      "timeMs": 430215,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 430125
+    },
+    {
+      "actionId": 0,
+      "actionName": "Expiacion",
+      "timingClass": "ogcd",
+      "timeMs": 430928,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 430838
+    },
+    {
+      "actionId": 0,
+      "actionName": "Intervene",
+      "timingClass": "ogcd",
+      "timeMs": 431599,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 431509
+    },
+    {
+      "actionId": 0,
+      "actionName": "Blade of Faith",
+      "timingClass": "gcd",
+      "timeMs": 432715,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 432625
+    },
+    {
+      "actionId": 7533,
+      "actionName": "Provoke",
+      "timingClass": "ogcd",
+      "timeMs": 433515,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 433425
+    },
+    {
+      "actionId": 0,
+      "actionName": "Intervene",
+      "timingClass": "ogcd",
+      "timeMs": 434185,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 434095
+    },
+    {
+      "actionId": 0,
+      "actionName": "Blade of Truth",
+      "timingClass": "gcd",
+      "timeMs": 435208,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 435118
+    },
+    {
+      "actionId": 0,
+      "actionName": "Blade of Valor",
+      "timingClass": "gcd",
+      "timeMs": 437703,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 437613
+    },
+    {
+      "actionId": 36922,
+      "actionName": "Blade of Honor",
+      "timingClass": "ogcd",
+      "timeMs": 438416,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 438326
+    },
+    {
+      "actionId": 7384,
+      "actionName": "Holy Spirit",
+      "timingClass": "gcd",
+      "timeMs": 441185,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 441095
+    },
+    {
+      "actionId": 7384,
+      "actionName": "Holy Spirit",
+      "timingClass": "gcd",
+      "timeMs": 443644,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 443554
+    },
+    {
+      "actionId": 9,
+      "actionName": "Fast Blade",
+      "timingClass": "gcd",
+      "timeMs": 445163,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 445073
+    },
+    {
+      "actionId": 7385,
+      "actionName": "Passage of Arms",
+      "timingClass": "ogcd",
+      "timeMs": 446055,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 445965
+    },
+    {
+      "actionId": 0,
+      "actionName": "Riot Blade",
+      "timingClass": "gcd",
+      "timeMs": 447708,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 447618
+    },
+    {
+      "actionId": 7535,
+      "actionName": "Reprisal",
+      "timingClass": "ogcd",
+      "timeMs": 448422,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 448332
+    },
+    {
+      "actionId": 25746,
+      "actionName": "Holy Sheltron",
+      "timingClass": "ogcd",
+      "timeMs": 449090,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 449000
+    },
+    {
+      "actionId": 0,
+      "actionName": "Royal Authority",
+      "timingClass": "gcd",
+      "timeMs": 450201,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 450111
+    },
+    {
+      "actionId": 0,
+      "actionName": "Atonement",
+      "timingClass": "gcd",
+      "timeMs": 452694,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 452604
+    },
+    {
+      "actionId": 0,
+      "actionName": "Supplication",
+      "timingClass": "gcd",
+      "timeMs": 455270,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 455180
+    },
+    {
+      "actionId": 7384,
+      "actionName": "Holy Spirit",
+      "timingClass": "gcd",
+      "timeMs": 457809,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 457719
+    },
+    {
+      "actionId": 0,
+      "actionName": "Sepulchre",
+      "timingClass": "gcd",
+      "timeMs": 460266,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 460176
+    },
+    {
+      "actionId": 0,
+      "actionName": "Circle of Scorn",
+      "timingClass": "ogcd",
+      "timeMs": 461026,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 460936
+    },
+    {
+      "actionId": 0,
+      "actionName": "Expiacion",
+      "timingClass": "ogcd",
+      "timeMs": 461740,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 461650
+    },
+    {
+      "actionId": 9,
+      "actionName": "Fast Blade",
+      "timingClass": "gcd",
+      "timeMs": 462725,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 462635
+    },
+    {
+      "actionId": 0,
+      "actionName": "Riot Blade",
+      "timingClass": "gcd",
+      "timeMs": 465225,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 465135
+    },
+    {
+      "actionId": 25746,
+      "actionName": "Holy Sheltron",
+      "timingClass": "ogcd",
+      "timeMs": 465982,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 465892
+    },
+    {
+      "actionId": 3540,
+      "actionName": "Divine Veil",
+      "timingClass": "ogcd",
+      "timeMs": 466829,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 466739
+    },
+    {
+      "actionId": 0,
+      "actionName": "Royal Authority",
+      "timingClass": "gcd",
+      "timeMs": 467766,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 467676
+    },
+    {
+      "actionId": 0,
+      "actionName": "Atonement",
+      "timingClass": "gcd",
+      "timeMs": 470264,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 470174
+    },
+    {
+      "actionId": 9,
+      "actionName": "Fast Blade",
+      "timingClass": "gcd",
+      "timeMs": 472757,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 472667
+    },
+    {
+      "actionId": 0,
+      "actionName": "Riot Blade",
+      "timingClass": "gcd",
+      "timeMs": 475249,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 475159
+    },
+    {
+      "actionId": 7384,
+      "actionName": "Holy Spirit",
+      "timingClass": "gcd",
+      "timeMs": 477789,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 477699
+    },
+    {
+      "actionId": 0,
+      "actionName": "Supplication",
+      "timingClass": "gcd",
+      "timeMs": 480285,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 480195
+    },
+    {
+      "actionId": 0,
+      "actionName": "Sepulchre",
+      "timingClass": "gcd",
+      "timeMs": 482788,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 482698
+    },
+    {
+      "actionId": 0,
+      "actionName": "Royal Authority",
+      "timingClass": "gcd",
+      "timeMs": 485289,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 485199
+    },
+    {
+      "actionId": 0,
+      "actionName": "Fight or Flight",
+      "timingClass": "ogcd",
+      "timeMs": 486670,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 486580
+    },
+    {
+      "actionId": 0,
+      "actionName": "Goring Blade",
+      "timingClass": "gcd",
+      "timeMs": 487783,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 487693
+    },
+    {
+      "actionId": 36921,
+      "actionName": "Imperator",
+      "timingClass": "ogcd",
+      "timeMs": 488451,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 488361
+    },
+    {
+      "actionId": 0,
+      "actionName": "Intervene",
+      "timingClass": "ogcd",
+      "timeMs": 489165,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 489075
+    },
+    {
+      "actionId": 0,
+      "actionName": "Confiteor",
+      "timingClass": "gcd",
+      "timeMs": 490282,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 490192
+    },
+    {
+      "actionId": 0,
+      "actionName": "Circle of Scorn",
+      "timingClass": "ogcd",
+      "timeMs": 491086,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 490996
+    },
+    {
+      "actionId": 0,
+      "actionName": "Expiacion",
+      "timingClass": "ogcd",
+      "timeMs": 491754,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 491664
+    },
+    {
+      "actionId": 0,
+      "actionName": "Blade of Faith",
+      "timingClass": "gcd",
+      "timeMs": 492828,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 492738
+    },
+    {
+      "actionId": 0,
+      "actionName": "Intervene",
+      "timingClass": "ogcd",
+      "timeMs": 493496,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 493406
+    },
+    {
+      "actionId": 25746,
+      "actionName": "Holy Sheltron",
+      "timingClass": "ogcd",
+      "timeMs": 494163,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 494073
+    },
+    {
+      "actionId": 0,
+      "actionName": "Blade of Truth",
+      "timingClass": "gcd",
+      "timeMs": 495324,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 495234
+    },
+    {
+      "actionId": 0,
+      "actionName": "Blade of Valor",
+      "timingClass": "gcd",
+      "timeMs": 497817,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 497727
+    },
+    {
+      "actionId": 36922,
+      "actionName": "Blade of Honor",
+      "timingClass": "ogcd",
+      "timeMs": 498486,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 498396
+    },
+    {
+      "actionId": 0,
+      "actionName": "Atonement",
+      "timingClass": "gcd",
+      "timeMs": 500317,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 500227
+    },
+    {
+      "actionId": 0,
+      "actionName": "Supplication",
+      "timingClass": "gcd",
+      "timeMs": 502816,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 502726
+    },
+    {
+      "actionId": 0,
+      "actionName": "Sepulchre",
+      "timingClass": "gcd",
+      "timeMs": 505364,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 505274
+    },
+    {
+      "actionId": 7384,
+      "actionName": "Holy Spirit",
+      "timingClass": "gcd",
+      "timeMs": 507860,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 507770
+    },
+    {
+      "actionId": 9,
+      "actionName": "Fast Blade",
+      "timingClass": "gcd",
+      "timeMs": 510359,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 510269
+    },
+    {
+      "actionId": 0,
+      "actionName": "Riot Blade",
+      "timingClass": "gcd",
+      "timeMs": 512856,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 512766
+    },
+    {
+      "actionId": 0,
+      "actionName": "Royal Authority",
+      "timingClass": "gcd",
+      "timeMs": 515357,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 515267
+    },
+    {
+      "actionId": 0,
+      "actionName": "Atonement",
+      "timingClass": "gcd",
+      "timeMs": 517850,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 517760
+    },
+    {
+      "actionId": 0,
+      "actionName": "Supplication",
+      "timingClass": "gcd",
+      "timeMs": 520435,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 520345
+    },
+    {
+      "actionId": 0,
+      "actionName": "Circle of Scorn",
+      "timingClass": "ogcd",
+      "timeMs": 521328,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 521238
+    },
+    {
+      "actionId": 0,
+      "actionName": "Expiacion",
+      "timingClass": "ogcd",
+      "timeMs": 522041,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 521951
+    },
+    {
+      "actionId": 0,
+      "actionName": "Sepulchre",
+      "timingClass": "gcd",
+      "timeMs": 522976,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 522886
+    },
+    {
+      "actionId": 9,
+      "actionName": "Fast Blade",
+      "timingClass": "gcd",
+      "timeMs": 525431,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 525341
+    },
+    {
+      "actionId": 7384,
+      "actionName": "Holy Spirit",
+      "timingClass": "gcd",
+      "timeMs": 527970,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 527880
+    },
+    {
+      "actionId": 7531,
+      "actionName": "Rampart",
+      "timingClass": "ogcd",
+      "timeMs": 529215,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 529125
+    },
+    {
+      "actionId": 0,
+      "actionName": "Riot Blade",
+      "timingClass": "gcd",
+      "timeMs": 530466,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 530376
+    },
+    {
+      "actionId": 7535,
+      "actionName": "Reprisal",
+      "timingClass": "ogcd",
+      "timeMs": 531136,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 531046
+    },
+    {
+      "actionId": 0,
+      "actionName": "Royal Authority",
+      "timingClass": "gcd",
+      "timeMs": 532921,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 532831
+    },
+    {
+      "actionId": 0,
+      "actionName": "Atonement",
+      "timingClass": "gcd",
+      "timeMs": 535421,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 535331
+    },
+    {
+      "actionId": 22,
+      "actionName": "Bulwark",
+      "timingClass": "ogcd",
+      "timeMs": 536089,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 535999
+    },
+    {
+      "actionId": 25746,
+      "actionName": "Holy Sheltron",
+      "timingClass": "ogcd",
+      "timeMs": 536805,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 536715
+    },
+    {
+      "actionId": 7384,
+      "actionName": "Holy Spirit",
+      "timingClass": "gcd",
+      "timeMs": 538012,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 537922
+    },
+    {
+      "actionId": 9,
+      "actionName": "Fast Blade",
+      "timingClass": "gcd",
+      "timeMs": 540506,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 540416
+    },
+    {
+      "actionId": 0,
+      "actionName": "Riot Blade",
+      "timingClass": "gcd",
+      "timeMs": 543006,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 542916
+    },
+    {
+      "actionId": 0,
+      "actionName": "Supplication",
+      "timingClass": "gcd",
+      "timeMs": 545495,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 545405
+    },
+    {
+      "actionId": 0,
+      "actionName": "Fight or Flight",
+      "timingClass": "ogcd",
+      "timeMs": 547012,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 546922
+    },
+    {
+      "actionId": 0,
+      "actionName": "Goring Blade",
+      "timingClass": "gcd",
+      "timeMs": 547951,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 547861
+    },
+    {
+      "actionId": 36921,
+      "actionName": "Imperator",
+      "timingClass": "ogcd",
+      "timeMs": 548709,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 548619
+    },
+    {
+      "actionId": 0,
+      "actionName": "Confiteor",
+      "timingClass": "gcd",
+      "timeMs": 550496,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 550406
+    },
+    {
+      "actionId": 0,
+      "actionName": "Circle of Scorn",
+      "timingClass": "ogcd",
+      "timeMs": 551567,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 551477
+    },
+    {
+      "actionId": 0,
+      "actionName": "Expiacion",
+      "timingClass": "ogcd",
+      "timeMs": 552327,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 552237
+    },
+    {
+      "actionId": 0,
+      "actionName": "Blade of Faith",
+      "timingClass": "gcd",
+      "timeMs": 553041,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 552951
+    },
+    {
+      "actionId": 36920,
+      "actionName": "Guardian",
+      "timingClass": "ogcd",
+      "timeMs": 553713,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 553623
+    },
+    {
+      "actionId": 25746,
+      "actionName": "Holy Sheltron",
+      "timingClass": "ogcd",
+      "timeMs": 554430,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 554340
+    },
+    {
+      "actionId": 0,
+      "actionName": "Blade of Truth",
+      "timingClass": "gcd",
+      "timeMs": 555589,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 555499
+    },
+    {
+      "actionId": 0,
+      "actionName": "Intervene",
+      "timingClass": "ogcd",
+      "timeMs": 557290,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 557200
+    },
+    {
+      "actionId": 0,
+      "actionName": "Blade of Valor",
+      "timingClass": "gcd",
+      "timeMs": 558049,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 557959
+    },
+    {
+      "actionId": 36922,
+      "actionName": "Blade of Honor",
+      "timingClass": "ogcd",
+      "timeMs": 558762,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 558672
+    },
+    {
+      "actionId": 0,
+      "actionName": "Intervene",
+      "timingClass": "ogcd",
+      "timeMs": 559429,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 559339
+    },
+    {
+      "actionId": 0,
+      "actionName": "Sepulchre",
+      "timingClass": "gcd",
+      "timeMs": 560546,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 560456
+    },
+    {
+      "actionId": 0,
+      "actionName": "Royal Authority",
+      "timingClass": "gcd",
+      "timeMs": 563052,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 562962
+    },
+    {
+      "actionId": 0,
+      "actionName": "Atonement",
+      "timingClass": "gcd",
+      "timeMs": 565553,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 565463
+    },
+    {
+      "actionId": 0,
+      "actionName": "Supplication",
+      "timingClass": "gcd",
+      "timeMs": 568046,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 567956
+    },
+    {
+      "actionId": 0,
+      "actionName": "Sepulchre",
+      "timingClass": "gcd",
+      "timeMs": 570548,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 570458
+    },
+    {
+      "actionId": 9,
+      "actionName": "Fast Blade",
+      "timingClass": "gcd",
+      "timeMs": 573053,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 572963
+    },
+    {
+      "actionId": 3540,
+      "actionName": "Divine Veil",
+      "timingClass": "ogcd",
+      "timeMs": 573766,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 573676
+    },
+    {
+      "actionId": 25746,
+      "actionName": "Holy Sheltron",
+      "timingClass": "ogcd",
+      "timeMs": 574479,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 574389
+    },
+    {
+      "actionId": 0,
+      "actionName": "Riot Blade",
+      "timingClass": "gcd",
+      "timeMs": 575552,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 575462
+    },
+    {
+      "actionId": 7384,
+      "actionName": "Holy Spirit",
+      "timingClass": "gcd",
+      "timeMs": 578060,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 577970
+    },
+    {
+      "actionId": 0,
+      "actionName": "Royal Authority",
+      "timingClass": "gcd",
+      "timeMs": 580600,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 580510
+    },
+    {
+      "actionId": 0,
+      "actionName": "Circle of Scorn",
+      "timingClass": "ogcd",
+      "timeMs": 581536,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 581446
+    },
+    {
+      "actionId": 0,
+      "actionName": "Expiacion",
+      "timingClass": "ogcd",
+      "timeMs": 582297,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 582207
+    },
+    {
+      "actionId": 0,
+      "actionName": "Atonement",
+      "timingClass": "gcd",
+      "timeMs": 583101,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 583011
+    },
+    {
+      "actionId": 0,
+      "actionName": "Supplication",
+      "timingClass": "gcd",
+      "timeMs": 585556,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 585466
+    },
+    {
+      "actionId": 0,
+      "actionName": "Sepulchre",
+      "timingClass": "gcd",
+      "timeMs": 588058,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 587968
+    },
+    {
+      "actionId": 7384,
+      "actionName": "Holy Spirit",
+      "timingClass": "gcd",
+      "timeMs": 590606,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 590516
+    },
+    {
+      "actionId": 30,
+      "actionName": "Hallowed Ground",
+      "timingClass": "ogcd",
+      "timeMs": 591591,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 591501
+    },
+    {
+      "actionId": 9,
+      "actionName": "Fast Blade",
+      "timingClass": "gcd",
+      "timeMs": 593099,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 593009
+    },
+    {
+      "actionId": 0,
+      "actionName": "Riot Blade",
+      "timingClass": "gcd",
+      "timeMs": 595594,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 595504
+    },
+    {
+      "actionId": 0,
+      "actionName": "Royal Authority",
+      "timingClass": "gcd",
+      "timeMs": 598093,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 598003
+    },
+    {
+      "actionId": 0,
+      "actionName": "Atonement",
+      "timingClass": "gcd",
+      "timeMs": 600681,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 600591
+    },
+    {
+      "actionId": 9,
+      "actionName": "Fast Blade",
+      "timingClass": "gcd",
+      "timeMs": 603143,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 603053
+    },
+    {
+      "actionId": 25746,
+      "actionName": "Holy Sheltron",
+      "timingClass": "ogcd",
+      "timeMs": 603813,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 603723
+    },
+    {
+      "actionId": 0,
+      "actionName": "Riot Blade",
+      "timingClass": "gcd",
+      "timeMs": 605642,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 605552
+    },
+    {
+      "actionId": 7385,
+      "actionName": "Passage of Arms",
+      "timingClass": "ogcd",
+      "timeMs": 606355,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 606265
+    },
+    {
+      "actionId": 0,
+      "actionName": "Fight or Flight",
+      "timingClass": "ogcd",
+      "timeMs": 607381,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 607291
+    },
+    {
+      "actionId": 0,
+      "actionName": "Goring Blade",
+      "timingClass": "gcd",
+      "timeMs": 608364,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 608274
+    },
+    {
+      "actionId": 36921,
+      "actionName": "Imperator",
+      "timingClass": "ogcd",
+      "timeMs": 609120,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 609030
+    },
+    {
+      "actionId": 0,
+      "actionName": "Intervene",
+      "timingClass": "ogcd",
+      "timeMs": 609787,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 609697
+    },
+    {
+      "actionId": 0,
+      "actionName": "Confiteor",
+      "timingClass": "gcd",
+      "timeMs": 610945,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 610855
+    },
+    {
+      "actionId": 0,
+      "actionName": "Circle of Scorn",
+      "timingClass": "ogcd",
+      "timeMs": 611658,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 611568
+    },
+    {
+      "actionId": 0,
+      "actionName": "Expiacion",
+      "timingClass": "ogcd",
+      "timeMs": 612327,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 612237
+    },
+    {
+      "actionId": 0,
+      "actionName": "Blade of Faith",
+      "timingClass": "gcd",
+      "timeMs": 613440,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 613350
+    },
+    {
+      "actionId": 7535,
+      "actionName": "Reprisal",
+      "timingClass": "ogcd",
+      "timeMs": 614104,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 614014
+    },
+    {
+      "actionId": 0,
+      "actionName": "Blade of Truth",
+      "timingClass": "gcd",
+      "timeMs": 615930,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 615840
+    },
+    {
+      "actionId": 0,
+      "actionName": "Intervene",
+      "timingClass": "ogcd",
+      "timeMs": 617530,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 617440
+    },
+    {
+      "actionId": 0,
+      "actionName": "Blade of Valor",
+      "timingClass": "gcd",
+      "timeMs": 618422,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 618332
+    },
+    {
+      "actionId": 36922,
+      "actionName": "Blade of Honor",
+      "timingClass": "ogcd",
+      "timeMs": 619094,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 619004
+    },
+    {
+      "actionId": 0,
+      "actionName": "Supplication",
+      "timingClass": "gcd",
+      "timeMs": 620919,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 620829
+    },
+    {
+      "actionId": 0,
+      "actionName": "Sepulchre",
+      "timingClass": "gcd",
+      "timeMs": 623410,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 623320
+    },
+    {
+      "actionId": 7384,
+      "actionName": "Holy Spirit",
+      "timingClass": "gcd",
+      "timeMs": 625905,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 625815
+    },
+    {
+      "actionId": 0,
+      "actionName": "Royal Authority",
+      "timingClass": "gcd",
+      "timeMs": 628446,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 628356
+    },
+    {
+      "actionId": 7531,
+      "actionName": "Rampart",
+      "timingClass": "ogcd",
+      "timeMs": 629824,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 629734
+    },
+    {
+      "actionId": 0,
+      "actionName": "Atonement",
+      "timingClass": "gcd",
+      "timeMs": 630982,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 630892
+    },
+    {
+      "actionId": 22,
+      "actionName": "Bulwark",
+      "timingClass": "ogcd",
+      "timeMs": 632099,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 632009
+    },
+    {
+      "actionId": 0,
+      "actionName": "Supplication",
+      "timingClass": "gcd",
+      "timeMs": 633443,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 633353
+    },
+    {
+      "actionId": 0,
+      "actionName": "Sepulchre",
+      "timingClass": "gcd",
+      "timeMs": 635941,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 635851
+    },
+    {
+      "actionId": 25746,
+      "actionName": "Holy Sheltron",
+      "timingClass": "ogcd",
+      "timeMs": 637370,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 637280
+    },
+    {
+      "actionId": 9,
+      "actionName": "Fast Blade",
+      "timingClass": "gcd",
+      "timeMs": 638488,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 638398
+    },
+    {
+      "actionId": 0,
+      "actionName": "Riot Blade",
+      "timingClass": "gcd",
+      "timeMs": 640986,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 640896
+    },
+    {
+      "actionId": 0,
+      "actionName": "Circle of Scorn",
+      "timingClass": "ogcd",
+      "timeMs": 641745,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 641655
+    },
+    {
+      "actionId": 0,
+      "actionName": "Expiacion",
+      "timingClass": "ogcd",
+      "timeMs": 642413,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 642323
+    },
+    {
+      "actionId": 7384,
+      "actionName": "Holy Spirit",
+      "timingClass": "gcd",
+      "timeMs": 643483,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 643393
+    },
+    {
+      "actionId": 0,
+      "actionName": "Royal Authority",
+      "timingClass": "gcd",
+      "timeMs": 645987,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 645897
+    },
+    {
+      "actionId": 0,
+      "actionName": "Atonement",
+      "timingClass": "gcd",
+      "timeMs": 648484,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 648394
+    },
+    {
+      "actionId": 0,
+      "actionName": "Supplication",
+      "timingClass": "gcd",
+      "timeMs": 650941,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 650851
+    },
+    {
+      "actionId": 0,
+      "actionName": "Sepulchre",
+      "timingClass": "gcd",
+      "timeMs": 653441,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 653351
+    },
+    {
+      "actionId": 7384,
+      "actionName": "Holy Spirit",
+      "timingClass": "gcd",
+      "timeMs": 655944,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 655854
+    },
+    {
+      "actionId": 9,
+      "actionName": "Fast Blade",
+      "timingClass": "gcd",
+      "timeMs": 658448,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 658358
+    },
+    {
+      "actionId": 0,
+      "actionName": "Riot Blade",
+      "timingClass": "gcd",
+      "timeMs": 660995,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 660905
+    },
+    {
+      "actionId": 0,
+      "actionName": "Royal Authority",
+      "timingClass": "gcd",
+      "timeMs": 663540,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 663450
+    },
+    {
+      "actionId": 3540,
+      "actionName": "Divine Veil",
+      "timingClass": "ogcd",
+      "timeMs": 664565,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 664475
+    },
+    {
+      "actionId": 9,
+      "actionName": "Fast Blade",
+      "timingClass": "gcd",
+      "timeMs": 666031,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 665941
+    },
+    {
+      "actionId": 0,
+      "actionName": "Fight or Flight",
+      "timingClass": "ogcd",
+      "timeMs": 667633,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 667543
+    },
+    {
+      "actionId": 0,
+      "actionName": "Goring Blade",
+      "timingClass": "gcd",
+      "timeMs": 668568,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 668478
+    },
+    {
+      "actionId": 36921,
+      "actionName": "Imperator",
+      "timingClass": "ogcd",
+      "timeMs": 669815,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 669725
+    },
+    {
+      "actionId": 0,
+      "actionName": "Confiteor",
+      "timingClass": "gcd",
+      "timeMs": 671064,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 670974
+    },
+    {
+      "actionId": 0,
+      "actionName": "Circle of Scorn",
+      "timingClass": "ogcd",
+      "timeMs": 671821,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 671731
+    },
+    {
+      "actionId": 0,
+      "actionName": "Expiacion",
+      "timingClass": "ogcd",
+      "timeMs": 672489,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 672399
+    },
+    {
+      "actionId": 0,
+      "actionName": "Blade of Faith",
+      "timingClass": "gcd",
+      "timeMs": 673556,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 673466
+    },
+    {
+      "actionId": 25746,
+      "actionName": "Holy Sheltron",
+      "timingClass": "ogcd",
+      "timeMs": 674225,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 674135
+    },
+    {
+      "actionId": 0,
+      "actionName": "Blade of Truth",
+      "timingClass": "gcd",
+      "timeMs": 676052,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 675962
+    },
+    {
+      "actionId": 0,
+      "actionName": "Intervene",
+      "timingClass": "ogcd",
+      "timeMs": 677299,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 677209
+    },
+    {
+      "actionId": 0,
+      "actionName": "Blade of Valor",
+      "timingClass": "gcd",
+      "timeMs": 678546,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 678456
+    },
+    {
+      "actionId": 36922,
+      "actionName": "Blade of Honor",
+      "timingClass": "ogcd",
+      "timeMs": 679258,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 679168
+    },
+    {
+      "actionId": 0,
+      "actionName": "Intervene",
+      "timingClass": "ogcd",
+      "timeMs": 679927,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 679837
+    },
+    {
+      "actionId": 0,
+      "actionName": "Atonement",
+      "timingClass": "gcd",
+      "timeMs": 681041,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 680951
+    },
+    {
+      "actionId": 0,
+      "actionName": "Supplication",
+      "timingClass": "gcd",
+      "timeMs": 683543,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 683453
+    },
+    {
+      "actionId": 0,
+      "actionName": "Sepulchre",
+      "timingClass": "gcd",
+      "timeMs": 686078,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 685988
+    },
+    {
+      "actionId": 7384,
+      "actionName": "Holy Spirit",
+      "timingClass": "gcd",
+      "timeMs": 688612,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 688522
+    },
+    {
+      "actionId": 36920,
+      "actionName": "Guardian",
+      "timingClass": "ogcd",
+      "timeMs": 689904,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 689814
+    },
+    {
+      "actionId": 0,
+      "actionName": "Riot Blade",
+      "timingClass": "gcd",
+      "timeMs": 691067,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 690977
+    },
+    {
+      "actionId": 7382,
+      "actionName": "Intervention",
+      "timingClass": "ogcd",
+      "timeMs": 692180,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 692090
+    },
+    {
+      "actionId": 0,
+      "actionName": "Royal Authority",
+      "timingClass": "gcd",
+      "timeMs": 693603,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 693513
+    },
+    {
+      "actionId": 0,
+      "actionName": "Atonement",
+      "timingClass": "gcd",
+      "timeMs": 696088,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 695998
+    },
+    {
+      "actionId": 0,
+      "actionName": "Supplication",
+      "timingClass": "gcd",
+      "timeMs": 698584,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 698494
+    },
+    {
+      "actionId": 7535,
+      "actionName": "Reprisal",
+      "timingClass": "ogcd",
+      "timeMs": 699252,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 699162
+    },
+    {
+      "actionId": 0,
+      "actionName": "Sepulchre",
+      "timingClass": "gcd",
+      "timeMs": 701074,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 700984
+    },
+    {
+      "actionId": 0,
+      "actionName": "Circle of Scorn",
+      "timingClass": "ogcd",
+      "timeMs": 701829,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 701739
+    },
+    {
+      "actionId": 7384,
+      "actionName": "Holy Spirit",
+      "timingClass": "gcd",
+      "timeMs": 703564,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 703474
+    },
+    {
+      "actionId": 0,
+      "actionName": "Expiacion",
+      "timingClass": "ogcd",
+      "timeMs": 704677,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 704587
+    },
+    {
+      "actionId": 9,
+      "actionName": "Fast Blade",
+      "timingClass": "gcd",
+      "timeMs": 706102,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 706012
+    },
+    {
+      "actionId": 0,
+      "actionName": "Riot Blade",
+      "timingClass": "gcd",
+      "timeMs": 708638,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 708548
+    },
+    {
+      "actionId": 0,
+      "actionName": "Royal Authority",
+      "timingClass": "gcd",
+      "timeMs": 711135,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 711045
+    },
+    {
+      "actionId": 0,
+      "actionName": "Atonement",
+      "timingClass": "gcd",
+      "timeMs": 713634,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 713544
+    },
+    {
+      "actionId": 25746,
+      "actionName": "Holy Sheltron",
+      "timingClass": "ogcd",
+      "timeMs": 714390,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 714300
+    },
+    {
+      "actionId": 7384,
+      "actionName": "Holy Spirit",
+      "timingClass": "gcd",
+      "timeMs": 716128,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 716038
+    },
+    {
+      "actionId": 9,
+      "actionName": "Fast Blade",
+      "timingClass": "gcd",
+      "timeMs": 719641,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 719551
+    },
+    {
+      "actionId": 7531,
+      "actionName": "Rampart",
+      "timingClass": "ogcd",
+      "timeMs": 720444,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 720354
+    },
+    {
+      "actionId": 0,
+      "actionName": "Riot Blade",
+      "timingClass": "gcd",
+      "timeMs": 722140,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 722050
+    },
+    {
+      "actionId": 0,
+      "actionName": "Supplication",
+      "timingClass": "gcd",
+      "timeMs": 724637,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 724547
+    },
+    {
+      "actionId": 0,
+      "actionName": "Fight or Flight",
+      "timingClass": "ogcd",
+      "timeMs": 729370,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 729280
+    },
+    {
+      "actionId": 36921,
+      "actionName": "Imperator",
+      "timingClass": "ogcd",
+      "timeMs": 730667,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 730577
+    },
+    {
+      "actionId": 0,
+      "actionName": "Confiteor",
+      "timingClass": "gcd",
+      "timeMs": 731382,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 731292
+    },
+    {
+      "actionId": 0,
+      "actionName": "Circle of Scorn",
+      "timingClass": "ogcd",
+      "timeMs": 732050,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 731960
+    },
+    {
+      "actionId": 0,
+      "actionName": "Blade of Faith",
+      "timingClass": "gcd",
+      "timeMs": 733878,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 733788
+    },
+    {
+      "actionId": 0,
+      "actionName": "Intervene",
+      "timingClass": "ogcd",
+      "timeMs": 734549,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 734459
+    },
+    {
+      "actionId": 0,
+      "actionName": "Expiacion",
+      "timingClass": "ogcd",
+      "timeMs": 735304,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 735214
+    },
+    {
+      "actionId": 0,
+      "actionName": "Blade of Truth",
+      "timingClass": "gcd",
+      "timeMs": 736372,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 736282
+    },
+    {
+      "actionId": 0,
+      "actionName": "Intervene",
+      "timingClass": "ogcd",
+      "timeMs": 737841,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 737751
+    },
+    {
+      "actionId": 0,
+      "actionName": "Blade of Valor",
+      "timingClass": "gcd",
+      "timeMs": 738870,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 738780
+    },
+    {
+      "actionId": 36922,
+      "actionName": "Blade of Honor",
+      "timingClass": "ogcd",
+      "timeMs": 739538,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 739448
+    },
+    {
+      "actionId": 0,
+      "actionName": "Goring Blade",
+      "timingClass": "gcd",
+      "timeMs": 741371,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 741281
+    },
+    {
+      "actionId": 0,
+      "actionName": "Sepulchre",
+      "timingClass": "gcd",
+      "timeMs": 743877,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 743787
+    },
+    {
+      "actionId": 0,
+      "actionName": "Royal Authority",
+      "timingClass": "gcd",
+      "timeMs": 746379,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 746289
+    },
+    {
+      "actionId": 0,
+      "actionName": "Atonement",
+      "timingClass": "gcd",
+      "timeMs": 748883,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 748793
+    },
+    {
+      "actionId": 7382,
+      "actionName": "Intervention",
+      "timingClass": "ogcd",
+      "timeMs": 749638,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 749548
+    },
+    {
+      "actionId": 0,
+      "actionName": "Supplication",
+      "timingClass": "gcd",
+      "timeMs": 751384,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 751294
+    },
+    {
+      "actionId": 0,
+      "actionName": "Sepulchre",
+      "timingClass": "gcd",
+      "timeMs": 753926,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 753836
+    },
+    {
+      "actionId": 7384,
+      "actionName": "Holy Spirit",
+      "timingClass": "gcd",
+      "timeMs": 756428,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 756338
+    },
+    {
+      "actionId": 9,
+      "actionName": "Fast Blade",
+      "timingClass": "gcd",
+      "timeMs": 758930,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 758840
+    },
+    {
+      "actionId": 0,
+      "actionName": "Riot Blade",
+      "timingClass": "gcd",
+      "timeMs": 761434,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 761344
+    },
+    {
+      "actionId": 0,
+      "actionName": "Circle of Scorn",
+      "timingClass": "ogcd",
+      "timeMs": 762105,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 762015
+    },
+    {
+      "actionId": 0,
+      "actionName": "Royal Authority",
+      "timingClass": "gcd",
+      "timeMs": 763936,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 763846
+    },
+    {
+      "actionId": 0,
+      "actionName": "Atonement",
+      "timingClass": "gcd",
+      "timeMs": 766527,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 766437
+    },
+    {
+      "actionId": 7385,
+      "actionName": "Passage of Arms",
+      "timingClass": "ogcd",
+      "timeMs": 767243,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 767153
+    },
+    {
+      "actionId": 0,
+      "actionName": "Supplication",
+      "timingClass": "gcd",
+      "timeMs": 768984,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 768894
+    },
+    {
+      "actionId": 0,
+      "actionName": "Expiacion",
+      "timingClass": "ogcd",
+      "timeMs": 770234,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 770144
+    },
+    {
+      "actionId": 0,
+      "actionName": "Sepulchre",
+      "timingClass": "gcd",
+      "timeMs": 771484,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 771394
+    },
+    {
+      "actionId": 7384,
+      "actionName": "Holy Spirit",
+      "timingClass": "gcd",
+      "timeMs": 773986,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 773896
+    },
+    {
+      "actionId": 9,
+      "actionName": "Fast Blade",
+      "timingClass": "gcd",
+      "timeMs": 776488,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 776398
+    },
+    {
+      "actionId": 0,
+      "actionName": "Riot Blade",
+      "timingClass": "gcd",
+      "timeMs": 779077,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 778987
+    },
+    {
+      "actionId": 7382,
+      "actionName": "Intervention",
+      "timingClass": "ogcd",
+      "timeMs": 780282,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 780192
+    },
+    {
+      "actionId": 0,
+      "actionName": "Royal Authority",
+      "timingClass": "gcd",
+      "timeMs": 781573,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 781483
+    },
+    {
+      "actionId": 9,
+      "actionName": "Fast Blade",
+      "timingClass": "gcd",
+      "timeMs": 784071,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 783981
+    },
+    {
+      "actionId": 0,
+      "actionName": "Riot Blade",
+      "timingClass": "gcd",
+      "timeMs": 786567,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 786477
+    },
+    {
+      "actionId": 0,
+      "actionName": "Atonement",
+      "timingClass": "gcd",
+      "timeMs": 789067,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 788977
+    },
+    {
+      "actionId": 0,
+      "actionName": "Fight or Flight",
+      "timingClass": "ogcd",
+      "timeMs": 789777,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 789687
+    },
+    {
+      "actionId": 36921,
+      "actionName": "Imperator",
+      "timingClass": "ogcd",
+      "timeMs": 790666,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 790576
+    },
+    {
+      "actionId": 0,
+      "actionName": "Confiteor",
+      "timingClass": "gcd",
+      "timeMs": 791556,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 791466
+    },
+    {
+      "actionId": 0,
+      "actionName": "Intervene",
+      "timingClass": "ogcd",
+      "timeMs": 792226,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 792136
+    },
+    {
+      "actionId": 0,
+      "actionName": "Blade of Faith",
+      "timingClass": "gcd",
+      "timeMs": 794101,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 794011
+    },
+    {
+      "actionId": 0,
+      "actionName": "Circle of Scorn",
+      "timingClass": "ogcd",
+      "timeMs": 794816,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 794726
+    },
+    {
+      "actionId": 0,
+      "actionName": "Blade of Truth",
+      "timingClass": "gcd",
+      "timeMs": 796557,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 796467
+    },
+    {
+      "actionId": 0,
+      "actionName": "Intervene",
+      "timingClass": "ogcd",
+      "timeMs": 797896,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 797806
+    },
+    {
+      "actionId": 0,
+      "actionName": "Blade of Valor",
+      "timingClass": "gcd",
+      "timeMs": 799050,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 798960
+    },
+    {
+      "actionId": 36922,
+      "actionName": "Blade of Honor",
+      "timingClass": "ogcd",
+      "timeMs": 799899,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 799809
+    },
+    {
+      "actionId": 0,
+      "actionName": "Expiacion",
+      "timingClass": "ogcd",
+      "timeMs": 800928,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 800838
+    },
+    {
+      "actionId": 0,
+      "actionName": "Supplication",
+      "timingClass": "gcd",
+      "timeMs": 801685,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 801595
+    },
+    {
+      "actionId": 0,
+      "actionName": "Goring Blade",
+      "timingClass": "gcd",
+      "timeMs": 804142,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 804052
+    },
+    {
+      "actionId": 3540,
+      "actionName": "Divine Veil",
+      "timingClass": "ogcd",
+      "timeMs": 804812,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 804722
+    },
+    {
+      "actionId": 7382,
+      "actionName": "Intervention",
+      "timingClass": "ogcd",
+      "timeMs": 805528,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 805438
+    },
+    {
+      "actionId": 0,
+      "actionName": "Sepulchre",
+      "timingClass": "gcd",
+      "timeMs": 806645,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 806555
+    },
+    {
+      "actionId": 7384,
+      "actionName": "Holy Spirit",
+      "timingClass": "gcd",
+      "timeMs": 809149,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 809059
+    },
+    {
+      "actionId": 0,
+      "actionName": "Royal Authority",
+      "timingClass": "gcd",
+      "timeMs": 811655,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 811565
+    },
+    {
+      "actionId": 0,
+      "actionName": "Atonement",
+      "timingClass": "gcd",
+      "timeMs": 815046,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 814956
+    },
+    {
+      "actionId": 0,
+      "actionName": "Supplication",
+      "timingClass": "gcd",
+      "timeMs": 817593,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 817503
+    },
+    {
+      "actionId": 0,
+      "actionName": "Sepulchre",
+      "timingClass": "gcd",
+      "timeMs": 820093,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 820003
+    },
+    {
+      "actionId": 7535,
+      "actionName": "Reprisal",
+      "timingClass": "ogcd",
+      "timeMs": 820760,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 820670
+    },
+    {
+      "actionId": 9,
+      "actionName": "Fast Blade",
+      "timingClass": "gcd",
+      "timeMs": 822588,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 822498
+    },
+    {
+      "actionId": 0,
+      "actionName": "Riot Blade",
+      "timingClass": "gcd",
+      "timeMs": 825091,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 825001
+    },
+    {
+      "actionId": 0,
+      "actionName": "Circle of Scorn",
+      "timingClass": "ogcd",
+      "timeMs": 825805,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 825715
+    },
+    {
+      "actionId": 7384,
+      "actionName": "Holy Spirit",
+      "timingClass": "gcd",
+      "timeMs": 827583,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 827493
+    },
+    {
+      "actionId": 0,
+      "actionName": "Royal Authority",
+      "timingClass": "gcd",
+      "timeMs": 831682,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 831592
+    },
+    {
+      "actionId": 0,
+      "actionName": "Expiacion",
+      "timingClass": "ogcd",
+      "timeMs": 832393,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 832303
+    },
+    {
+      "actionId": 0,
+      "actionName": "Atonement",
+      "timingClass": "gcd",
+      "timeMs": 834172,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 834082
+    },
+    {
+      "actionId": 0,
+      "actionName": "Supplication",
+      "timingClass": "gcd",
+      "timeMs": 836667,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 836577
+    },
+    {
+      "actionId": 0,
+      "actionName": "Sepulchre",
+      "timingClass": "gcd",
+      "timeMs": 839161,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 839071
+    },
+    {
+      "actionId": 7384,
+      "actionName": "Holy Spirit",
+      "timingClass": "gcd",
+      "timeMs": 841651,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 841561
+    },
+    {
+      "actionId": 9,
+      "actionName": "Fast Blade",
+      "timingClass": "gcd",
+      "timeMs": 844143,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 844053
+    },
+    {
+      "actionId": 0,
+      "actionName": "Riot Blade",
+      "timingClass": "gcd",
+      "timeMs": 846640,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 846550
+    },
+    {
+      "actionId": 0,
+      "actionName": "Royal Authority",
+      "timingClass": "gcd",
+      "timeMs": 849131,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 849041
+    },
+    {
+      "actionId": 0,
+      "actionName": "Fight or Flight",
+      "timingClass": "ogcd",
+      "timeMs": 850112,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 850022
+    },
+    {
+      "actionId": 36921,
+      "actionName": "Imperator",
+      "timingClass": "ogcd",
+      "timeMs": 850868,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 850778
+    },
+    {
+      "actionId": 0,
+      "actionName": "Confiteor",
+      "timingClass": "gcd",
+      "timeMs": 851668,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 851578
+    },
+    {
+      "actionId": 0,
+      "actionName": "Intervene",
+      "timingClass": "ogcd",
+      "timeMs": 852335,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 852245
+    },
+    {
+      "actionId": 0,
+      "actionName": "Blade of Faith",
+      "timingClass": "gcd",
+      "timeMs": 854200,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 854110
+    },
+    {
+      "actionId": 0,
+      "actionName": "Blade of Truth",
+      "timingClass": "gcd",
+      "timeMs": 856659,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 856569
+    },
+    {
+      "actionId": 0,
+      "actionName": "Circle of Scorn",
+      "timingClass": "ogcd",
+      "timeMs": 857324,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 857234
+    },
+    {
+      "actionId": 0,
+      "actionName": "Blade of Valor",
+      "timingClass": "gcd",
+      "timeMs": 859148,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 859058
+    },
+    {
+      "actionId": 36922,
+      "actionName": "Blade of Honor",
+      "timingClass": "ogcd",
+      "timeMs": 859818,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 859728
+    },
+    {
+      "actionId": 0,
+      "actionName": "Intervene",
+      "timingClass": "ogcd",
+      "timeMs": 860485,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 860395
+    },
+    {
+      "actionId": 0,
+      "actionName": "Goring Blade",
+      "timingClass": "gcd",
+      "timeMs": 861688,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 861598
+    },
+    {
+      "actionId": 0,
+      "actionName": "Expiacion",
+      "timingClass": "ogcd",
+      "timeMs": 862358,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 862268
+    },
+    {
+      "actionId": 9,
+      "actionName": "Fast Blade",
+      "timingClass": "gcd",
+      "timeMs": 893837,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 893747
+    },
+    {
+      "actionId": 0,
+      "actionName": "Circle of Scorn",
+      "timingClass": "ogcd",
+      "timeMs": 894508,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 894418
+    },
+    {
+      "actionId": 0,
+      "actionName": "Expiacion",
+      "timingClass": "ogcd",
+      "timeMs": 895176,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 895086
+    },
+    {
+      "actionId": 0,
+      "actionName": "Riot Blade",
+      "timingClass": "gcd",
+      "timeMs": 896335,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 896245
+    },
+    {
+      "actionId": 7533,
+      "actionName": "Provoke",
+      "timingClass": "ogcd",
+      "timeMs": 897094,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 897004
+    },
+    {
+      "actionId": 0,
+      "actionName": "Royal Authority",
+      "timingClass": "gcd",
+      "timeMs": 898835,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 898745
+    },
+    {
+      "actionId": 7385,
+      "actionName": "Passage of Arms",
+      "timingClass": "ogcd",
+      "timeMs": 899506,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 899416
+    },
+    {
+      "actionId": 7535,
+      "actionName": "Reprisal",
+      "timingClass": "ogcd",
+      "timeMs": 900176,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 900086
+    },
+    {
+      "actionId": 0,
+      "actionName": "Atonement",
+      "timingClass": "gcd",
+      "timeMs": 901338,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 901248
+    },
+    {
+      "actionId": 36920,
+      "actionName": "Guardian",
+      "timingClass": "ogcd",
+      "timeMs": 902007,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 901917
+    },
+    {
+      "actionId": 0,
+      "actionName": "Supplication",
+      "timingClass": "gcd",
+      "timeMs": 903877,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 903787
+    },
+    {
+      "actionId": 25746,
+      "actionName": "Holy Sheltron",
+      "timingClass": "ogcd",
+      "timeMs": 905744,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 905654
+    },
+    {
+      "actionId": 9,
+      "actionName": "Fast Blade",
+      "timingClass": "gcd",
+      "timeMs": 906458,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 906368
+    },
+    {
+      "actionId": 0,
+      "actionName": "Riot Blade",
+      "timingClass": "gcd",
+      "timeMs": 908955,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 908865
+    },
+    {
+      "actionId": 0,
+      "actionName": "Fight or Flight",
+      "timingClass": "ogcd",
+      "timeMs": 910205,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 910115
+    },
+    {
+      "actionId": 36921,
+      "actionName": "Imperator",
+      "timingClass": "ogcd",
+      "timeMs": 910873,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 910783
+    },
+    {
+      "actionId": 0,
+      "actionName": "Confiteor",
+      "timingClass": "gcd",
+      "timeMs": 911540,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 911450
+    },
+    {
+      "actionId": 0,
+      "actionName": "Intervene",
+      "timingClass": "ogcd",
+      "timeMs": 912341,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 912251
+    },
+    {
+      "actionId": 0,
+      "actionName": "Goring Blade",
+      "timingClass": "gcd",
+      "timeMs": 914036,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 913946
+    },
+    {
+      "actionId": 0,
+      "actionName": "Blade of Faith",
+      "timingClass": "gcd",
+      "timeMs": 916797,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 916707
+    },
+    {
+      "actionId": 0,
+      "actionName": "Intervene",
+      "timingClass": "ogcd",
+      "timeMs": 918133,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 918043
+    },
+    {
+      "actionId": 0,
+      "actionName": "Blade of Truth",
+      "timingClass": "gcd",
+      "timeMs": 919289,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 919199
+    },
+    {
+      "actionId": 0,
+      "actionName": "Blade of Valor",
+      "timingClass": "gcd",
+      "timeMs": 921825,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 921735
+    },
+    {
+      "actionId": 7531,
+      "actionName": "Rampart",
+      "timingClass": "ogcd",
+      "timeMs": 922537,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 922447
+    },
+    {
+      "actionId": 36922,
+      "actionName": "Blade of Honor",
+      "timingClass": "ogcd",
+      "timeMs": 923207,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 923117
+    },
+    {
+      "actionId": 0,
+      "actionName": "Sepulchre",
+      "timingClass": "gcd",
+      "timeMs": 924321,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 924231
+    },
+    {
+      "actionId": 0,
+      "actionName": "Circle of Scorn",
+      "timingClass": "ogcd",
+      "timeMs": 925080,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 924990
+    },
+    {
+      "actionId": 0,
+      "actionName": "Expiacion",
+      "timingClass": "ogcd",
+      "timeMs": 925793,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 925703
+    },
+    {
+      "actionId": 7384,
+      "actionName": "Holy Spirit",
+      "timingClass": "gcd",
+      "timeMs": 926816,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 926726
+    },
+    {
+      "actionId": 0,
+      "actionName": "Royal Authority",
+      "timingClass": "gcd",
+      "timeMs": 929356,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 929266
+    },
+    {
+      "actionId": 25746,
+      "actionName": "Holy Sheltron",
+      "timingClass": "ogcd",
+      "timeMs": 930735,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 930645
+    },
+    {
+      "actionId": 0,
+      "actionName": "Atonement",
+      "timingClass": "gcd",
+      "timeMs": 931846,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 931756
+    },
+    {
+      "actionId": 7537,
+      "actionName": "Shirk",
+      "timingClass": "ogcd",
+      "timeMs": 932691,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 932601
+    },
+    {
+      "actionId": 0,
+      "actionName": "Supplication",
+      "timingClass": "gcd",
+      "timeMs": 934430,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 934340
+    },
+    {
+      "actionId": 0,
+      "actionName": "Sepulchre",
+      "timingClass": "gcd",
+      "timeMs": 936920,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 936830
+    },
+    {
+      "actionId": 25746,
+      "actionName": "Holy Sheltron",
+      "timingClass": "ogcd",
+      "timeMs": 937633,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 937543
+    },
+    {
+      "actionId": 7384,
+      "actionName": "Holy Spirit",
+      "timingClass": "gcd",
+      "timeMs": 939414,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 939324
+    },
+    {
+      "actionId": 9,
+      "actionName": "Fast Blade",
+      "timingClass": "gcd",
+      "timeMs": 941901,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 941811
+    },
+    {
+      "actionId": 0,
+      "actionName": "Riot Blade",
+      "timingClass": "gcd",
+      "timeMs": 944390,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 944300
+    },
+    {
+      "actionId": 0,
+      "actionName": "Royal Authority",
+      "timingClass": "gcd",
+      "timeMs": 946880,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 946790
+    },
+    {
+      "actionId": 0,
+      "actionName": "Atonement",
+      "timingClass": "gcd",
+      "timeMs": 949415,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 949325
+    },
+    {
+      "actionId": 0,
+      "actionName": "Supplication",
+      "timingClass": "gcd",
+      "timeMs": 951907,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 951817
+    },
+    {
+      "actionId": 0,
+      "actionName": "Sepulchre",
+      "timingClass": "gcd",
+      "timeMs": 954397,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 954307
+    },
+    {
+      "actionId": 0,
+      "actionName": "Circle of Scorn",
+      "timingClass": "ogcd",
+      "timeMs": 955243,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 955153
+    },
+    {
+      "actionId": 0,
+      "actionName": "Expiacion",
+      "timingClass": "ogcd",
+      "timeMs": 955913,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 955823
+    },
+    {
+      "actionId": 7384,
+      "actionName": "Holy Spirit",
+      "timingClass": "gcd",
+      "timeMs": 956939,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 956849
+    },
+    {
+      "actionId": 9,
+      "actionName": "Fast Blade",
+      "timingClass": "gcd",
+      "timeMs": 959435,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 959345
+    },
+    {
+      "actionId": 0,
+      "actionName": "Riot Blade",
+      "timingClass": "gcd",
+      "timeMs": 961932,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 961842
+    },
+    {
+      "actionId": 0,
+      "actionName": "Royal Authority",
+      "timingClass": "gcd",
+      "timeMs": 964426,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 964336
+    },
+    {
+      "actionId": 3540,
+      "actionName": "Divine Veil",
+      "timingClass": "ogcd",
+      "timeMs": 965946,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 965856
+    },
+    {
+      "actionId": 0,
+      "actionName": "Atonement",
+      "timingClass": "gcd",
+      "timeMs": 966883,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 966793
+    },
+    {
+      "actionId": 9,
+      "actionName": "Fast Blade",
+      "timingClass": "gcd",
+      "timeMs": 969375,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 969285
+    },
+    {
+      "actionId": 0,
+      "actionName": "Fight or Flight",
+      "timingClass": "ogcd",
+      "timeMs": 970708,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 970618
+    },
+    {
+      "actionId": 0,
+      "actionName": "Goring Blade",
+      "timingClass": "gcd",
+      "timeMs": 971952,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 971862
+    },
+    {
+      "actionId": 36921,
+      "actionName": "Imperator",
+      "timingClass": "ogcd",
+      "timeMs": 972708,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 972618
+    },
+    {
+      "actionId": 0,
+      "actionName": "Confiteor",
+      "timingClass": "gcd",
+      "timeMs": 974450,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 974360
+    },
+    {
+      "actionId": 0,
+      "actionName": "Intervene",
+      "timingClass": "ogcd",
+      "timeMs": 975651,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 975561
+    },
+    {
+      "actionId": 0,
+      "actionName": "Blade of Faith",
+      "timingClass": "gcd",
+      "timeMs": 976938,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 976848
+    }
+  ]
+}
+

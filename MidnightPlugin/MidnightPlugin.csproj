@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Dalamud.NET.Sdk/15.0.0">
+  <PropertyGroup>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <Version>0.1.0.0</Version>
+    <AssemblyName>MidnightTimeline</AssemblyName>
+    <RootNamespace>MidnightPlugin</RootNamespace>
+    <!-- Manifest fields (see https://github.com/goatcorp/DalamudPackager/blob/827d88dc/DalamudPackager/DalamudPackager.cs#L420) -->
+    <Author>Izlude</Author>
+    <Name>Midnight Timeline</Name>
+    <Punchline>Revisa las mecánicas de Forsaken y el timing de las acciones locales.</Punchline>
+    <Description>Midnight Timeline registra un timeline de acciones local ligero y proporciona evidencia retrospectiva de las mecánicas de Forsaken en Dancing Mad.</Description>
+    <Tags>timeline;combat;training;analysis</Tags>
+    <RepoUrl>https://github.com/Izlud3/midnight-plugin</RepoUrl>
+    <IconUrl>https://raw.githubusercontent.com/Izlud3/midnight-plugin/main/MidnightPlugin/images/icon.png</IconUrl>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="images\icon.png" CopyToOutputDirectory="PreserveNewest" TargetPath="Assets\icon.png" />
+    <None Include="References\*.json" CopyToOutputDirectory="PreserveNewest" />
+    <ProjectReference Include="..\MidnightPlugin.Core\MidnightPlugin.Core.csproj" />
+  </ItemGroup>
+
+</Project>

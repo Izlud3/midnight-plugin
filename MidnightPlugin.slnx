@@ -1,0 +1,7 @@
+<Solution>
+  <Project Path="MidnightPlugin/MidnightPlugin.csproj">
+    <Platform Project="x64" />
+  </Project>
+  <Project Path="MidnightPlugin.Core/MidnightPlugin.Core.csproj" />
+  <Project Path="MidnightPlugin.Tests/MidnightPlugin.Tests.csproj" />
+</Solution>

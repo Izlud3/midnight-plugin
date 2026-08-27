@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <AssemblyName>MidnightTimeline.Tests</AssemblyName>
+    <RootNamespace>MidnightPlugin.Tests</RootNamespace>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <IsPackable>false</IsPackable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\MidnightPlugin.Core\MidnightPlugin.Core.csproj" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.12.0" />
+    <PackageReference Include="xunit" Version="2.9.2" />
+    <PackageReference Include="xunit.runner.visualstudio" Version="2.8.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\MidnightPlugin\References\pld-dancing-mad-v1.json" Link="TestData\pld-dancing-mad-v1.json" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
+</Project>
