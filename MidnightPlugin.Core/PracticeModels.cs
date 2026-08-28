@@ -5,19 +5,11 @@ namespace MidnightPlugin.Core;
 public enum PracticeState
 {
     Idle,
+    WaitingForCombat,
     WaitingForFirstAction,
-    WaitingForCountdown,
-    Countdown,
     Running,
     Paused,
     Completed,
-}
-
-public enum PracticeStartMode
-{
-    Countdown,
-    FirstCombatAction,
-    GameCountdown,
 }
 
 public enum PracticeMatchKind
@@ -285,7 +277,6 @@ public static class PracticeReferenceCatalog
 public sealed record PracticeSnapshot(
     PracticeState State,
     TimeSpan Elapsed,
-    TimeSpan CountdownRemaining,
     int StartReferenceIndex,
     int NextReferenceIndex,
     IReadOnlyList<PracticeReferenceAction> ReferenceActions,
@@ -303,9 +294,7 @@ public sealed record PracticeSnapshot(
 
 public sealed class PracticeSessionService
 {
-    public const int CountdownMilliseconds = 3_000;
     public const int TimingToleranceMilliseconds = 500;
-    public const int ReferenceStartDelayMilliseconds = 200;
     public const int StopAfterMistakes = 3;
 
     private readonly object syncRoot = new();
@@ -314,13 +303,10 @@ public sealed class PracticeSessionService
     private readonly List<PracticeExpectedResult> expectedResults = [];
     private readonly List<PracticeAttempt> attempts = [];
     private PracticeState state;
-    private PracticeState pausedFromState;
-    private TimeSpan countdownStartedAt;
     private TimeSpan runningStartedAt;
     private TimeSpan completedElapsed;
     private TimeSpan pauseStartedAt;
     private TimeSpan pausedElapsed;
-    private TimeSpan pausedCountdownRemaining;
     private TimeSpan startingOffset;
     private int mistakeLimit;
     private bool stoppedOnMistake;
@@ -349,7 +335,6 @@ public sealed class PracticeSessionService
     }
 
     public void Start(
-        PracticeStartMode startMode = PracticeStartMode.Countdown,
         int mistakeLimit = 0,
         TimeSpan startOffset = default)
     {
@@ -369,19 +354,7 @@ public sealed class PracticeSessionService
                 .TakeWhile(action => action.Offset < startingOffset)
                 .Count();
             nextReferenceIndex = startReferenceIndex;
-            if (startMode == PracticeStartMode.FirstCombatAction)
-            {
-                state = PracticeState.WaitingForFirstAction;
-            }
-            else if (startMode == PracticeStartMode.GameCountdown)
-            {
-                state = PracticeState.WaitingForCountdown;
-            }
-            else
-            {
-                state = PracticeState.Countdown;
-                countdownStartedAt = Now();
-            }
+            state = PracticeState.WaitingForCombat;
         }
     }
 
@@ -401,15 +374,14 @@ public sealed class PracticeSessionService
         }
     }
 
-    public bool BeginFromTrigger()
+    public bool ConfirmCombatStarted()
     {
         lock (syncRoot)
         {
             AdvanceUnsafe();
-            if (state is not (PracticeState.WaitingForFirstAction or PracticeState.WaitingForCountdown)) return false;
+            if (state != PracticeState.WaitingForCombat) return false;
 
-            state = PracticeState.Running;
-            runningStartedAt = Now() - startingOffset;
+            state = PracticeState.WaitingForFirstAction;
             return true;
         }
     }
@@ -419,14 +391,10 @@ public sealed class PracticeSessionService
         lock (syncRoot)
         {
             AdvanceUnsafe();
-            if (state is not (PracticeState.WaitingForFirstAction or PracticeState.WaitingForCountdown or PracticeState.Countdown or PracticeState.Running)) return false;
+            if (state != PracticeState.Running) return false;
 
-            pausedFromState = state;
             pauseStartedAt = Now();
-            pausedElapsed = state == PracticeState.Running ? ElapsedUnsafe() : startingOffset;
-            pausedCountdownRemaining = state == PracticeState.Countdown
-                ? Max(TimeSpan.Zero, TimeSpan.FromMilliseconds(CountdownMilliseconds) - (pauseStartedAt - countdownStartedAt))
-                : TimeSpan.Zero;
+            pausedElapsed = ElapsedUnsafe();
             state = PracticeState.Paused;
             return true;
         }
@@ -439,20 +407,11 @@ public sealed class PracticeSessionService
             if (state != PracticeState.Paused) return false;
 
             var pausedDuration = Max(TimeSpan.Zero, Now() - pauseStartedAt);
-            if (pausedFromState == PracticeState.Countdown)
-            {
-                countdownStartedAt += pausedDuration;
-            }
-            else if (pausedFromState == PracticeState.Running)
-            {
-                runningStartedAt += pausedDuration;
-            }
+            runningStartedAt += pausedDuration;
 
-            state = pausedFromState;
-            pausedFromState = PracticeState.Idle;
+            state = PracticeState.Running;
             pauseStartedAt = TimeSpan.Zero;
             pausedElapsed = TimeSpan.Zero;
-            pausedCountdownRemaining = TimeSpan.Zero;
             AdvanceUnsafe();
             return true;
         }
@@ -468,7 +427,10 @@ public sealed class PracticeSessionService
             AdvanceUnsafe();
             if (state == PracticeState.WaitingForFirstAction)
             {
-                BeginFromTriggerUnsafe();
+                var firstReference = rotation.Actions[nextReferenceIndex];
+                if (!Matches(firstReference, actionId, actionName)) return false;
+
+                BeginFromFirstActionUnsafe();
             }
 
             if (state != PracticeState.Running) return false;
@@ -538,18 +500,13 @@ public sealed class PracticeSessionService
                 PracticeState.Running => ElapsedUnsafe(),
                 PracticeState.Paused => pausedElapsed,
                 PracticeState.Completed => completedElapsed,
-                PracticeState.WaitingForFirstAction or PracticeState.WaitingForCountdown or PracticeState.Countdown => startingOffset,
+                PracticeState.WaitingForCombat or PracticeState.WaitingForFirstAction => startingOffset,
                 _ => TimeSpan.Zero,
             };
-            var countdownRemaining = state == PracticeState.Countdown
-                ? Max(TimeSpan.Zero, TimeSpan.FromMilliseconds(CountdownMilliseconds) - (Now() - countdownStartedAt))
-                : state == PracticeState.Paused ? pausedCountdownRemaining
-                : TimeSpan.Zero;
 
             return new PracticeSnapshot(
                 state,
                 elapsed,
-                countdownRemaining,
                 startReferenceIndex,
                 nextReferenceIndex,
                 rotation.Actions,
@@ -566,16 +523,6 @@ public sealed class PracticeSessionService
     private void AdvanceUnsafe()
     {
         if (state == PracticeState.Paused) return;
-
-        if (state == PracticeState.Countdown)
-        {
-            var countdownElapsed = Now() - countdownStartedAt;
-            if (countdownElapsed >= TimeSpan.FromMilliseconds(CountdownMilliseconds))
-            {
-                state = PracticeState.Running;
-                runningStartedAt = countdownStartedAt + TimeSpan.FromMilliseconds(CountdownMilliseconds) - startingOffset;
-            }
-        }
 
         if (state != PracticeState.Running) return;
 
@@ -613,32 +560,28 @@ public sealed class PracticeSessionService
         state = PracticeState.Completed;
     }
 
-    private void BeginFromTriggerUnsafe()
+    private void BeginFromFirstActionUnsafe()
     {
         state = PracticeState.Running;
         runningStartedAt = Now() - startingOffset;
     }
 
-    private bool Matches(PracticeReferenceAction reference, uint actionId, string actionName)
+    private static bool Matches(PracticeReferenceAction reference, uint actionId, string actionName)
     {
         if (reference.ActionId != 0 && actionId == reference.ActionId) return true;
         return ActionNameNormalizer.Normalize(reference.ActionName) == ActionNameNormalizer.Normalize(actionName);
     }
 
-    private TimeSpan ElapsedUnsafe() =>
-        Max(TimeSpan.Zero, Now() - runningStartedAt - TimeSpan.FromMilliseconds(ReferenceStartDelayMilliseconds));
+    private TimeSpan ElapsedUnsafe() => Max(TimeSpan.Zero, Now() - runningStartedAt);
     private TimeSpan Now() => monotonicClock();
 
     private void ResetUnsafe()
     {
         state = PracticeState.Idle;
-        pausedFromState = PracticeState.Idle;
-        countdownStartedAt = TimeSpan.Zero;
         runningStartedAt = TimeSpan.Zero;
         completedElapsed = TimeSpan.Zero;
         pauseStartedAt = TimeSpan.Zero;
         pausedElapsed = TimeSpan.Zero;
-        pausedCountdownRemaining = TimeSpan.Zero;
         startingOffset = TimeSpan.Zero;
         mistakeLimit = 0;
         stoppedOnMistake = false;

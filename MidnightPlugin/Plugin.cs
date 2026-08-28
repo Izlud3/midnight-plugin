@@ -9,7 +9,6 @@ using MidnightPlugin.Core;
 using MidnightPlugin.Windows;
 using System.Diagnostics;
 using System.IO;
-using FFXIVClientStructs.FFXIV.Client.UI.Agent;
 
 namespace MidnightPlugin;
 
@@ -54,8 +53,6 @@ public sealed class Plugin : IDalamudPlugin
     private string? selectedPracticeJob;
     private TimeSpan practiceStartOffset;
     private bool wasInCombat;
-    private bool countdownWasActive;
-    private float? lastCountdownRemaining;
 
     public Plugin()
     {
@@ -225,15 +222,6 @@ public sealed class Plugin : IDalamudPlugin
         RefreshPracticeReference(force: true);
     }
 
-    public void SetPracticeStartTrigger(PracticeStartTrigger trigger)
-    {
-        if (Configuration.PracticeStartTrigger == trigger) return;
-        Configuration.PracticeStartTrigger = trigger;
-        Configuration.Save();
-        ResetAutomaticStartTracking();
-        ArmPractice();
-    }
-
     public void SetLiveTimelineVisible(bool visible)
     {
         if (Configuration.ShowLiveTimeline == visible) return;
@@ -316,9 +304,6 @@ public sealed class Plugin : IDalamudPlugin
     private void ArmPractice()
     {
         Practice?.Start(
-            Configuration.PracticeStartTrigger == PracticeStartTrigger.PartyCountdown
-                ? PracticeStartMode.GameCountdown
-                : PracticeStartMode.FirstCombatAction,
             mistakeLimit: Configuration.StopOnMistake ? PracticeSessionService.StopAfterMistakes : 0,
             startOffset: practiceStartOffset);
     }
@@ -333,44 +318,15 @@ public sealed class Plugin : IDalamudPlugin
         }
 
         var inCombat = Condition[ConditionFlag.InCombat];
-        if (Configuration.PracticeStartTrigger == PracticeStartTrigger.CombatOrFirstAction)
+        if (wasInCombat && !inCombat &&
+            practice.State is PracticeState.WaitingForFirstAction or PracticeState.Running or PracticeState.Paused or PracticeState.Completed)
         {
-            if (wasInCombat && !inCombat &&
-                practice.State is PracticeState.Running or PracticeState.Paused or PracticeState.Completed)
-            {
-                ArmPractice();
-            }
-
-            if (inCombat && practice.State == PracticeState.WaitingForFirstAction)
-            {
-                practice.BeginFromTrigger();
-            }
-
-            countdownWasActive = false;
-            lastCountdownRemaining = null;
+            ArmPractice();
         }
-        else
+
+        if (inCombat && practice.State == PracticeState.WaitingForCombat)
         {
-            var countdownRemaining = GetPartyCountdownRemaining();
-            if (countdownRemaining is { } remaining)
-            {
-                if (!countdownWasActive)
-                {
-                    ArmPractice();
-                }
-
-                lastCountdownRemaining = remaining;
-                if (remaining <= 0f)
-                {
-                    practice.BeginFromTrigger();
-                }
-            }
-            else if (countdownWasActive && lastCountdownRemaining <= 0.5f)
-            {
-                practice.BeginFromTrigger();
-            }
-
-            countdownWasActive = countdownRemaining.HasValue;
+            practice.ConfirmCombatStarted();
         }
 
         wasInCombat = inCombat;
@@ -379,14 +335,6 @@ public sealed class Plugin : IDalamudPlugin
     private void ResetAutomaticStartTracking()
     {
         wasInCombat = false;
-        countdownWasActive = false;
-        lastCountdownRemaining = null;
-    }
-
-    private static unsafe float? GetPartyCountdownRemaining()
-    {
-        var agent = AgentCountDownSettingDialog.Instance();
-        return agent != null && agent->Active ? agent->TimeRemaining : null;
     }
 
     private static TimeSpan MonotonicNow() => TimeSpan.FromSeconds((double)Stopwatch.GetTimestamp() / Stopwatch.Frequency);

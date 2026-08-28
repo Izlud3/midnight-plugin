@@ -41,7 +41,7 @@ La ventana principal y la configuración están disponibles desde la interfaz de
 
 ## Práctica de rotación
 
-La práctica sigue automáticamente el job equipado cuando existe una referencia compatible. Puede iniciar con el combate o con un Party Countdown, y permite pausar, reiniciar o comenzar desde otro punto de la rotación.
+La práctica sigue automáticamente el job equipado cuando existe una referencia compatible. Se arma al entrar en combate y comienza cuando la primera acción del jugador coincide con la acción inicial de la referencia. Permite pausar, reiniciar o comenzar desde otro punto de la rotación.
 
 Las referencias son archivos JSON compartibles. Para añadir o reemplazar una, copia el archivo en la carpeta mostrada en **Configuración** y pulsa **Recargar referencias**. Una referencia del usuario reemplaza la incluida para el mismo job sin necesidad de modificar el plugin.
 

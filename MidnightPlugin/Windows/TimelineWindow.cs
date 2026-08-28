@@ -33,10 +33,9 @@ public sealed class TimelineWindow : Window, IDisposable
     private bool practiceExpanded;
     private double liveViewOffsetSeconds;
     private double practiceViewOffsetSeconds;
-    private TimeSpan practiceRestartOffset;
 
     public TimelineWindow(Plugin plugin)
-        : base("Timeline##MidnightTimelineWindowV2", ImGuiWindowFlags.NoResize)
+        : base("Practice Timeline##MidnightTimelineWindowV2", ImGuiWindowFlags.NoResize)
     {
         this.plugin = plugin;
         SetWindowSize();
@@ -119,15 +118,7 @@ public sealed class TimelineWindow : Window, IDisposable
             return;
         }
 
-        ImGui.SetNextItemWidth(190f);
-        var startTrigger = (int)plugin.Configuration.PracticeStartTrigger;
-        if (ImGui.Combo("Iniciar##PracticeStartTrigger", ref startTrigger, "Combate / primera acción\0Party countdown (/cd)\0"))
-        {
-            plugin.SetPracticeStartTrigger((PracticeStartTrigger)startTrigger);
-            practiceViewOffsetSeconds = 0d;
-            snapshot = practice.Snapshot();
-        }
-
+        var drewControl = false;
         if (snapshot.State is PracticeState.Running or PracticeState.Paused)
         {
             if (ImGui.IsKeyPressed(ImGuiKey.Space) && !ImGui.IsAnyItemActive())
@@ -159,6 +150,8 @@ public sealed class TimelineWindow : Window, IDisposable
 
                 snapshot = practice.Snapshot();
             }
+
+            drewControl = true;
         }
         else if (snapshot.State == PracticeState.Completed && snapshot.StoppedOnMistake)
         {
@@ -167,9 +160,11 @@ public sealed class TimelineWindow : Window, IDisposable
                 plugin.RestartPractice();
                 snapshot = practice.Snapshot();
             }
+
+            drewControl = true;
         }
 
-        ImGui.SameLine();
+        if (drewControl) ImGui.SameLine();
         ImGui.TextDisabled(FormatPracticeStatus(snapshot));
 
         ImGui.SameLine();
@@ -199,7 +194,6 @@ public sealed class TimelineWindow : Window, IDisposable
             canvasMin,
             canvasMax,
             axisMin,
-            axisMax,
             lanesMin,
             lanesMax,
             axisMax.X - axisMin.X);
@@ -209,7 +203,6 @@ public sealed class TimelineWindow : Window, IDisposable
         Vector2 CanvasMin,
         Vector2 CanvasMax,
         Vector2 AxisMin,
-        Vector2 AxisMax,
         Vector2 LanesMin,
         Vector2 LanesMax,
         float TimelineWidth);
@@ -238,8 +231,7 @@ public sealed class TimelineWindow : Window, IDisposable
                 0d,
                 lastReferenceSecond);
             practiceViewOffsetSeconds = selectedSecond - snapshot.Elapsed.TotalSeconds;
-            practiceRestartOffset = TimeSpan.FromSeconds(selectedSecond);
-            plugin.SetPracticeStartOffset(practiceRestartOffset);
+            plugin.SetPracticeStartOffset(TimeSpan.FromSeconds(selectedSecond));
             snapshot = plugin.Practice?.Snapshot() ?? snapshot;
             practiceViewOffsetSeconds = 0d;
         }
@@ -248,24 +240,11 @@ public sealed class TimelineWindow : Window, IDisposable
         DrawLanes(drawList, canvas.LanesMin, canvas.LanesMax);
         DrawPracticeEntries(drawList, snapshot, practiceViewOffsetSeconds, canvas.AxisMin, canvas.LanesMin, canvas.TimelineWidth);
 
-        if (snapshot.State == PracticeState.Countdown)
+        if (snapshot.State is PracticeState.WaitingForCombat or PracticeState.WaitingForFirstAction)
         {
-            var countdown = Math.Max(1, (int)Math.Ceiling(snapshot.CountdownRemaining.TotalSeconds));
-            var label = countdown.ToString();
-            var textSize = ImGui.CalcTextSize(label);
-            var center = (canvas.CanvasMin + canvas.CanvasMax) / 2f;
-            drawList.AddRectFilled(canvas.CanvasMin, canvas.CanvasMax, ImGui.GetColorU32(new Vector4(0.02f, 0.025f, 0.04f, 0.68f)), 4f);
-            drawList.AddText(
-                center - textSize / 2f,
-                ImGui.GetColorU32(new Vector4(1f, 0.85f, 0.25f, 1f)),
-                label);
-        }
-
-        if (snapshot.State is PracticeState.WaitingForFirstAction or PracticeState.WaitingForCountdown)
-        {
-            var label = snapshot.State == PracticeState.WaitingForCountdown
-                ? "ESPERANDO PARTY COUNTDOWN"
-                : "ESPERANDO COMBATE / PRIMERA ACCIÓN";
+            var label = snapshot.State == PracticeState.WaitingForCombat
+                ? "ESPERANDO COMBATE"
+                : "ESPERANDO PRIMERA ACCIÓN DE REFERENCIA";
             var textSize = ImGui.CalcTextSize(label);
             var center = (canvas.CanvasMin + canvas.CanvasMax) / 2f;
             drawList.AddRectFilled(canvas.CanvasMin, canvas.CanvasMax, ImGui.GetColorU32(new Vector4(0.02f, 0.025f, 0.04f, 0.58f)), 4f);
@@ -552,9 +531,8 @@ public sealed class TimelineWindow : Window, IDisposable
         return snapshot.State switch
         {
             PracticeState.Idle => "Listo",
-            PracticeState.WaitingForFirstAction => FormatWaitingStatus("Esperando combate / primera acción", snapshot.Elapsed),
-            PracticeState.WaitingForCountdown => FormatWaitingStatus("Esperando Party Countdown", snapshot.Elapsed),
-            PracticeState.Countdown => $"Iniciando en {Math.Max(1, (int)Math.Ceiling(snapshot.CountdownRemaining.TotalSeconds))}",
+            PracticeState.WaitingForCombat => FormatWaitingStatus("Esperando combate", snapshot.Elapsed),
+            PracticeState.WaitingForFirstAction => FormatWaitingStatus("Esperando primera acción de referencia", snapshot.Elapsed),
             PracticeState.Running => $"En marcha {snapshot.Elapsed.TotalSeconds:0.0}s  ({snapshot.ResolvedCount}/{snapshot.TotalCount})",
             PracticeState.Paused => $"Pausado  {snapshot.Elapsed.TotalSeconds:0.0}s  ({snapshot.ResolvedCount}/{snapshot.TotalCount})",
             PracticeState.Completed => snapshot.StoppedOnMistake
