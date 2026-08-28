@@ -7,22 +7,25 @@ namespace MidnightPlugin.Windows;
 
 public sealed class ForsakenWindow : Window, IDisposable
 {
+    private const float JobIconSize = 20;
     private readonly Plugin plugin;
+    private readonly JobIconResolver jobIcons = new();
     private int observedResultCount = -1;
     private float arenaZoom = 1;
     private Vector2 arenaPan;
+    private int arenaLayers = 2;
+    private long activeSnapshotTicks = long.MinValue;
 
     public ForsakenWindow(Plugin plugin) : base("DMU Review###MidnightForsaken")
     {
         this.plugin = plugin;
-        Flags = ImGuiWindowFlags.NoResize | ImGuiWindowFlags.NoCollapse | ImGuiWindowFlags.NoScrollbar |
-                ImGuiWindowFlags.NoScrollWithMouse;
-        Size = new Vector2(650, 620);
-        SizeCondition = ImGuiCond.Always;
-        SizeConstraints = new() { MinimumSize = new(650, 620), MaximumSize = new(650, 620) };
+        Flags = ImGuiWindowFlags.NoCollapse;
+        Size = new Vector2(900, 520);
+        SizeCondition = ImGuiCond.FirstUseEver;
+        SizeConstraints = new() { MinimumSize = new(680, 400), MaximumSize = new(float.MaxValue, float.MaxValue) };
     }
 
-    public void Dispose() { }
+    public void Dispose() => jobIcons.Clear();
 
     public override void Draw()
     {
@@ -49,13 +52,12 @@ public sealed class ForsakenWindow : Window, IDisposable
             var marker = result.Verdict switch
             {
                 MechanicVerdict.Success => "✓",
-                MechanicVerdict.Failure => "✕",
+                MechanicVerdict.Failure => "X",
                 _ => "?",
             };
             var tabFlags = selectNewest && index == results.Count - 1 ? ImGuiTabItemFlags.SetSelected : ImGuiTabItemFlags.None;
             if (!ImGui.BeginTabItem($"{marker} Tower {result.PairNumber}##forsaken-pair-{index}", tabFlags)) continue;
             var color = result.Verdict == MechanicVerdict.Failure ? new Vector4(1, .3f, .3f, 1) : new Vector4(1, .75f, .25f, 1);
-            ImGui.Text($"Tower {result.PairNumber} • {result.Elapsed:mm\\:ss\\.fff}");
             var verdict = result.Verdict switch
             {
                 MechanicVerdict.Success => "Éxito",
@@ -64,14 +66,7 @@ public sealed class ForsakenWindow : Window, IDisposable
             };
             if (result.Verdict == MechanicVerdict.Success) color = new(.25f, .9f, .45f, 1);
             ImGui.TextColored(color, verdict);
-            if (result.Snapshot is null)
-            {
-                foreach (var reason in result.Reasons) ImGui.BulletText(reason);
-            }
-            else
-            {
-                DrawSnapshot(result.Snapshot);
-            }
+            if (result.Snapshot is not null) DrawSnapshot(result.Snapshot);
             ImGui.EndTabItem();
         }
         ImGui.EndTabBar();
@@ -79,17 +74,53 @@ public sealed class ForsakenWindow : Window, IDisposable
 
     private void DrawSnapshot(ArenaSnapshot snapshot)
     {
+        if (activeSnapshotTicks != snapshot.Elapsed.Ticks)
+        {
+            activeSnapshotTicks = snapshot.Elapsed.Ticks;
+            ResetArenaView();
+        }
+
+        DrawArenaControls();
+        ImGui.Spacing();
         var available = ImGui.GetContentRegionAvail();
-        var checkCount = snapshot.Towers.Count + snapshot.Stacks.Count + snapshot.Cones.Count;
-        var columns = available.X >= 420 ? 2 : 1;
-        var rows = (checkCount + columns - 1) / columns;
-        var checksHeight = ImGui.GetTextLineHeightWithSpacing() + rows * 66 + Math.Max(0, rows - 1) * ImGui.GetStyle().ItemSpacing.Y;
-        var size = Math.Min(360, Math.Min(available.X, Math.Max(220, available.Y - checksHeight)));
-        var startX = ImGui.GetCursorPosX();
-        ImGui.SetCursorPosX(startX + Math.Max(0, (available.X - size) / 2));
-        DrawArena(snapshot, size);
-        ImGui.SetCursorPosX(startX);
-        DrawResolutionChecks(snapshot, available.X);
+        const float spacing = 8;
+        if (available.X >= 820)
+        {
+            var mapSize = Math.Clamp(available.X * .42f, 300, 400);
+            DrawArena(snapshot, mapSize);
+            ImGui.SameLine(0, spacing);
+            DrawPlayerEvidenceTable(snapshot, new(available.X - mapSize - spacing, mapSize));
+        }
+        else
+        {
+            var mapSize = Math.Clamp(Math.Min(available.X, 380), 280, 380);
+            var startX = ImGui.GetCursorPosX();
+            ImGui.SetCursorPosX(startX + Math.Max(0, (available.X - mapSize) / 2));
+            DrawArena(snapshot, mapSize);
+            ImGui.SetCursorPosX(startX);
+            ImGui.Spacing();
+            var tableHeight = 28 + ForsakenPresentation.OrderedPlayers(snapshot).Count * 30;
+            DrawPlayerEvidenceTable(snapshot, new(available.X, tableHeight));
+        }
+
+    }
+
+    private void DrawArenaControls()
+    {
+        foreach (var (label, value) in new[] { ("Towers", 0), ("Shapes", 1), ("Both", 2) })
+        {
+            if (value > 0) ImGui.SameLine();
+            var selected = arenaLayers == value;
+            if (selected) ImGui.PushStyleColor(ImGuiCol.Button, new Vector4(.2f, .48f, .7f, 1));
+            if (ImGui.SmallButton($"{label}##forsaken-layer-{value}")) arenaLayers = value;
+            if (selected) ImGui.PopStyleColor();
+        }
+    }
+
+    private void ResetArenaView()
+    {
+        arenaZoom = 1;
+        arenaPan = Vector2.Zero;
     }
 
     private void DrawArena(ArenaSnapshot snapshot, float size)
@@ -115,32 +146,61 @@ public sealed class ForsakenWindow : Window, IDisposable
 
         var center = origin + new Vector2(size / 2) + arenaPan;
         var scale = size / 48f * arenaZoom;
+        var rotation = ForsakenPresentation.NormalizedTowerRotation(snapshot.Towers);
         var draw = ImGui.GetWindowDrawList();
         draw.AddRectFilled(origin, canvasMax, ImGui.GetColorU32(new Vector4(.07f, .08f, .1f, 1)), 4);
         draw.PushClipRect(origin, canvasMax, true);
-        DrawMechanicShapes(draw, snapshot, center, scale);
+        if (arenaLayers is 1 or 2) DrawMechanicShapes(draw, snapshot, center, scale, rotation);
         draw.AddCircle(center, 20 * scale, ImGui.GetColorU32(new Vector4(.65f, .65f, .7f, 1)), 64, 2);
-        foreach (var (tower, index) in snapshot.Towers.Select((tower, index) => (tower, index + 1)))
+        DrawCompass(draw, center, scale, rotation);
+        if (arenaLayers is 0 or 2)
         {
-            var point = center + new Vector2((tower.X - 100) * scale, (tower.Y - 100) * scale);
-            var color = tower.IsResolvedCorrectly ? new Vector4(.25f, .9f, .45f, 1) : new Vector4(1, .25f, .25f, 1);
-            var fill = color with { W = .2f };
-            draw.AddCircleFilled(point, ArenaTower.Radius * scale, ImGui.GetColorU32(fill), 40);
-            draw.AddCircle(point, ArenaTower.Radius * scale, ImGui.GetColorU32(color), 40, 2.5f);
-            draw.AddText(point - new Vector2(11, 8), ImGui.GetColorU32(Vector4.One), $"T{index}");
+            foreach (var candidate in ForsakenPresentation.TowerCandidateOffsets)
+            {
+                var point = center + ForsakenPresentation.Rotate(candidate, rotation) * scale;
+                draw.AddCircleFilled(point, 3, ImGui.GetColorU32(new Vector4(.55f, .58f, .65f, .4f)), 12);
+            }
+            foreach (var (tower, index) in snapshot.Towers.Select((tower, index) => (tower, index + 1)))
+            {
+                var point = center + ForsakenPresentation.Rotate(
+                    new(tower.X - ForsakenPresentation.ArenaCenter, tower.Y - ForsakenPresentation.ArenaCenter), rotation) * scale;
+                var color = tower.IsResolvedCorrectly ? new Vector4(.25f, .9f, .45f, 1) : new Vector4(1, .25f, .25f, 1);
+                var fill = color with { W = .2f };
+                draw.AddCircleFilled(point, ArenaTower.Radius * scale, ImGui.GetColorU32(fill), 40);
+                draw.AddCircle(point, ArenaTower.Radius * scale, ImGui.GetColorU32(color), 40, 2.5f);
+                draw.AddText(point - new Vector2(11, 8), ImGui.GetColorU32(Vector4.One), $"T{index}");
+            }
         }
         foreach (var player in snapshot.Players.Where(player => player.Position is not null))
         {
             var position = player.Position!.Value;
-            var point = center + new Vector2((position.X - 100) * scale, (position.Z - 100) * scale);
-            var color = player.Died ? new Vector4(1, .15f, .15f, 1) : player.TookTower ? new Vector4(.35f, .8f, 1, 1) : new Vector4(.7f, .4f, 1, 1);
-            draw.AddCircleFilled(point, 5, ImGui.GetColorU32(color));
-            draw.AddText(point + new Vector2(6, -7), ImGui.GetColorU32(Vector4.One), player.Job);
+            var point = ToCanvas(position, center, scale, rotation);
+            var evidence = ForsakenPresentation.EvidenceFor(snapshot, player.ActorId);
+            var problem = (evidence & (ForsakenPlayerEvidence.Died | ForsakenPlayerEvidence.FailedCheck)) != 0;
+            var color = problem ? new Vector4(1, .15f, .15f, 1) : player.TookTower ? new Vector4(.35f, .8f, 1, 1) : new Vector4(.7f, .4f, 1, 1);
+            draw.AddCircleFilled(point, 11, ImGui.GetColorU32(new Vector4(.06f, .07f, .09f, .95f)), 24);
+            draw.AddCircle(point, 11, ImGui.GetColorU32(color), 24, 2);
+            var jobSize = ImGui.CalcTextSize(player.Job);
+            draw.AddText(point - jobSize / 2, ImGui.GetColorU32(Vector4.One), player.Job);
         }
         draw.PopClipRect();
     }
 
-    private static void DrawMechanicShapes(ImDrawListPtr draw, ArenaSnapshot snapshot, Vector2 center, float scale)
+    private static void DrawCompass(ImDrawListPtr draw, Vector2 center, float scale, float rotation)
+    {
+        foreach (var (label, offset) in new[]
+                 {
+                     ("N", new Vector2(0, -18)), ("E", new Vector2(18, 0)),
+                     ("S", new Vector2(0, 18)), ("W", new Vector2(-18, 0)),
+                 })
+        {
+            var point = center + ForsakenPresentation.Rotate(offset, rotation) * scale;
+            var textSize = ImGui.CalcTextSize(label);
+            draw.AddText(point - textSize / 2, ImGui.GetColorU32(new Vector4(.75f, .77f, .82f, .85f)), label);
+        }
+    }
+
+    private static void DrawMechanicShapes(ImDrawListPtr draw, ArenaSnapshot snapshot, Vector2 center, float scale, float rotation)
     {
         foreach (var stack in snapshot.Stacks)
         {
@@ -148,7 +208,7 @@ public sealed class ForsakenWindow : Window, IDisposable
             var position = source?.Position ?? CenterOfPlayers(snapshot, stack.PlayerIds);
             if (position is not { } stackPosition) continue;
 
-            var point = ToCanvas(stackPosition, center, scale);
+            var point = ToCanvas(stackPosition, center, scale, rotation);
             var radius = 5 * scale;
             var color = stack.IsResolvedCorrectly
                 ? new Vector4(.2f, .75f, 1, 1)
@@ -165,7 +225,7 @@ public sealed class ForsakenWindow : Window, IDisposable
             var target = FindConeTarget(snapshot, cone, source);
             if (target?.Position is not { } targetPosition) continue;
 
-            DrawCone(draw, sourcePosition, targetPosition, center, scale, cone.IsResolvedCorrectly);
+            DrawCone(draw, sourcePosition, targetPosition, center, scale, rotation, cone.IsResolvedCorrectly);
         }
     }
 
@@ -175,14 +235,16 @@ public sealed class ForsakenWindow : Window, IDisposable
         EncounterPosition target,
         Vector2 arenaCenter,
         float scale,
+        float rotation,
         bool success)
     {
         const float arenaRadius = 20;
         const int segments = 24;
-        var sourceOffset = new Vector2(source.X - 100, source.Z - 100);
+        var sourceOffset = ForsakenPresentation.Rotate(new(source.X - 100, source.Z - 100), rotation);
         if (sourceOffset.LengthSquared() > arenaRadius * arenaRadius) return;
 
-        var direction = Vector2.Normalize(new Vector2(target.X - source.X, target.Z - source.Z));
+        var targetOffset = ForsakenPresentation.Rotate(new(target.X - 100, target.Z - 100), rotation);
+        var direction = Vector2.Normalize(targetOffset - sourceOffset);
         if (!float.IsFinite(direction.X) || !float.IsFinite(direction.Y)) return;
 
         var sourcePoint = arenaCenter + sourceOffset * scale;
@@ -230,7 +292,9 @@ public sealed class ForsakenWindow : Window, IDisposable
             player.ActorId != source.ActorId &&
             player.Position is not null &&
             (hitIds is null || hitIds.Count == 0 || hitIds.Contains(player.ActorId)));
-        return candidates.MinBy(player => DistanceSquared(source.Position!.Value, player.Position!.Value));
+        return candidates
+            .OrderBy(player => DistanceSquared(source.Position!.Value, player.Position!.Value))
+            .FirstOrDefault();
     }
 
     private static ForsakenParticipant? InferConeSource(ArenaSnapshot snapshot, ConeResolution cone)
@@ -253,9 +317,12 @@ public sealed class ForsakenWindow : Window, IDisposable
         IReadOnlySet<ulong> hitIds)
     {
         var others = players.Where(player => player.ActorId != candidate.ActorId).ToArray();
-        var closest = others.MinBy(player => DistanceSquared(candidate.Position!.Value, player.Position!.Value));
+        var closest = others
+            .OrderBy(player => DistanceSquared(candidate.Position!.Value, player.Position!.Value))
+            .FirstOrDefault();
         var target = others.Where(player => hitIds.Contains(player.ActorId))
-            .MinBy(player => DistanceSquared(candidate.Position!.Value, player.Position!.Value)) ?? closest;
+            .OrderBy(player => DistanceSquared(candidate.Position!.Value, player.Position!.Value))
+            .FirstOrDefault() ?? closest;
         if (target is null) return int.MaxValue;
 
         var predicted = others.Where(player => IsInsideCone(candidate.Position!.Value, target.Position!.Value, player.Position!.Value))
@@ -303,8 +370,8 @@ public sealed class ForsakenWindow : Window, IDisposable
     private static ForsakenParticipant? FindPlayer(ArenaSnapshot snapshot, ulong actorId) =>
         actorId == 0 ? null : snapshot.Players.FirstOrDefault(player => player.ActorId == actorId);
 
-    private static Vector2 ToCanvas(EncounterPosition position, Vector2 center, float scale) =>
-        center + new Vector2((position.X - 100) * scale, (position.Z - 100) * scale);
+    private static Vector2 ToCanvas(EncounterPosition position, Vector2 center, float scale, float rotation) =>
+        center + ForsakenPresentation.Rotate(new(position.X - 100, position.Z - 100), rotation) * scale;
 
     private static float DistanceSquared(EncounterPosition left, EncounterPosition right)
     {
@@ -313,92 +380,156 @@ public sealed class ForsakenWindow : Window, IDisposable
         return x * x + z * z;
     }
 
-    private static void DrawResolutionChecks(ArenaSnapshot snapshot, float available)
+    private void DrawPlayerEvidenceTable(ArenaSnapshot snapshot, Vector2 size)
     {
-        ImGui.Text("Comprobaciones de resolución");
-        var checks = new List<(string Label, string Detail, bool Success, IReadOnlyList<ulong>? PlayerIds, ConeResolution? Cone)>();
+        ImGui.PushStyleColor(ImGuiCol.ChildBg, new Vector4(.07f, .08f, .1f, 1));
+        if (ImGui.BeginChild(
+                $"forsaken-party-{snapshot.Elapsed.Ticks}",
+                size,
+                true,
+                ImGuiWindowFlags.NoScrollbar | ImGuiWindowFlags.NoScrollWithMouse))
+        {
+            if (ImGui.BeginTable(
+                    $"forsaken-party-table-{snapshot.Elapsed.Ticks}",
+                    4,
+                    ImGuiTableFlags.RowBg | ImGuiTableFlags.BordersInnerV |
+                    ImGuiTableFlags.SizingStretchProp))
+            {
+                ImGui.TableSetupColumn("Job", ImGuiTableColumnFlags.WidthFixed, 36);
+                ImGui.TableSetupColumn("Antes", ImGuiTableColumnFlags.WidthStretch, 1.35f);
+                ImGui.TableSetupColumn("Después", ImGuiTableColumnFlags.WidthStretch, 1.55f);
+                ImGui.TableSetupColumn("Evidencia", ImGuiTableColumnFlags.WidthStretch, 1.1f);
+                ImGui.TableHeadersRow();
+
+                foreach (var player in ForsakenPresentation.OrderedPlayers(snapshot))
+                {
+                    var evidence = ForsakenPresentation.EvidenceFor(snapshot, player.ActorId);
+                    var problem = (evidence & (ForsakenPlayerEvidence.Died | ForsakenPlayerEvidence.FailedCheck)) != 0;
+                    ImGui.TableNextRow(ImGuiTableRowFlags.None, 30);
+                    if (problem)
+                        ImGui.TableSetBgColor(ImGuiTableBgTarget.RowBg0, ImGui.GetColorU32(new Vector4(.45f, .08f, .08f, .22f)));
+
+                    ImGui.TableNextColumn();
+                    var playerColor = player.Died ? new Vector4(1, .28f, .28f, 1) : problem
+                        ? new Vector4(1, .66f, .35f, 1)
+                        : Vector4.One;
+                    if (jobIcons.TryResolve(player.Job, out var jobTexture) &&
+                        jobTexture!.TryGetWrap(out var jobIcon, out _))
+                    {
+                        ImGui.Image(jobIcon.Handle, new Vector2(JobIconSize));
+                    }
+                    else
+                    {
+                        ImGui.TextColored(playerColor, player.Job);
+                    }
+
+                    ImGui.TableNextColumn();
+                    DrawHpShieldBar(player.HpAtPairStart, player.ShieldHpAtPairStart, player.MaxHp,
+                        $"before-{snapshot.Elapsed.Ticks}-{player.ActorId}");
+
+                    ImGui.TableNextColumn();
+                    DrawHpShieldBar(player.HpAtResolution, player.ShieldHpAtResolution, player.MaxHp,
+                        $"after-{snapshot.Elapsed.Ticks}-{player.ActorId}",
+                        showShieldPercentage: false,
+                        damageDelta: ForsakenPresentation.EffectiveHpDelta(player));
+
+                    ImGui.TableNextColumn();
+                    var labels = EvidenceLabels(snapshot, player.ActorId);
+                    if (labels.Count == 0) ImGui.TextDisabled("-");
+                    else ImGui.TextColored(problem ? new Vector4(1, .5f, .4f, 1) : new Vector4(.55f, .8f, 1, 1), string.Join(", ", labels));
+                }
+
+                ImGui.EndTable();
+            }
+        }
+        ImGui.EndChild();
+        ImGui.PopStyleColor();
+    }
+
+    private static void DrawHpShieldBar(
+        uint? currentHp,
+        uint? shieldHp,
+        uint? maxHp,
+        string id,
+        bool showShieldPercentage = true,
+        long? damageDelta = null)
+    {
+        var segments = ForsakenPresentation.HpBarSegments(currentHp, shieldHp, maxHp);
+        if (!segments.IsAvailable)
+        {
+            ImGui.TextDisabled("Unavailable");
+            return;
+        }
+
+        var width = Math.Max(48, ImGui.GetContentRegionAvail().X);
+        var height = 21f;
+        var start = ImGui.GetCursorScreenPos();
+        var size = new Vector2(width, height);
+        ImGui.InvisibleButton($"##{id}", size);
+        var draw = ImGui.GetWindowDrawList();
+        var end = start + size;
+        draw.AddRectFilled(start, end, ImGui.GetColorU32(new Vector4(.13f, .14f, .17f, 1)), 3);
+
+        var hpEnd = start + new Vector2(size.X * segments.HpRatio, size.Y);
+        if (segments.HpRatio > 0)
+            draw.AddRectFilled(start, hpEnd, ImGui.GetColorU32(new Vector4(.2f, .72f, .38f, 1)), 3);
+        if (segments.ShieldRatio > 0)
+        {
+            var shieldEnd = hpEnd + new Vector2(size.X * segments.ShieldRatio, 0);
+            draw.AddRectFilled(hpEnd, shieldEnd, ImGui.GetColorU32(new Vector4(.25f, .72f, .92f, 1)), 3);
+        }
+        if (segments.OverflowShieldRatio > 0)
+        {
+            var overflowEnd = start + new Vector2(size.X * segments.OverflowShieldRatio, 4);
+            draw.AddRectFilled(start, overflowEnd, ImGui.GetColorU32(new Vector4(.42f, .86f, 1, 1)), 2);
+        }
+        draw.AddRect(start, end, ImGui.GetColorU32(new Vector4(.48f, .5f, .56f, 1)), 3);
+
+        var hpPercent = maxHp > 0 && currentHp is not null ? 100d * currentHp.Value / maxHp.Value : 0;
+        var label = !showShieldPercentage
+            ? $"{hpPercent:0}%"
+            : shieldHp is null
+                ? $"{hpPercent:0}% +?"
+                : shieldHp == 0
+                    ? $"{hpPercent:0}%"
+                    : $"{hpPercent:0}% +{100d * shieldHp.Value / maxHp!.Value:0}%";
+        var damageLabel = damageDelta is { } delta ? $" ({FormatSignedCompact(delta)})" : string.Empty;
+        var labelSize = ImGui.CalcTextSize(label);
+        var damageSize = ImGui.CalcTextSize(damageLabel);
+        var textPosition = start + new Vector2(
+            Math.Max(3, (size.X - labelSize.X - damageSize.X) / 2),
+            Math.Max(1, (size.Y - labelSize.Y) / 2));
+        draw.AddText(textPosition + Vector2.One, ImGui.GetColorU32(new Vector4(0, 0, 0, .85f)), label);
+        draw.AddText(textPosition, ImGui.GetColorU32(Vector4.One), label);
+        if (damageLabel.Length > 0)
+        {
+            var damagePosition = textPosition + new Vector2(labelSize.X, 0);
+            draw.AddText(damagePosition + Vector2.One, ImGui.GetColorU32(new Vector4(0, 0, 0, .85f)), damageLabel);
+            draw.AddText(damagePosition, ImGui.GetColorU32(new Vector4(1, .32f, .28f, 1)), damageLabel);
+        }
+    }
+
+    private static string FormatSignedCompact(long value)
+    {
+        var magnitude = Math.Abs((double)value);
+        var formatted = magnitude >= 1_000_000 ? $"{magnitude / 1_000_000:0.#}m" : magnitude >= 1_000 ? $"{magnitude / 1_000:0.#}k" : $"{magnitude:0}";
+        return value > 0 ? $"+{formatted}" : value < 0 ? $"-{formatted}" : "0";
+    }
+
+    private static IReadOnlyList<string> EvidenceLabels(ArenaSnapshot snapshot, ulong actorId)
+    {
+        var labels = new List<string>();
         foreach (var (tower, index) in snapshot.Towers.Select((tower, index) => (tower, index + 1)))
-            checks.Add(($"Torre {index}", $"{tower.SoakerCount} / {ArenaTower.ExpectedSoakers} soakers", tower.IsResolvedCorrectly, tower.SoakerIds, null));
+            if (tower.SoakerIds?.Contains(actorId) == true) labels.Add($"T{index}");
         foreach (var (stack, index) in snapshot.Stacks.Select((stack, index) => (stack, index + 1)))
-            checks.Add(($"Stack {index}", $"{stack.PlayerCount} / {StackResolution.ExpectedPlayers} jugadores", stack.IsResolvedCorrectly, stack.PlayerIds, null));
+            if (stack.SourceId == actorId || stack.PlayerIds?.Contains(actorId) == true) labels.Add($"S{index}");
         foreach (var (cone, index) in snapshot.Cones.Select((cone, index) => (cone, index + 1)))
-            checks.Add(($"Cono {index}", $"{cone.PlayerCount} / {ConeResolution.ExpectedPlayers} otros jugadores alcanzados", cone.IsResolvedCorrectly, cone.PlayerIds, cone));
-
-        const float spacing = 8;
-        var columns = available >= 420 ? 2 : 1;
-        var width = columns == 2 ? (available - spacing) / 2 : available;
-        for (var index = 0; index < checks.Count; index++)
         {
-            if (index % columns != 0) ImGui.SameLine(0, spacing);
-            var check = checks[index];
-            var color = check.Success ? new Vector4(.25f, .9f, .45f, 1) : new Vector4(1, .3f, .3f, 1);
-            var origin = ImGui.GetCursorScreenPos();
-            var draw = ImGui.GetWindowDrawList();
-            draw.AddRectFilled(origin, origin + new Vector2(width, 66), ImGui.GetColorU32(new Vector4(.1f, .11f, .14f, 1)), 5);
-            draw.AddRect(origin, origin + new Vector2(width, 66), ImGui.GetColorU32(color), 5, ImDrawFlags.None, 1.5f);
-            ImGui.SetCursorScreenPos(origin + new Vector2(10, 9));
-            ImGui.TextColored(color, check.Success ? $"✓  {check.Label}" : $"✕  {check.Label}");
-            ImGui.SetCursorScreenPos(origin + new Vector2(10, 34));
-            ImGui.TextDisabled(check.Detail);
-            ImGui.SetCursorScreenPos(origin);
-            ImGui.InvisibleButton($"forsaken-check-{snapshot.Elapsed.Ticks}-{index}", new(width, 66));
-            if (ImGui.IsItemHovered())
-            {
-                if (check.Cone is { } cone)
-                    DrawConeTooltip(snapshot, cone);
-                else
-                    DrawPlayerTooltip(snapshot, check.PlayerIds);
-            }
+            if (cone.SourceId == actorId) labels.Add($"C{index} src");
+            if (cone.PlayerIds?.Contains(actorId) == true) labels.Add($"C{index} hit");
         }
+        if (snapshot.Players.FirstOrDefault(player => player.ActorId == actorId)?.Died == true) labels.Add("Muerto");
+        return labels;
     }
 
-    private static void DrawConeTooltip(ArenaSnapshot snapshot, ConeResolution cone)
-    {
-        ImGui.BeginTooltip();
-        ImGui.Text("Jugadores");
-        if (cone.PlayerIds is null)
-        {
-            ImGui.TextDisabled("No se capturaron los nombres para este resultado.");
-        }
-        else if (cone.PlayerIds.Count == 0)
-        {
-            ImGui.TextDisabled("Ninguno");
-        }
-        else
-        {
-            var source = FindPlayer(snapshot, cone.SourceId) ?? InferConeSource(snapshot, cone);
-            foreach (var actorId in cone.PlayerIds)
-            {
-                var target = FindPlayer(snapshot, actorId);
-                ImGui.BulletText($"{FormatPlayer(source, cone.SourceId)} > {FormatPlayer(target, actorId)}");
-            }
-        }
-        ImGui.EndTooltip();
-    }
-
-    private static string FormatPlayer(ForsakenParticipant? player, ulong actorId) =>
-        player is null ? $"Desconocido ({actorId:X})" : $"{player.Name} ({player.Job})";
-
-    private static void DrawPlayerTooltip(ArenaSnapshot snapshot, IReadOnlyList<ulong>? playerIds)
-    {
-        ImGui.BeginTooltip();
-        ImGui.Text("Jugadores");
-        if (playerIds is null)
-        {
-            ImGui.TextDisabled("No se capturaron los nombres para este resultado.");
-        }
-        else if (playerIds.Count == 0)
-        {
-            ImGui.TextDisabled("Ninguno");
-        }
-        else
-        {
-            foreach (var actorId in playerIds)
-            {
-                var player = snapshot.Players.FirstOrDefault(candidate => candidate.ActorId == actorId);
-                ImGui.BulletText(FormatPlayer(player, actorId));
-            }
-        }
-        ImGui.EndTooltip();
-    }
 }

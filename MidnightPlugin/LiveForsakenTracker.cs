@@ -6,7 +6,9 @@ public sealed record PartyObservation(
     ulong ActorId,
     string Name,
     string Job,
+    int PartySlot,
     uint CurrentHp,
+    uint? ShieldHp,
     uint MaxHp,
     bool IsDead,
     EncounterPosition Position,
@@ -65,9 +67,9 @@ public sealed class LiveForsakenTracker
         var actionId = actionEffect.Header.ActionId;
         if (actionId == Forsaken)
         {
-            // Duty Recorder can restart or seek without ending the active pull.
-            // A fresh Forsaken opener starts a new eight-pair review sequence.
-            sessions.ClearActiveForsakenResults();
+            // Keep the completed review stable for the rest of this combat.
+            // EncounterCapture resets the tracker when the next pull begins.
+            if (sessions.ActivePull?.ForsakenResults.Count > 0) return;
             Reset();
             active = true;
             pairStartParty = party.ToArray();
@@ -108,6 +110,7 @@ public sealed class LiveForsakenTracker
             cones.Clear();
             lastPairEvidenceAt = null;
         }
+        pairStartParty = ForsakenPresentation.PairStartSnapshot(towers.Count, party, pairStartParty);
         var sourceId = actionEffect.Source?.GameObjectId ?? 0;
         if (towers.Any(tower => tower.SourceId == sourceId && tower.ActionId == actionId &&
                                 Math.Abs(tower.X - actionEffect.Position.X) < .1f && Math.Abs(tower.Y - actionEffect.Position.Z) < .1f)) return;
@@ -131,19 +134,26 @@ public sealed class LiveForsakenTracker
             pairStartParty.FirstOrDefault(start => start.ActorId == member.ActorId)?.CurrentHp,
             member.CurrentHp,
             member.MaxHp,
-            member.Statuses)).ToArray();
+            member.Statuses,
+            member.PartySlot,
+            pairStartParty.FirstOrDefault(start => start.ActorId == member.ActorId)?.ShieldHp,
+            member.ShieldHp)).OrderBy(member => member.PartySlot).ToArray();
         var arenaTowers = towers.Take(2).Select(tower => new ArenaTower(tower.X, tower.Y, tower.Targets.Count, tower.Targets)).ToArray();
         var stackResults = stacks.Select(stack => new StackResolution(stack.Targets.Count, stack.Targets, stack.SourceId)).ToArray();
         var coneResults = cones.Select(cone => new ConeResolution(cone.Targets.Count, cone.Targets, cone.SourceId)).ToArray();
         var evidenceComplete = pairNumber <= 8 && party.Count == 8 && arenaTowers.Length == 2;
         var result = ForsakenAnalyzer.Analyze(pairNumber, elapsed, participants, arenaTowers, stackResults, evidenceComplete, coneResults);
-        sessions.TryRecordForsakenResult(result);
+        if (!sessions.TryRecordForsakenResult(result))
+        {
+            active = false;
+            return;
+        }
         resultAvailable(result);
         towers.Clear();
         stacks.Clear();
         cones.Clear();
         lastPairEvidenceAt = null;
-        if (pairNumber >= 8) active = false;
+        if (result.Verdict == MechanicVerdict.Failure || pairNumber >= 8) active = false;
     }
 
     private static IEnumerable<ulong> AffectedTargets(ActionEffectSet set)

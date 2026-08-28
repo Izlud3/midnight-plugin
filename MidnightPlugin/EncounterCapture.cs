@@ -48,6 +48,8 @@ public sealed class EncounterCapture : IDisposable
     private readonly ActionEffectSource actionEffects;
     private TimeSpan lastPartySample = TimeSpan.MinValue;
     private bool wasDutyRecorderPlayback;
+    private bool waitingForNextCombatStart;
+    private bool observedCombatEnd;
     private bool disposed;
 
     public EncounterCapture(
@@ -100,7 +102,7 @@ public sealed class EncounterCapture : IDisposable
         var territoryId = (ushort)clientState.TerritoryType;
         if (territoryId != sessions.TerritoryId)
         {
-            sessions.SetTerritory(territoryId);
+            OnTerritoryChanged(territoryId);
         }
 
         TryRecognizeDancingMadActor();
@@ -152,6 +154,7 @@ public sealed class EncounterCapture : IDisposable
     private List<PartyObservation> PollDalamudParty()
     {
         var observations = new List<PartyObservation>();
+        var partySlot = 0;
         foreach (var member in partyList)
         {
             var gameObject = member.GameObject;
@@ -161,7 +164,9 @@ public sealed class EncounterCapture : IDisposable
                 gameObject.GameObjectId,
                 member.Name.ToString(),
                 member.ClassJob.IsValid ? member.ClassJob.Value.Abbreviation.ToString() : "?",
+                partySlot++,
                 member.CurrentHP,
+                ShieldHp(gameObject, member.MaxHP),
                 member.MaxHP,
                 gameObject.IsDead,
                 new(gameObject.Position.X, gameObject.Position.Y, gameObject.Position.Z, gameObject.Rotation),
@@ -184,7 +189,7 @@ public sealed class EncounterCapture : IDisposable
             {
                 var member = group->PartyMembers.GetPointer(index);
                 if (member != null && players.TryGetValue(member->EntityId, out var player))
-                observations.Add(ObservePlayer(player));
+                    observations.Add(ObservePlayer(player, index));
             }
         }
         var nativeResolved = observations.Count;
@@ -194,7 +199,7 @@ public sealed class EncounterCapture : IDisposable
         foreach (var player in players.Values)
         {
             if (observations.All(member => member.ActorId != player.GameObjectId))
-                observations.Add(ObservePlayer(player));
+                observations.Add(ObservePlayer(player, observations.Count));
         }
         diagnostics.AddOnce(
             $"replay-party:{nativeMembers}:{nativeResolved}:{observations.Count}",
@@ -204,19 +209,26 @@ public sealed class EncounterCapture : IDisposable
         return observations;
     }
 
-    private static PartyObservation ObservePlayer(IPlayerCharacter player)
+    private static PartyObservation ObservePlayer(IPlayerCharacter player, int partySlot = 0)
     {
         var statuses = player.StatusList.Select(status => status.StatusId).Where(id => id != 0).ToHashSet();
         return new(
             player.GameObjectId,
             player.Name.ToString(),
             player.ClassJob.IsValid ? player.ClassJob.Value.Abbreviation.ToString() : "?",
+            partySlot,
             player.CurrentHp,
+            ShieldHp(player, player.MaxHp),
             player.MaxHp,
             player.IsDead,
             new(player.Position.X, player.Position.Y, player.Position.Z, player.Rotation),
             statuses);
     }
+
+    private static uint? ShieldHp(IGameObject? gameObject, uint maxHp) =>
+        ForsakenPresentation.ShieldHpFromPercentage(
+            maxHp,
+            gameObject is ICharacter character ? character.ShieldPercentage : null);
 
     private void OnActionEffect(ActionEffectSet actionEffect)
     {
@@ -239,8 +251,10 @@ public sealed class EncounterCapture : IDisposable
 
     private void OnTerritoryChanged(uint territory)
     {
+        var endedPull = sessions.ActivePull is not null;
         sessions.SetTerritory((ushort)territory);
         forsaken.Reset();
+        if (endedPull) WaitForNextCombatStart();
         lastPartySample = TimeSpan.MinValue;
     }
     private void OnDutyWiped(IDutyStateEventArgs _) => EndPull(PullState.Wiped, "Duty wipe detected.");
@@ -249,12 +263,31 @@ public sealed class EncounterCapture : IDisposable
     private void EnsurePullStarted(bool hasEncounterSignal)
     {
         if (sessions.ActivePull is not null) return;
-
+        var inCombat = condition[ConditionFlag.InCombat];
         var isPlayback = condition[ConditionFlag.DutyRecorderPlayback];
+        if (waitingForNextCombatStart)
+        {
+            if (!inCombat)
+            {
+                observedCombatEnd = true;
+                // Duty Recorder and surrogate replays may not expose InCombat;
+                // their next verified encounter action is the new-combat edge.
+                var replayCanStartFromAction = isPlayback || !sessions.IsDancingMadTerritory;
+                if (!hasEncounterSignal || !replayCanStartFromAction) return;
+            }
+            else if (!observedCombatEnd)
+            {
+                return;
+            }
+
+            waitingForNextCombatStart = false;
+            observedCombatEnd = false;
+        }
+
         if (!EncounterPullStartPolicy.ShouldStart(
                 sessions.IsDancingMad,
                 dutyState.IsDutyStarted,
-                condition[ConditionFlag.InCombat],
+                inCombat,
                 isPlayback,
                 hasEncounterSignal))
             return;
@@ -268,7 +301,7 @@ public sealed class EncounterCapture : IDisposable
             null,
             isPlayback
                 ? "Started Dancing Mad pull capture from a Duty Recorder playback action effect."
-                : hasEncounterSignal && !dutyState.IsDutyStarted && !condition[ConditionFlag.InCombat]
+                : hasEncounterSignal && !dutyState.IsDutyStarted && !inCombat
                     ? "Started Dancing Mad pull capture from a verified encounter action while duty/combat flags were unavailable (Duty Recorder fallback)."
                     : "Started Dancing Mad pull capture from live duty combat state.");
     }
@@ -320,8 +353,17 @@ public sealed class EncounterCapture : IDisposable
     {
         var ended = sessions.EndPull(state, DateTimeOffset.UtcNow);
         if (ended is not null)
+        {
+            WaitForNextCombatStart();
             diagnostics.Add("Encounter", null, $"Ended Dancing Mad pull capture as {state}. {reason}");
+        }
         forsaken.Reset();
         lastPartySample = TimeSpan.MinValue;
+    }
+
+    private void WaitForNextCombatStart()
+    {
+        waitingForNextCombatStart = true;
+        observedCombatEnd = !condition[ConditionFlag.InCombat];
     }
 }

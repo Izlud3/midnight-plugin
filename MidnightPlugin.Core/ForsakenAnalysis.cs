@@ -18,7 +18,10 @@ public sealed record ForsakenParticipant(
     uint? HpAtPairStart = null,
     uint? HpAtResolution = null,
     uint? MaxHp = null,
-    IReadOnlySet<uint>? Statuses = null);
+    IReadOnlySet<uint>? Statuses = null,
+    int PartySlot = int.MaxValue,
+    uint? ShieldHpAtPairStart = null,
+    uint? ShieldHpAtResolution = null);
 
 public sealed record ArenaTower(float X, float Y, int SoakerCount, IReadOnlyList<ulong>? SoakerIds = null)
 {

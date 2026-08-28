@@ -91,8 +91,7 @@ public sealed class EncounterSessionService
         lock (syncRoot)
         {
             if (ActivePull is null) return false;
-            ActivePull.AddForsakenResult(result);
-            return true;
+            return ActivePull.AddForsakenResult(result);
         }
     }
 

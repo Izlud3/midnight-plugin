@@ -31,9 +31,14 @@ public sealed class PullSession
     public PullState State { get; internal set; }
     public IReadOnlyList<ForsakenPairResult> ForsakenResults { get { lock (syncRoot) return forsakenResults.ToArray(); } }
 
-    internal void AddForsakenResult(ForsakenPairResult value)
+    internal bool AddForsakenResult(ForsakenPairResult value)
     {
-        lock (syncRoot) forsakenResults.Add(value);
+        lock (syncRoot)
+        {
+            if (forsakenResults.Any(result => result.Verdict == MechanicVerdict.Failure)) return false;
+            forsakenResults.Add(value);
+            return true;
+        }
     }
 
     internal void ClearForsakenResults()

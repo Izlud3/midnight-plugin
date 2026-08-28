@@ -151,6 +151,20 @@ public sealed class EncounterFeatureTests
         Assert.Empty(pull.ForsakenResults);
     }
 
+    [Fact]
+    public void ForsakenResultsStopAtTheFirstFailureForTheCombat()
+    {
+        var sessions = new EncounterSessionService(() => TimeSpan.Zero);
+        sessions.SetTerritory(EncounterSessionService.DancingMadTerritoryId);
+        var pull = sessions.StartPull(DateTimeOffset.UtcNow)!;
+        var failure = new ForsakenPairResult(1, MechanicVerdict.Failure, TimeSpan.Zero, [], [], null);
+        var laterResult = ForsakenAnalyzer.Analyze(2, TimeSpan.Zero, [], [], [], false);
+
+        Assert.True(sessions.TryRecordForsakenResult(failure));
+        Assert.False(sessions.TryRecordForsakenResult(laterResult));
+        Assert.Same(failure, Assert.Single(pull.ForsakenResults));
+    }
+
     [Theory]
     [InlineData(2, true)]
     [InlineData(1, false)]
