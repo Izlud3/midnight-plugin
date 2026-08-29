@@ -151,6 +151,9 @@ public sealed class ForsakenWindow : Window, IDisposable
         var origin = ImGui.GetCursorScreenPos();
         var end = origin + new Vector2(size);
         ImGui.InvisibleButton($"limit-cut-arena-{result.Elapsed.Ticks}", new(size));
+        var arenaHovered = ImGui.IsItemHovered();
+        var mousePosition = ImGui.GetIO().MousePos;
+        var hoveredPlayers = new List<LimitCutPlayerResult>();
         var center = origin + new Vector2(size / 2);
         var extent = MathF.Max(22, (float)result.WallRadius + 3);
         var scale = size / 2 / extent;
@@ -189,6 +192,8 @@ public sealed class ForsakenWindow : Window, IDisposable
         {
             var actual = player.Position!.Value;
             var point = ToScreen(new(actual.X - LimitCutAnalyzer.ArenaCenter, actual.Z - LimitCutAnalyzer.ArenaCenter));
+            if (arenaHovered && Vector2.DistanceSquared(mousePosition, point) <= 14 * 14)
+                hoveredPlayers.Add(player);
             var color = player.AngleError switch
             {
                 null => new Vector4(.6f, .62f, .68f, 1),
@@ -203,6 +208,14 @@ public sealed class ForsakenWindow : Window, IDisposable
                 DrawCenteredText(draw, point, player.Job, Vector4.One);
         }
         draw.PopClipRect();
+
+        if (hoveredPlayers.Count > 0)
+        {
+            ImGui.BeginTooltip();
+            foreach (var player in hoveredPlayers)
+                ImGui.TextUnformatted($"{player.Name} ({player.Job})");
+            ImGui.EndTooltip();
+        }
     }
 
     private void DrawLimitCutTable(LimitCutResult result, Vector2 size)

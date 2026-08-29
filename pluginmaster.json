@@ -4,7 +4,7 @@
     "Name": "Midnight Timeline",
     "Description": "Midnight Timeline registra un timeline de acciones local ligero y proporciona evidencia retrospectiva de Forsaken y P3 Limit Cut en Dancing Mad.",
     "InternalName": "MidnightTimeline",
-    "AssemblyVersion": "0.1.1.0",
+    "AssemblyVersion": "0.1.2.0",
     "RepoUrl": "https://github.com/Izlud3/midnight-plugin",
     "ApplicableVersion": "any",
     "DalamudApiLevel": 15,
@@ -13,6 +13,6 @@
     "DownloadLinkInstall": "https://github.com/Izlud3/midnight-plugin/releases/latest/download/MidnightTimeline.zip",
     "DownloadLinkUpdate": "https://github.com/Izlud3/midnight-plugin/releases/latest/download/MidnightTimeline.zip",
     "IconUrl": "https://raw.githubusercontent.com/Izlud3/midnight-plugin/main/MidnightPlugin/images/icon.png",
-    "LastUpdate": "1787943375"
+    "LastUpdate": "1788029137"
   }
 ]

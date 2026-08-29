@@ -133,7 +133,7 @@ public sealed class Plugin : IDalamudPlugin
 
         CommandManager.AddHandler(CommandName, new CommandInfo(OnCommand)
         {
-            HelpMessage = "Alterna el timeline de acciones. Subcomandos: practice, review, log."
+            HelpMessage = "Abre la ventana principal. Subcomandos: practice, review, log."
         });
 
         // Tell the UI system that we want our windows to be drawn through the window system
@@ -194,7 +194,7 @@ public sealed class Plugin : IDalamudPlugin
             return;
         }
 
-        TimelineWindow.Toggle();
+        MainWindow.Toggle();
     }
     
     public void ToggleConfigUi() => ConfigWindow.Toggle();
