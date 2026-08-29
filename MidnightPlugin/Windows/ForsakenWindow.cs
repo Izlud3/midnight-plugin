@@ -15,6 +15,7 @@ public sealed class ForsakenWindow : Window, IDisposable
     private Vector2 arenaPan;
     private int arenaLayers = 2;
     private long activeSnapshotTicks = long.MinValue;
+    private Guid? selectedPullId;
 
     public ForsakenWindow(Plugin plugin) : base("DMU Review###MidnightForsaken")
     {
@@ -27,6 +28,13 @@ public sealed class ForsakenWindow : Window, IDisposable
 
     public void Dispose() => jobIcons.Clear();
 
+    public void SelectPull(Guid? pullId)
+    {
+        selectedPullId = pullId;
+        observedResultCount = -1;
+        activeSnapshotTicks = long.MinValue;
+    }
+
     public override void Draw()
     {
         if (!plugin.Configuration.ForsakenFailureCardsEnabled)
@@ -35,7 +43,11 @@ public sealed class ForsakenWindow : Window, IDisposable
             return;
         }
 
-        var pull = plugin.EncounterSessions.ActivePull ?? plugin.EncounterSessions.HistorySnapshot().LastOrDefault();
+        var pull = selectedPullId is { } pullId
+            ? plugin.EncounterSessions.FindReviewablePull(pullId) ?? plugin.EncounterSessions.LatestReviewablePull()
+            : plugin.EncounterSessions.LatestReviewablePull();
+        if (pull is not null && selectedPullId is not null && pull.Id != selectedPullId)
+            selectedPullId = pull.Id;
         var results = pull?.ForsakenResults ?? [];
         if (results.Count == 0)
         {

@@ -285,8 +285,7 @@ public sealed record PracticeSnapshot(
     int HitCount,
     int MissCount,
     int WrongCount,
-    int ExtraCount,
-    bool StoppedOnMistake)
+    int ExtraCount)
 {
     public int TotalCount => ReferenceActions.Count - StartReferenceIndex;
     public int ResolvedCount => ExpectedResults.Count;
@@ -295,7 +294,6 @@ public sealed record PracticeSnapshot(
 public sealed class PracticeSessionService
 {
     public const int TimingToleranceMilliseconds = 500;
-    public const int StopAfterMistakes = 3;
 
     private readonly object syncRoot = new();
     private readonly PracticeReferenceRotation rotation;
@@ -308,8 +306,6 @@ public sealed class PracticeSessionService
     private TimeSpan pauseStartedAt;
     private TimeSpan pausedElapsed;
     private TimeSpan startingOffset;
-    private int mistakeLimit;
-    private bool stoppedOnMistake;
     private int startReferenceIndex;
     private int nextReferenceIndex;
 
@@ -322,21 +318,8 @@ public sealed class PracticeSessionService
 
     public PracticeReferenceRotation Rotation => rotation;
     public PracticeState State { get { lock (syncRoot) { AdvanceUnsafe(); return state; } } }
-    public bool IsStoppedOnMistake
-    {
-        get
-        {
-            lock (syncRoot)
-            {
-                AdvanceUnsafe();
-                return state == PracticeState.Completed && stoppedOnMistake;
-            }
-        }
-    }
 
-    public void Start(
-        int mistakeLimit = 0,
-        TimeSpan startOffset = default)
+    public void Start(TimeSpan startOffset = default)
     {
         if (startOffset < TimeSpan.Zero)
         {
@@ -346,7 +329,6 @@ public sealed class PracticeSessionService
         lock (syncRoot)
         {
             ResetUnsafe();
-            this.mistakeLimit = mistakeLimit;
             startingOffset = startOffset > rotation.Actions[^1].Offset
                 ? rotation.Actions[^1].Offset
                 : startOffset;
@@ -439,11 +421,6 @@ public sealed class PracticeSessionService
             if (nextReferenceIndex >= rotation.Actions.Count)
             {
                 attempts.Add(new PracticeAttempt(null, actionId, actionName, timingClass, elapsed, PracticeMatchKind.Extra, null));
-                if (ShouldStopOnMistakeUnsafe())
-                {
-                    CompleteOnMistakeUnsafe(elapsed);
-                }
-
                 return true;
             }
 
@@ -481,11 +458,6 @@ public sealed class PracticeSessionService
                 elapsed,
                 kind,
                 withinCurrentWindow ? deltaMilliseconds : null));
-            if (ShouldStopOnMistakeUnsafe())
-            {
-                CompleteOnMistakeUnsafe(elapsed);
-            }
-
             return true;
         }
     }
@@ -515,8 +487,7 @@ public sealed class PracticeSessionService
                 expectedResults.Count(result => result.Kind == PracticeMatchKind.Hit),
                 expectedResults.Count(result => result.Kind == PracticeMatchKind.Missed),
                 attempts.Count(attempt => attempt.Kind == PracticeMatchKind.Wrong),
-                attempts.Count(attempt => attempt.Kind == PracticeMatchKind.Extra),
-                stoppedOnMistake);
+                attempts.Count(attempt => attempt.Kind == PracticeMatchKind.Extra));
         }
     }
 
@@ -538,11 +509,6 @@ public sealed class PracticeSessionService
                 null,
                 null));
             nextReferenceIndex++;
-            if (ShouldStopOnMistakeUnsafe())
-            {
-                CompleteOnMistakeUnsafe(elapsed);
-                return;
-            }
         }
 
         var completionOffset = rotation.Actions[^1].Offset + TimeSpan.FromMilliseconds(TimingToleranceMilliseconds);
@@ -551,13 +517,6 @@ public sealed class PracticeSessionService
             completedElapsed = elapsed;
             state = PracticeState.Completed;
         }
-    }
-
-    private void CompleteOnMistakeUnsafe(TimeSpan elapsed)
-    {
-        completedElapsed = elapsed;
-        stoppedOnMistake = true;
-        state = PracticeState.Completed;
     }
 
     private void BeginFromFirstActionUnsafe()
@@ -583,20 +542,11 @@ public sealed class PracticeSessionService
         pauseStartedAt = TimeSpan.Zero;
         pausedElapsed = TimeSpan.Zero;
         startingOffset = TimeSpan.Zero;
-        mistakeLimit = 0;
-        stoppedOnMistake = false;
         startReferenceIndex = 0;
         nextReferenceIndex = 0;
         expectedResults.Clear();
         attempts.Clear();
     }
-
-    private bool ShouldStopOnMistakeUnsafe() =>
-        mistakeLimit > 0 && CurrentMistakeCountUnsafe() >= mistakeLimit;
-
-    private int CurrentMistakeCountUnsafe() =>
-        attempts.Count(attempt => attempt.Kind is PracticeMatchKind.Wrong or PracticeMatchKind.Extra) +
-        expectedResults.Count(result => result.Kind == PracticeMatchKind.Missed);
 
     private static TimeSpan Max(TimeSpan left, TimeSpan right) => left >= right ? left : right;
 }

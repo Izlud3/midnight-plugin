@@ -115,6 +115,28 @@ public sealed class EncounterSessionService
         lock (syncRoot) return history.ToArray();
     }
 
+    public PullSession? FindReviewablePull(Guid pullId)
+    {
+        lock (syncRoot)
+        {
+            if (ActivePull is { } active && active.Id == pullId && active.ForsakenResults.Count > 0)
+                return active;
+
+            return history.LastOrDefault(pull => pull.Id == pullId && pull.ForsakenResults.Count > 0);
+        }
+    }
+
+    public PullSession? LatestReviewablePull()
+    {
+        lock (syncRoot)
+        {
+            if (ActivePull is { } active && active.ForsakenResults.Count > 0)
+                return active;
+
+            return history.LastOrDefault(pull => pull.ForsakenResults.Count > 0);
+        }
+    }
+
     public void Clear()
     {
         lock (syncRoot)

@@ -47,6 +47,7 @@ public sealed class Plugin : IDalamudPlugin
     private TimelineWindow TimelineWindow { get; init; }
     private DiagnosticsWindow DiagnosticsWindow { get; init; }
     private ForsakenWindow ForsakenWindow { get; init; }
+    private ForsakenPromptWindow ForsakenPromptWindow { get; init; }
     private ActionEventCapture ActionEventCapture { get; init; }
     private EncounterCapture EncounterCapture { get; init; }
     private ActionEffectSource ActionEffects { get; init; }
@@ -111,12 +112,14 @@ public sealed class Plugin : IDalamudPlugin
         TimelineWindow = new TimelineWindow(this);
         DiagnosticsWindow = new DiagnosticsWindow(this);
         ForsakenWindow = new ForsakenWindow(this);
+        ForsakenPromptWindow = new ForsakenPromptWindow(this);
 
         WindowSystem.AddWindow(ConfigWindow);
         WindowSystem.AddWindow(MainWindow);
         WindowSystem.AddWindow(TimelineWindow);
         WindowSystem.AddWindow(DiagnosticsWindow);
         WindowSystem.AddWindow(ForsakenWindow);
+        WindowSystem.AddWindow(ForsakenPromptWindow);
 
         CommandManager.AddHandler(CommandName, new CommandInfo(OnCommand)
         {
@@ -150,6 +153,7 @@ public sealed class Plugin : IDalamudPlugin
         TimelineWindow.Dispose();
         DiagnosticsWindow.Dispose();
         ForsakenWindow.Dispose();
+        ForsakenPromptWindow.Dispose();
         EncounterCapture.Dispose();
         ActionEventCapture.Dispose();
         ActionEffects.Dispose();
@@ -169,7 +173,7 @@ public sealed class Plugin : IDalamudPlugin
 
         if (subcommand.Equals("forsaken", StringComparison.OrdinalIgnoreCase))
         {
-            ForsakenWindow.Toggle();
+            ToggleForsakenUi();
             return;
         }
 
@@ -180,7 +184,28 @@ public sealed class Plugin : IDalamudPlugin
     public void ToggleMainUi() => MainWindow.Toggle();
     public void ToggleTimelineUi() => TimelineWindow.Toggle();
     public void ToggleDiagnosticsUi() => DiagnosticsWindow.Toggle();
-    public void ToggleForsakenUi() => ForsakenWindow.Toggle();
+    public bool IsForsakenUiOpen => ForsakenWindow.IsOpen;
+
+    public void ToggleForsakenUi()
+    {
+        if (ForsakenWindow.IsOpen)
+        {
+            ForsakenWindow.IsOpen = false;
+            return;
+        }
+
+        ForsakenWindow.SelectPull(EncounterSessions.LatestReviewablePull()?.Id);
+        ForsakenPromptWindow.Dismiss();
+        ForsakenWindow.IsOpen = true;
+    }
+
+    public void OpenForsakenReview(Guid pullId)
+    {
+        ForsakenWindow.SelectPull(EncounterSessions.FindReviewablePull(pullId)?.Id ??
+                                   EncounterSessions.LatestReviewablePull()?.Id);
+        ForsakenPromptWindow.Dismiss();
+        ForsakenWindow.IsOpen = true;
+    }
 
     public bool IsPracticeEligible
     {
@@ -230,25 +255,9 @@ public sealed class Plugin : IDalamudPlugin
         TimelineWindow.RefreshWindowSize();
     }
 
-    public void SetStopOnMistake(bool enabled)
-    {
-        if (Configuration.StopOnMistake == enabled) return;
-        Configuration.StopOnMistake = enabled;
-        Configuration.Save();
-        ResetAutomaticStartTracking();
-        ArmPractice();
-    }
-
     public void SetPracticeStartOffset(TimeSpan offset)
     {
         practiceStartOffset = offset < TimeSpan.Zero ? TimeSpan.Zero : offset;
-        ArmPractice();
-    }
-
-    public void RestartPractice()
-    {
-        practiceStartOffset = TimeSpan.Zero;
-        ResetAutomaticStartTracking();
         ArmPractice();
     }
 
@@ -297,21 +306,23 @@ public sealed class Plugin : IDalamudPlugin
     private void OnForsakenResult(ForsakenPairResult result)
     {
         Diagnostics.Add("Forsaken", null, $"Pair {result.PairNumber}: {result.Verdict}. {string.Join(" ", result.Reasons)}");
-        if (result.Verdict == MechanicVerdict.Failure && Configuration.ForsakenFailureCardsEnabled)
-            ForsakenWindow.IsOpen = true;
+        if (result.Verdict != MechanicVerdict.Failure || !Configuration.ForsakenFailureCardsEnabled) return;
+        if (EncounterSessions.ActivePull is not { } pull) return;
+
+        ForsakenWindow.SelectPull(pull.Id);
+        if (ForsakenWindow.IsOpen)
+            ForsakenPromptWindow.Dismiss();
+        else
+            ForsakenPromptWindow.Show(pull.Id);
     }
 
     private void ArmPractice()
     {
-        Practice?.Start(
-            mistakeLimit: Configuration.StopOnMistake ? PracticeSessionService.StopAfterMistakes : 0,
-            startOffset: practiceStartOffset);
+        Practice?.Start(startOffset: practiceStartOffset);
     }
 
     private void UpdateAutomaticPracticeStart(PracticeSessionService practice)
     {
-        if (practice.IsStoppedOnMistake) return;
-
         if (practice.State == PracticeState.Idle)
         {
             ArmPractice();

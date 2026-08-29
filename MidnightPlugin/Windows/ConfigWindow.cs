@@ -18,7 +18,7 @@ public class ConfigWindow : Window, IDisposable
         Flags = ImGuiWindowFlags.NoResize | ImGuiWindowFlags.NoCollapse | ImGuiWindowFlags.NoScrollbar |
                 ImGuiWindowFlags.NoScrollWithMouse;
 
-        Size = new Vector2(520, 380);
+        Size = new Vector2(520, 300);
         SizeCondition = ImGuiCond.Always;
 
         configuration = plugin.Configuration;
@@ -50,12 +50,6 @@ public class ConfigWindow : Window, IDisposable
         }
 
         Section("Timeline");
-        var stopOnMistake = configuration.StopOnMistake;
-        if (ImGui.Checkbox("Detener el timeline tras 3 errores", ref stopOnMistake))
-        {
-            plugin.SetStopOnMistake(stopOnMistake);
-        }
-
         var opacity = configuration.TimelineOpacity;
         if (ImGui.SliderFloat("Opacidad", ref opacity, 0.1f, 1f, "%.2f"))
         {
@@ -70,7 +64,6 @@ public class ConfigWindow : Window, IDisposable
             configuration.ForsakenFailureCardsEnabled = failureCards;
             configuration.Save();
         }
-        if (ImGui.Button("Abrir DMU Review")) plugin.ToggleForsakenUi();
     }
 
     private static void Section(string label)

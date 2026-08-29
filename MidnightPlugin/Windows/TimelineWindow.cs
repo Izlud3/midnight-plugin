@@ -153,17 +153,6 @@ public sealed class TimelineWindow : Window, IDisposable
 
             drewControl = true;
         }
-        else if (snapshot.State == PracticeState.Completed && snapshot.StoppedOnMistake)
-        {
-            if (ImGui.Button("Reiniciar"))
-            {
-                plugin.RestartPractice();
-                snapshot = practice.Snapshot();
-            }
-
-            drewControl = true;
-        }
-
         if (drewControl) ImGui.SameLine();
         ImGui.TextDisabled(FormatPracticeStatus(snapshot));
 
@@ -535,9 +524,7 @@ public sealed class TimelineWindow : Window, IDisposable
             PracticeState.WaitingForFirstAction => FormatWaitingStatus("Esperando primera acción de referencia", snapshot.Elapsed),
             PracticeState.Running => $"En marcha {snapshot.Elapsed.TotalSeconds:0.0}s  ({snapshot.ResolvedCount}/{snapshot.TotalCount})",
             PracticeState.Paused => $"Pausado  {snapshot.Elapsed.TotalSeconds:0.0}s  ({snapshot.ResolvedCount}/{snapshot.TotalCount})",
-            PracticeState.Completed => snapshot.StoppedOnMistake
-                ? $"Detenido por errores  ({snapshot.HitCount}/{snapshot.TotalCount})"
-                : $"Completado  ({snapshot.HitCount}/{snapshot.TotalCount})",
+            PracticeState.Completed => $"Completado  ({snapshot.HitCount}/{snapshot.TotalCount})",
             _ => string.Empty,
         };
     }

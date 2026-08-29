@@ -274,7 +274,7 @@ public sealed class PracticeSessionTests
         var clock = new FakeClock();
         var service = CreateService(clock, new PracticeReferenceAction(100, "Fast Blade", ActionTimingClass.Gcd, TimeSpan.Zero));
 
-        service.Start(mistakeLimit: 3);
+        service.Start();
         service.ConfirmCombatStarted();
         Assert.False(service.TryRecordAction(999, "Shield Lob", ActionTimingClass.Gcd));
         Assert.False(service.TryRecordAction(998, "Total Eclipse", ActionTimingClass.Gcd));
@@ -286,14 +286,14 @@ public sealed class PracticeSessionTests
     }
 
     [Fact]
-    public void StopsAfterTheThirdWrongAction()
+    public void ContinuesAfterMoreThanThreeWrongActions()
     {
         var clock = new FakeClock();
         var service = CreateService(
             clock,
             new PracticeReferenceAction(100, "Fast Blade", ActionTimingClass.Gcd, TimeSpan.Zero),
             new PracticeReferenceAction(200, "Riot Blade", ActionTimingClass.Gcd, TimeSpan.Zero));
-        service.Start(mistakeLimit: 3);
+        service.Start();
         service.ConfirmCombatStarted();
         service.TryRecordAction(100, "Fast Blade", ActionTimingClass.Gcd);
 
@@ -302,21 +302,19 @@ public sealed class PracticeSessionTests
         Assert.True(service.TryRecordAction(998, "Total Eclipse", ActionTimingClass.Gcd));
         Assert.Equal(PracticeState.Running, service.Snapshot().State);
         Assert.True(service.TryRecordAction(997, "Shield Bash", ActionTimingClass.Gcd));
+        Assert.True(service.TryRecordAction(996, "Interject", ActionTimingClass.Ogcd));
 
         var snapshot = service.Snapshot();
-        Assert.Equal(PracticeState.Completed, snapshot.State);
-        Assert.True(snapshot.StoppedOnMistake);
-        Assert.Equal(3, snapshot.WrongCount);
-        Assert.False(service.TryRecordAction(100, "Fast Blade", ActionTimingClass.Gcd));
+        Assert.Equal(PracticeState.Running, snapshot.State);
+        Assert.Equal(4, snapshot.WrongCount);
+        Assert.True(service.TryRecordAction(200, "Riot Blade", ActionTimingClass.Gcd));
 
-        clock.Advance(TimeSpan.FromSeconds(10));
-        var laterSnapshot = service.Snapshot();
-        Assert.Equal(snapshot.Elapsed, laterSnapshot.Elapsed);
-        Assert.True(laterSnapshot.StoppedOnMistake);
+        clock.Advance(TimeSpan.FromMilliseconds(600));
+        Assert.Equal(PracticeState.Completed, service.Snapshot().State);
     }
 
     [Fact]
-    public void StopsAfterTheThirdMissedReference()
+    public void ContinuesAfterThreeMissedReferences()
     {
         var clock = new FakeClock();
         var service = CreateService(
@@ -324,15 +322,15 @@ public sealed class PracticeSessionTests
             new PracticeReferenceAction(100, "Fast Blade", ActionTimingClass.Gcd, TimeSpan.Zero),
             new PracticeReferenceAction(200, "Riot Blade", ActionTimingClass.Gcd, TimeSpan.FromSeconds(1)),
             new PracticeReferenceAction(300, "Royal Authority", ActionTimingClass.Gcd, TimeSpan.FromSeconds(2)),
-            new PracticeReferenceAction(400, "Atonement", ActionTimingClass.Gcd, TimeSpan.FromSeconds(3)));
-        service.Start(mistakeLimit: 3);
+            new PracticeReferenceAction(400, "Atonement", ActionTimingClass.Gcd, TimeSpan.FromSeconds(3)),
+            new PracticeReferenceAction(500, "Confiteor", ActionTimingClass.Gcd, TimeSpan.FromSeconds(10)));
+        service.Start();
         service.ConfirmCombatStarted();
         service.TryRecordAction(100, "Fast Blade", ActionTimingClass.Gcd);
         clock.Advance(TimeSpan.FromSeconds(3.6));
 
         var snapshot = service.Snapshot();
-        Assert.Equal(PracticeState.Completed, snapshot.State);
-        Assert.True(snapshot.StoppedOnMistake);
+        Assert.Equal(PracticeState.Running, snapshot.State);
         Assert.Equal(3, snapshot.MissCount);
     }
 

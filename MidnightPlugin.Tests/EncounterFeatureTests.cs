@@ -56,6 +56,46 @@ public sealed class EncounterFeatureTests
     }
 
     [Fact]
+    public void WipedForsakenPullRemainsReviewableWhenTheNextPullIsEmpty()
+    {
+        var service = new EncounterSessionService(() => TimeSpan.Zero);
+        service.SetTerritory(EncounterSessionService.DancingMadTerritoryId);
+        var failedPull = service.StartPull(DateTimeOffset.UtcNow)!;
+        var failure = new ForsakenPairResult(1, MechanicVerdict.Failure, TimeSpan.Zero, [], [], null);
+        Assert.True(service.TryRecordForsakenResult(failure));
+
+        service.EndPull(PullState.Wiped, DateTimeOffset.UtcNow);
+
+        Assert.Same(failedPull, service.FindReviewablePull(failedPull.Id));
+        Assert.Same(failedPull, service.LatestReviewablePull());
+
+        var nextPull = service.StartPull(DateTimeOffset.UtcNow);
+        Assert.NotNull(nextPull);
+        Assert.Empty(nextPull!.ForsakenResults);
+        Assert.Same(failedPull, service.LatestReviewablePull());
+    }
+
+    [Fact]
+    public void ReviewLookupUsesNewestResultAndHonorsHistoryCapacity()
+    {
+        var service = new EncounterSessionService(() => TimeSpan.Zero, historyCapacity: 2);
+        service.SetTerritory(EncounterSessionService.DancingMadTerritoryId);
+        var pulls = new List<PullSession>();
+        for (var index = 0; index < 3; index++)
+        {
+            var pull = service.StartPull(DateTimeOffset.UtcNow)!;
+            pulls.Add(pull);
+            Assert.True(service.TryRecordForsakenResult(
+                new ForsakenPairResult(1, MechanicVerdict.Success, TimeSpan.Zero, [], [], null)));
+            service.EndPull(PullState.Wiped, DateTimeOffset.UtcNow);
+        }
+
+        Assert.Null(service.FindReviewablePull(pulls[0].Id));
+        Assert.Same(pulls[1], service.FindReviewablePull(pulls[1].Id));
+        Assert.Same(pulls[2], service.LatestReviewablePull());
+    }
+
+    [Fact]
     public void LeavingTerritoryAbandonsActivePull()
     {
         var service = new EncounterSessionService(() => TimeSpan.Zero);
