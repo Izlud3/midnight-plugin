@@ -201,13 +201,12 @@ public sealed class Plugin : IDalamudPlugin
     public void ToggleMainUi() => MainWindow.Toggle();
     public void ToggleTimelineUi() => TimelineWindow.Toggle();
     public void ToggleDiagnosticsUi() => DiagnosticsWindow.Toggle();
-    public bool IsForsakenUiOpen => ForsakenWindow.IsOpen;
-
     private void OpenForsakenUi()
     {
         ForsakenWindow.SelectPull(EncounterSessions.LatestReviewablePull()?.Id);
         ForsakenPromptWindow.Dismiss();
         ForsakenWindow.IsOpen = true;
+        ForsakenWindow.BringToFront();
     }
 
     public void ToggleForsakenUi()
@@ -221,6 +220,7 @@ public sealed class Plugin : IDalamudPlugin
         ForsakenWindow.SelectPull(EncounterSessions.LatestReviewablePull()?.Id);
         ForsakenPromptWindow.Dismiss();
         ForsakenWindow.IsOpen = true;
+        ForsakenWindow.BringToFront();
     }
 
     public void OpenForsakenReview(Guid pullId)
@@ -229,6 +229,7 @@ public sealed class Plugin : IDalamudPlugin
                                    EncounterSessions.LatestReviewablePull()?.Id);
         ForsakenPromptWindow.Dismiss();
         ForsakenWindow.IsOpen = true;
+        ForsakenWindow.BringToFront();
     }
 
     public bool IsPracticeEligible
@@ -334,10 +335,7 @@ public sealed class Plugin : IDalamudPlugin
         if (EncounterSessions.ActivePull is not { } pull) return;
 
         ForsakenWindow.SelectPull(pull.Id);
-        if (ForsakenWindow.IsOpen)
-            ForsakenPromptWindow.Dismiss();
-        else
-            ForsakenPromptWindow.Show(pull.Id);
+        ForsakenPromptWindow.Show(pull.Id);
     }
 
     private void OnLimitCutResult(LimitCutResult result)
@@ -347,10 +345,7 @@ public sealed class Plugin : IDalamudPlugin
         if (EncounterSessions.ActivePull is not { } pull) return;
 
         ForsakenWindow.SelectPull(pull.Id);
-        if (ForsakenWindow.IsOpen)
-            ForsakenPromptWindow.Dismiss();
-        else
-            ForsakenPromptWindow.Show(pull.Id);
+        ForsakenPromptWindow.Show(pull.Id);
     }
 
     private void ArmPractice()

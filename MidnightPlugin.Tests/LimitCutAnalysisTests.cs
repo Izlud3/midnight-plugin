@@ -73,6 +73,26 @@ public sealed class LimitCutAnalysisTests
         Assert.All(result.Players, player => Assert.InRange(player.AngleError!.Value, 0, .001));
     }
 
+    [Fact]
+    public void CapturedWaymarksArePreservedInTheReviewResult()
+    {
+        var waymarks = new[]
+        {
+            new LimitCutWaymark("A", new Vector2(100, 90)),
+            new LimitCutWaymark("4", new Vector2(92, 108)),
+        };
+
+        var result = LimitCutAnalyzer.Analyze(
+            TimeSpan.Zero,
+            Casts((0, 0), (2, 45)),
+            [],
+            [],
+            new Dictionary<ulong, int>(),
+            waymarks);
+
+        Assert.Equal(waymarks, result.Waymarks);
+    }
+
     [Theory]
     [InlineData(11.25, MechanicVerdict.Success)]
     [InlineData(22.5, MechanicVerdict.Failure)]

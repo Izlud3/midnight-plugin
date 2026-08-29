@@ -84,7 +84,8 @@ public sealed class LiveLimitCutTracker
             rotatingBlasters,
             finalBlasters,
             participants,
-            assignments);
+            assignments,
+            WaymarkReader.Snapshot());
         if (sessions.TryRecordLimitCutResult(result)) resultAvailable(result);
         active = false;
     }

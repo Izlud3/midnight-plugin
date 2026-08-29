@@ -5,7 +5,9 @@ namespace MidnightPlugin;
 
 public sealed class JobIconResolver
 {
-    private const uint ClassJobIconBase = 62000;
+    // The 62100 set is the game's colored, framed class/job icon set used by
+    // gearsets and party UI. The 62000 set only contains the plain gold glyphs.
+    private const uint ClassJobIconBase = 62100;
     private readonly Dictionary<string, ISharedImmediateTexture?> textures = new(StringComparer.OrdinalIgnoreCase);
 
     public bool TryResolve(string abbreviation, out ISharedImmediateTexture? texture)

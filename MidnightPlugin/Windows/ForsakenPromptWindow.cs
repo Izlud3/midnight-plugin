@@ -24,7 +24,7 @@ public sealed class ForsakenPromptWindow : Window, IDisposable
         Size = new Vector2(240, 82);
         SizeCondition = ImGuiCond.Always;
         Position = GetDefaultPosition();
-        PositionCondition = ImGuiCond.FirstUseEver;
+        PositionCondition = ImGuiCond.Appearing;
     }
 
     public void Dispose() { }
@@ -51,8 +51,7 @@ public sealed class ForsakenPromptWindow : Window, IDisposable
 
     public override void Draw()
     {
-        if (plugin.IsForsakenUiOpen ||
-            pullId is not { } reviewPullId ||
+        if (pullId is not { } reviewPullId ||
             expiresAt is not { } expiration)
         {
             Dismiss();

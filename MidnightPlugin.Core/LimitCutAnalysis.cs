@@ -12,6 +12,8 @@ public sealed record LimitCutBlasterCast(TimeSpan Elapsed, Vector2 Position, dou
 
 public sealed record LimitCutGap(int Number, double Angle, Vector2 Position);
 
+public sealed record LimitCutWaymark(string Label, Vector2 Position);
+
 public sealed record LimitCutParticipant(
     ulong ActorId,
     string Name,
@@ -46,6 +48,7 @@ public sealed record LimitCutResult(
     IReadOnlyList<LimitCutBlasterCast> FinalBlasters,
     IReadOnlyList<Vector2> BlasterSpots,
     IReadOnlyList<LimitCutGap> Gaps,
+    IReadOnlyList<LimitCutWaymark> Waymarks,
     IReadOnlyList<LimitCutPlayerResult> Players,
     double WallRadius);
 
@@ -88,7 +91,8 @@ public static class LimitCutAnalyzer
         IReadOnlyList<LimitCutBlasterCast> rotatingBlasters,
         IReadOnlyList<LimitCutBlasterCast> finalBlasters,
         IReadOnlyList<LimitCutParticipant> participants,
-        IReadOnlyDictionary<ulong, int> assignments)
+        IReadOnlyDictionary<ulong, int> assignments,
+        IReadOnlyList<LimitCutWaymark>? waymarks = null)
     {
         var wallRadius = Median(rotatingBlasters
             .Concat(finalBlasters)
@@ -192,6 +196,7 @@ public static class LimitCutAnalyzer
             finalBlasters.ToArray(),
             blasterSpots,
             gaps,
+            waymarks?.ToArray() ?? [],
             players,
             wallRadius);
     }

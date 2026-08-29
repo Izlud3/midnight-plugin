@@ -121,7 +121,8 @@ public sealed class ForsakenWindow : Window, IDisposable
         };
         ImGui.TextColored(verdictColor, verdict);
         ImGui.SameLine();
-        ImGui.TextUnformatted($"Clon: {result.KefkaStartName ?? "?"} {RotationLabel(result.KefkaRotation)}");
+        ImGui.TextColored(new Vector4(.94f, .53f, .03f, 1),
+            $"Kefka: {result.KefkaStartName ?? "?"} {RotationLabel(result.KefkaRotation)}");
         ImGui.SameLine();
         ImGui.TextColored(new Vector4(.5f, .84f, .88f, 1), $"Jugadores: {RotationLabel(result.PlayerRotation)}");
         ImGui.TextDisabled($"{wrong} fuera de posición  {dead} muertos  {unverified} sin verificar");
@@ -164,14 +165,7 @@ public sealed class ForsakenWindow : Window, IDisposable
         draw.AddCircle(center, (float)result.WallRadius * scale, ImGui.GetColorU32(new Vector4(.65f, .65f, .7f, 1)), 72, 2);
         DrawCompass(draw, center, scale, 0);
 
-        foreach (var spot in result.BlasterSpots)
-            draw.AddCircle(ToScreen(spot), 7, ImGui.GetColorU32(danger with { W = .45f }), 20, 1.5f);
-        foreach (var cast in result.FinalBlasters)
-        {
-            var point = ToScreen(cast.Position);
-            draw.AddQuadFilled(point + new Vector2(0, -7), point + new Vector2(7, 0),
-                point + new Vector2(0, 7), point + new Vector2(-7, 0), ImGui.GetColorU32(danger with { W = .65f }));
-        }
+        DrawWaymarks(draw, result.Waymarks, ToScreen);
 
         if (result.KefkaStartAngle is { } kefkaAngle && result.KefkaRotation is { } kefkaRotation)
         {
@@ -195,18 +189,18 @@ public sealed class ForsakenWindow : Window, IDisposable
         {
             var actual = player.Position!.Value;
             var point = ToScreen(new(actual.X - LimitCutAnalyzer.ArenaCenter, actual.Z - LimitCutAnalyzer.ArenaCenter));
-            var color = player.Died || player.AngleError is >= LimitCutAnalyzer.FailureAngle
-                ? danger
-                : player.AngleError is >= LimitCutAnalyzer.WarningAngle
-                    ? new Vector4(1, .75f, .25f, 1)
-                    : Vector4.One;
+            var color = player.AngleError switch
+            {
+                null => new Vector4(.6f, .62f, .68f, 1),
+                >= LimitCutAnalyzer.FailureAngle => danger,
+                _ => new Vector4(.25f, .9f, .45f, 1),
+            };
             draw.AddCircleFilled(point, 11, ImGui.GetColorU32(new Vector4(.04f, .05f, .07f, .96f)), 24);
             draw.AddCircle(point, 11, ImGui.GetColorU32(color), 24, 2.5f);
             if (jobIcons.TryResolve(player.Job, out var texture) && texture!.TryGetWrap(out var icon, out _))
                 draw.AddImage(icon.Handle, point - new Vector2(9), point + new Vector2(9));
             else
                 DrawCenteredText(draw, point, player.Job, Vector4.One);
-            if (player.Died) DrawCenteredText(draw, point + new Vector2(10, -10), "X", danger);
         }
         draw.PopClipRect();
     }
@@ -237,11 +231,6 @@ public sealed class ForsakenWindow : Window, IDisposable
                     ImGui.Image(icon.Handle, new Vector2(JobIconSize));
                 else
                     ImGui.TextUnformatted(player.Job);
-                if (player.Died)
-                {
-                    ImGui.SameLine();
-                    ImGui.TextColored(new Vector4(1, .28f, .28f, 1), "X");
-                }
                 ImGui.TableNextColumn();
                 ImGui.TextDisabled(FormatAngle(player.Angle));
                 ImGui.TableNextColumn();
@@ -280,6 +269,37 @@ public sealed class ForsakenWindow : Window, IDisposable
         var vector = Vector2.Normalize(tip - previous);
         var perpendicular = new Vector2(-vector.Y, vector.X);
         draw.AddTriangleFilled(tip, tip - vector * 9 + perpendicular * 4, tip - vector * 9 - perpendicular * 4, ImGui.GetColorU32(color));
+    }
+
+    private static void DrawWaymarks(
+        ImDrawListPtr draw,
+        IReadOnlyList<LimitCutWaymark> waymarks,
+        Func<Vector2, Vector2> toScreen)
+    {
+        foreach (var waymark in waymarks)
+        {
+            var color = waymark.Label switch
+            {
+                "A" or "1" => new Vector4(.9f, .25f, .22f, 1),
+                "B" or "2" => new Vector4(.92f, .68f, .12f, 1),
+                "C" or "3" => new Vector4(.2f, .58f, .9f, 1),
+                _ => new Vector4(.65f, .3f, .82f, 1),
+            };
+            var point = toScreen(waymark.Position - new Vector2(LimitCutAnalyzer.ArenaCenter));
+            var min = point - new Vector2(14);
+            var max = point + new Vector2(14);
+            if (char.IsLetter(waymark.Label[0]))
+            {
+                draw.AddCircleFilled(point, 14, ImGui.GetColorU32(color with { W = .14f }), 28);
+                draw.AddCircle(point, 14, ImGui.GetColorU32(color with { W = .8f }), 28, 1.5f);
+            }
+            else
+            {
+                draw.AddRectFilled(min, max, ImGui.GetColorU32(color with { W = .14f }), 2);
+                draw.AddRect(min, max, ImGui.GetColorU32(color with { W = .8f }), 2, ImDrawFlags.None, 1.5f);
+            }
+            DrawCenteredText(draw, point, waymark.Label, color);
+        }
     }
 
     private static void DrawCenteredText(ImDrawListPtr draw, Vector2 point, string text, Vector4 color)
