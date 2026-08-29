@@ -1,8 +1,8 @@
 # Midnight Timeline
 
-Midnight Timeline es un plugin de Dalamud para revisar el timing de las acciones del jugador y analizar retrospectivamente las mecánicas de Forsaken en Dancing Mad (Ultimate).
+Midnight Timeline es un plugin de Dalamud para revisar el timing de las acciones del jugador y analizar retrospectivamente Forsaken y Limit Cut en Dancing Mad (Ultimate).
 
-El timeline de acciones funciona en cualquier contenido. Las herramientas de Forsaken solo se activan dentro de Dancing Mad o durante una reproducción compatible de Duty Recorder.
+El timeline de acciones funciona en cualquier contenido. Las herramientas de revisión de DMU solo se activan dentro de Dancing Mad o durante una reproducción compatible de Duty Recorder.
 
 ## Qué ofrece
 
@@ -12,6 +12,7 @@ El timeline de acciones funciona en cualquier contenido. Las herramientas de For
 - Opción para detener la práctica después de tres errores.
 - Historial compacto de hasta 10 pulls de Dancing Mad por sesión.
 - Revisión retrospectiva de torres, stacks, conos, muertes y posiciones durante Forsaken.
+- Revisión de P3 Limit Cut con números, rotación, posiciones esperadas y desvío angular.
 - Tarjetas de fallo y una captura del campo al resolverse la mecánica.
 - Diagnóstico local para investigar problemas de captura.
 
@@ -35,9 +36,10 @@ La ventana principal y la configuración están disponibles desde la interfaz de
 
 | Comando | Comportamiento |
 | --- | --- |
-| `/midnighttimeline` | Abre o cierra el timeline de acciones. |
-| `/midnighttimeline forsaken` | Abre la revisión de Forsaken. |
-| `/midnighttimeline log` | Abre el diagnóstico de captura. |
+| `/mnt` | Abre o cierra el timeline de acciones. |
+| `/mnt practice` | Abre la ventana de práctica. |
+| `/mnt review` | Abre la revisión de DMU. |
+| `/mnt log` | Abre el diagnóstico de captura. |
 
 ## Práctica de rotación
 
@@ -45,9 +47,9 @@ La práctica sigue automáticamente el job equipado cuando existe una referencia
 
 Las referencias son archivos JSON compartibles. Para añadir o reemplazar una, copia el archivo en la carpeta mostrada en **Configuración** y pulsa **Recargar referencias**. Una referencia del usuario reemplaza la incluida para el mismo job sin necesidad de modificar el plugin.
 
-## Revisión de Forsaken
+## Revisión de DMU
 
-Durante Dancing Mad, el plugin conserva hasta 10 resúmenes en memoria y permite revisar qué ocurrió al resolver Forsaken. Las vistas utilizan información ya observada por el cliente para representar posiciones y resultados después de la resolución.
+Durante Dancing Mad, el plugin conserva hasta 10 resúmenes en memoria y permite revisar qué ocurrió al resolver Forsaken y P3 Limit Cut. Las vistas utilizan información ya observada por el cliente para representar posiciones y resultados después de la resolución. Limit Cut muestra la rotación de Kefka, la rotación opuesta del grupo, las asignaciones 1–8 y el desvío de cada posición al resolverse Ultima Blaster.
 
 ## Privacidad
 
@@ -58,3 +60,5 @@ El historial de pulls permanece en memoria y se elimina al cerrar sesión o reca
 ## Licencia
 
 Midnight Timeline se distribuye bajo la [licencia MIT](LICENSE).
+
+El análisis de Limit Cut fue implementado de forma independiente tomando como referencia el comportamiento público de [Better Deaths](https://github.com/Nainaiowo/better-deaths) y su analizador de DMU.

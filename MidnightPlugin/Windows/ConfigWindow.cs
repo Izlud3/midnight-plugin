@@ -12,13 +12,13 @@ public class ConfigWindow : Window, IDisposable
     // We give this window a constant ID using ###.
     // This allows for labels to be dynamic, like "{FPS Counter}fps###XYZ counter window",
     // and the window ID will always be "###XYZ counter window" for ImGui
-    public ConfigWindow(Plugin plugin) : base("Configuración de Midnight Timeline###With a constant ID")
+    public ConfigWindow(Plugin plugin) : base("Configuración###With a constant ID")
     {
         this.plugin = plugin;
         Flags = ImGuiWindowFlags.NoResize | ImGuiWindowFlags.NoCollapse | ImGuiWindowFlags.NoScrollbar |
                 ImGuiWindowFlags.NoScrollWithMouse;
 
-        Size = new Vector2(520, 300);
+        Size = new Vector2(520, 250);
         SizeCondition = ImGuiCond.Always;
 
         configuration = plugin.Configuration;
@@ -54,14 +54,6 @@ public class ConfigWindow : Window, IDisposable
         if (ImGui.SliderFloat("Opacidad", ref opacity, 0.1f, 1f, "%.2f"))
         {
             configuration.TimelineOpacity = opacity;
-            configuration.Save();
-        }
-
-        Section("DMU Review");
-        var failureCards = configuration.ForsakenFailureCardsEnabled;
-        if (ImGui.Checkbox("Mostrar tarjetas de fallos tras la resolución", ref failureCards))
-        {
-            configuration.ForsakenFailureCardsEnabled = failureCards;
             configuration.Save();
         }
     }

@@ -51,8 +51,7 @@ public sealed class ForsakenPromptWindow : Window, IDisposable
 
     public override void Draw()
     {
-        if (!plugin.Configuration.ForsakenFailureCardsEnabled ||
-            plugin.IsForsakenUiOpen ||
+        if (plugin.IsForsakenUiOpen ||
             pullId is not { } reviewPullId ||
             expiresAt is not { } expiration)
         {

@@ -29,7 +29,7 @@ public sealed class Plugin : IDalamudPlugin
     [PluginService] internal static ISigScanner SigScanner { get; private set; } = null!;
     [PluginService] internal static IGameInteropProvider GameInteropProvider { get; private set; } = null!;
 
-    private const string CommandName = "/midnighttimeline";
+    private const string CommandName = "/mnt";
 
     public Configuration Configuration { get; init; }
     public IActionTimelineService Timeline { get; }
@@ -39,6 +39,7 @@ public sealed class Plugin : IDalamudPlugin
     public ISharedImmediateTexture BrandIcon { get; }
     public EncounterSessionService EncounterSessions { get; }
     public LiveForsakenTracker ForsakenTracker { get; }
+    public LiveLimitCutTracker LimitCutTracker { get; }
     public PersistentDiagnosticLog Diagnostics { get; }
 
     public readonly WindowSystem WindowSystem = new("MidnightTimeline");
@@ -51,6 +52,7 @@ public sealed class Plugin : IDalamudPlugin
     private ActionEventCapture ActionEventCapture { get; init; }
     private EncounterCapture EncounterCapture { get; init; }
     private ActionEffectSource ActionEffects { get; init; }
+    private TargetIconSource TargetIcons { get; init; }
     private string? selectedPracticeJob;
     private TimeSpan practiceStartOffset;
     private bool wasInCombat;
@@ -75,6 +77,11 @@ public sealed class Plugin : IDalamudPlugin
         {
             Diagnostics.Add("Capture", null, "Action-effect signature was not found; timeline and encounter capture are unavailable.");
         }
+        TargetIcons = new TargetIconSource(GameInteropProvider, Log);
+        if (!TargetIcons.IsAvailable)
+        {
+            Diagnostics.Add("Capture", null, "TargetIcon capture is unavailable; Limit Cut assignments will be unverified.");
+        }
 
         Timeline = new ActionTimelineService(Configuration.DefaultTimelineHistoryLimit);
         References = new PracticeReferenceProvider(
@@ -84,9 +91,11 @@ public sealed class Plugin : IDalamudPlugin
         SelectPracticeReference(References.References.FirstOrDefault()?.Job, force: true);
         EncounterSessions = new EncounterSessionService(MonotonicNow);
         ForsakenTracker = new LiveForsakenTracker(EncounterSessions, OnForsakenResult);
+        LimitCutTracker = new LiveLimitCutTracker(EncounterSessions, OnLimitCutResult);
         EncounterCapture = new EncounterCapture(
             EncounterSessions,
             ForsakenTracker,
+            LimitCutTracker,
             Framework,
             ObjectTable,
             PartyList,
@@ -94,7 +103,8 @@ public sealed class Plugin : IDalamudPlugin
             Condition,
             DutyState,
             Diagnostics,
-            ActionEffects);
+            ActionEffects,
+            TargetIcons);
         // Subscribe encounter capture first so a Duty Recorder action effect can
         // open the pull before the local-action subscriber records that same effect.
         ActionEventCapture = new ActionEventCapture(
@@ -123,7 +133,7 @@ public sealed class Plugin : IDalamudPlugin
 
         CommandManager.AddHandler(CommandName, new CommandInfo(OnCommand)
         {
-            HelpMessage = "Alterna el timeline de acciones. Subcomandos: forsaken, log."
+            HelpMessage = "Alterna el timeline de acciones. Subcomandos: practice, review, log."
         });
 
         // Tell the UI system that we want our windows to be drawn through the window system
@@ -157,6 +167,7 @@ public sealed class Plugin : IDalamudPlugin
         EncounterCapture.Dispose();
         ActionEventCapture.Dispose();
         ActionEffects.Dispose();
+        TargetIcons.Dispose();
         Diagnostics.Add("Lifecycle", null, "Plugin instance disposed.");
         Diagnostics.Dispose();
         CommandManager.RemoveHandler(CommandName);
@@ -171,9 +182,15 @@ public sealed class Plugin : IDalamudPlugin
             return;
         }
 
-        if (subcommand.Equals("forsaken", StringComparison.OrdinalIgnoreCase))
+        if (subcommand.Equals("review", StringComparison.OrdinalIgnoreCase))
         {
-            ToggleForsakenUi();
+            OpenForsakenUi();
+            return;
+        }
+
+        if (subcommand.Equals("practice", StringComparison.OrdinalIgnoreCase))
+        {
+            TimelineWindow.IsOpen = true;
             return;
         }
 
@@ -185,6 +202,13 @@ public sealed class Plugin : IDalamudPlugin
     public void ToggleTimelineUi() => TimelineWindow.Toggle();
     public void ToggleDiagnosticsUi() => DiagnosticsWindow.Toggle();
     public bool IsForsakenUiOpen => ForsakenWindow.IsOpen;
+
+    private void OpenForsakenUi()
+    {
+        ForsakenWindow.SelectPull(EncounterSessions.LatestReviewablePull()?.Id);
+        ForsakenPromptWindow.Dismiss();
+        ForsakenWindow.IsOpen = true;
+    }
 
     public void ToggleForsakenUi()
     {
@@ -306,7 +330,20 @@ public sealed class Plugin : IDalamudPlugin
     private void OnForsakenResult(ForsakenPairResult result)
     {
         Diagnostics.Add("Forsaken", null, $"Pair {result.PairNumber}: {result.Verdict}. {string.Join(" ", result.Reasons)}");
-        if (result.Verdict != MechanicVerdict.Failure || !Configuration.ForsakenFailureCardsEnabled) return;
+        if (result.Verdict != MechanicVerdict.Failure) return;
+        if (EncounterSessions.ActivePull is not { } pull) return;
+
+        ForsakenWindow.SelectPull(pull.Id);
+        if (ForsakenWindow.IsOpen)
+            ForsakenPromptWindow.Dismiss();
+        else
+            ForsakenPromptWindow.Show(pull.Id);
+    }
+
+    private void OnLimitCutResult(LimitCutResult result)
+    {
+        Diagnostics.Add("Limit Cut", null, $"{result.Verdict}. {string.Join(" ", result.Reasons)}");
+        if (result.Verdict != MechanicVerdict.Failure) return;
         if (EncounterSessions.ActivePull is not { } pull) return;
 
         ForsakenWindow.SelectPull(pull.Id);

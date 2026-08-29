@@ -11,7 +11,6 @@ public class Configuration : IPluginConfiguration
 
     public int Version { get; set; } = CurrentVersion;
 
-    public bool ForsakenFailureCardsEnabled { get; set; } = true;
     public bool ShowLiveTimeline { get; set; } = true;
     public float TimelineOpacity { get; set; } = 1f;
 

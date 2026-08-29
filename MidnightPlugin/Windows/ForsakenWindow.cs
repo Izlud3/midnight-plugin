@@ -16,6 +16,8 @@ public sealed class ForsakenWindow : Window, IDisposable
     private int arenaLayers = 2;
     private long activeSnapshotTicks = long.MinValue;
     private Guid? selectedPullId;
+    private bool selectLimitCut;
+    private bool selectMechanicTab;
 
     public ForsakenWindow(Plugin plugin) : base("DMU Review###MidnightForsaken")
     {
@@ -33,28 +35,44 @@ public sealed class ForsakenWindow : Window, IDisposable
         selectedPullId = pullId;
         observedResultCount = -1;
         activeSnapshotTicks = long.MinValue;
+        selectLimitCut = pullId is { } id && plugin.EncounterSessions.FindReviewablePull(id)?.LimitCutResult is not null;
+        selectMechanicTab = true;
     }
 
     public override void Draw()
     {
-        if (!plugin.Configuration.ForsakenFailureCardsEnabled)
-        {
-            ImGui.TextDisabled("Las tarjetas de fallos de DMU están desactivadas en Configuración.");
-            return;
-        }
-
         var pull = selectedPullId is { } pullId
             ? plugin.EncounterSessions.FindReviewablePull(pullId) ?? plugin.EncounterSessions.LatestReviewablePull()
             : plugin.EncounterSessions.LatestReviewablePull();
         if (pull is not null && selectedPullId is not null && pull.Id != selectedPullId)
             selectedPullId = pull.Id;
-        var results = pull?.ForsakenResults ?? [];
-        if (results.Count == 0)
+        if (pull is null || !pull.HasReviewEvidence)
         {
             ImGui.TextDisabled("Esperando resultados...");
             return;
         }
 
+        if (!ImGui.BeginTabBar("dmu-review-mechanics", ImGuiTabBarFlags.FittingPolicyScroll)) return;
+        if (pull.ForsakenResults.Count > 0 &&
+            ImGui.BeginTabItem("Forsaken###dmu-review-forsaken",
+                selectMechanicTab && !selectLimitCut ? ImGuiTabItemFlags.SetSelected : ImGuiTabItemFlags.None))
+        {
+            DrawForsakenResults(pull.ForsakenResults);
+            ImGui.EndTabItem();
+        }
+        if (pull.LimitCutResult is { } limitCut &&
+            ImGui.BeginTabItem("Limit Cut###dmu-review-limit-cut",
+                selectMechanicTab && selectLimitCut ? ImGuiTabItemFlags.SetSelected : ImGuiTabItemFlags.None))
+        {
+            DrawLimitCut(limitCut);
+            ImGui.EndTabItem();
+        }
+        selectMechanicTab = false;
+        ImGui.EndTabBar();
+    }
+
+    private void DrawForsakenResults(IReadOnlyList<ForsakenPairResult> results)
+    {
         var selectNewest = observedResultCount != results.Count;
         observedResultCount = results.Count;
         if (!ImGui.BeginTabBar("forsaken-pairs", ImGuiTabBarFlags.FittingPolicyScroll)) return;
@@ -83,6 +101,201 @@ public sealed class ForsakenWindow : Window, IDisposable
         }
         ImGui.EndTabBar();
     }
+
+    private void DrawLimitCut(LimitCutResult result)
+    {
+        var wrong = result.Players.Count(player => player.AngleError is >= LimitCutAnalyzer.FailureAngle);
+        var dead = result.Players.Count(player => player.Died);
+        var unverified = result.Players.Count(player => player.AngleError is null);
+        var verdictColor = result.Verdict switch
+        {
+            MechanicVerdict.Success => new Vector4(.25f, .9f, .45f, 1),
+            MechanicVerdict.Failure => new Vector4(1, .3f, .3f, 1),
+            _ => new Vector4(1, .75f, .25f, 1),
+        };
+        var verdict = result.Verdict switch
+        {
+            MechanicVerdict.Success => "Éxito",
+            MechanicVerdict.Failure => "Fallo",
+            _ => "Evidencia insuficiente",
+        };
+        ImGui.TextColored(verdictColor, verdict);
+        ImGui.SameLine();
+        ImGui.TextUnformatted($"Clon: {result.KefkaStartName ?? "?"} {RotationLabel(result.KefkaRotation)}");
+        ImGui.SameLine();
+        ImGui.TextColored(new Vector4(.5f, .84f, .88f, 1), $"Jugadores: {RotationLabel(result.PlayerRotation)}");
+        ImGui.TextDisabled($"{wrong} fuera de posición  {dead} muertos  {unverified} sin verificar");
+        ImGui.Spacing();
+
+        var available = ImGui.GetContentRegionAvail();
+        const float spacing = 8;
+        if (available.X >= 820)
+        {
+            var mapSize = Math.Clamp(available.X * .5f, 320, 430);
+            DrawLimitCutArena(result, mapSize);
+            ImGui.SameLine(0, spacing);
+            DrawLimitCutTable(result, new(available.X - mapSize - spacing, mapSize));
+        }
+        else
+        {
+            var mapSize = Math.Clamp(Math.Min(available.X, 400), 280, 400);
+            DrawLimitCutArena(result, mapSize);
+            ImGui.Spacing();
+            DrawLimitCutTable(result, new(available.X, 278));
+        }
+    }
+
+    private void DrawLimitCutArena(LimitCutResult result, float size)
+    {
+        var origin = ImGui.GetCursorScreenPos();
+        var end = origin + new Vector2(size);
+        ImGui.InvisibleButton($"limit-cut-arena-{result.Elapsed.Ticks}", new(size));
+        var center = origin + new Vector2(size / 2);
+        var extent = MathF.Max(22, (float)result.WallRadius + 3);
+        var scale = size / 2 / extent;
+        Vector2 ToScreen(Vector2 point) => center + point * scale;
+        var draw = ImGui.GetWindowDrawList();
+        var orange = new Vector4(.94f, .53f, .03f, 1);
+        var cyan = new Vector4(.5f, .84f, .88f, 1);
+        var danger = new Vector4(1, .25f, .25f, 1);
+
+        draw.AddRectFilled(origin, end, ImGui.GetColorU32(new Vector4(.07f, .08f, .1f, 1)), 4);
+        draw.PushClipRect(origin, end, true);
+        draw.AddCircle(center, (float)result.WallRadius * scale, ImGui.GetColorU32(new Vector4(.65f, .65f, .7f, 1)), 72, 2);
+        DrawCompass(draw, center, scale, 0);
+
+        foreach (var spot in result.BlasterSpots)
+            draw.AddCircle(ToScreen(spot), 7, ImGui.GetColorU32(danger with { W = .45f }), 20, 1.5f);
+        foreach (var cast in result.FinalBlasters)
+        {
+            var point = ToScreen(cast.Position);
+            draw.AddQuadFilled(point + new Vector2(0, -7), point + new Vector2(7, 0),
+                point + new Vector2(0, 7), point + new Vector2(-7, 0), ImGui.GetColorU32(danger with { W = .65f }));
+        }
+
+        if (result.KefkaStartAngle is { } kefkaAngle && result.KefkaRotation is { } kefkaRotation)
+        {
+            DrawRotationArrow(draw, ToScreen, kefkaAngle, kefkaRotation, (float)result.WallRadius + 1.5f, orange);
+            var point = ToScreen(LimitCutAnalyzer.PositionAtAngle(kefkaAngle, result.WallRadius));
+            draw.AddCircleFilled(point, 11, ImGui.GetColorU32(new Vector4(.04f, .05f, .07f, .94f)), 24);
+            draw.AddCircle(point, 11, ImGui.GetColorU32(orange), 24, 2.5f);
+            DrawCenteredText(draw, point, "K", orange);
+        }
+        if (result.PlayerStartAngle is { } playerAngle && result.PlayerRotation is { } playerRotation)
+            DrawRotationArrow(draw, ToScreen, playerAngle, playerRotation, (float)result.WallRadius - 2.5f, cyan);
+
+        foreach (var gap in result.Gaps)
+        {
+            var point = ToScreen(gap.Position);
+            draw.AddCircle(point, 10, ImGui.GetColorU32(cyan with { W = .78f }), 24, 2);
+            DrawCenteredText(draw, point, gap.Number.ToString(), cyan);
+        }
+
+        foreach (var player in result.Players.Where(player => player.Position is not null))
+        {
+            var actual = player.Position!.Value;
+            var point = ToScreen(new(actual.X - LimitCutAnalyzer.ArenaCenter, actual.Z - LimitCutAnalyzer.ArenaCenter));
+            var color = player.Died || player.AngleError is >= LimitCutAnalyzer.FailureAngle
+                ? danger
+                : player.AngleError is >= LimitCutAnalyzer.WarningAngle
+                    ? new Vector4(1, .75f, .25f, 1)
+                    : Vector4.One;
+            draw.AddCircleFilled(point, 11, ImGui.GetColorU32(new Vector4(.04f, .05f, .07f, .96f)), 24);
+            draw.AddCircle(point, 11, ImGui.GetColorU32(color), 24, 2.5f);
+            if (jobIcons.TryResolve(player.Job, out var texture) && texture!.TryGetWrap(out var icon, out _))
+                draw.AddImage(icon.Handle, point - new Vector2(9), point + new Vector2(9));
+            else
+                DrawCenteredText(draw, point, player.Job, Vector4.One);
+            if (player.Died) DrawCenteredText(draw, point + new Vector2(10, -10), "X", danger);
+        }
+        draw.PopClipRect();
+    }
+
+    private void DrawLimitCutTable(LimitCutResult result, Vector2 size)
+    {
+        ImGui.PushStyleColor(ImGuiCol.ChildBg, new Vector4(.07f, .08f, .1f, 1));
+        if (ImGui.BeginChild($"limit-cut-table-panel-{result.Elapsed.Ticks}", size, true) &&
+            ImGui.BeginTable($"limit-cut-table-{result.Elapsed.Ticks}", 5,
+                ImGuiTableFlags.RowBg | ImGuiTableFlags.BordersInnerV | ImGuiTableFlags.SizingStretchProp))
+        {
+            ImGui.TableSetupColumn("#", ImGuiTableColumnFlags.WidthFixed, 24);
+            ImGui.TableSetupColumn("Job", ImGuiTableColumnFlags.WidthFixed, 42);
+            ImGui.TableSetupColumn("Posición");
+            ImGui.TableSetupColumn("Objetivo");
+            ImGui.TableSetupColumn("Desvío");
+            ImGui.TableHeadersRow();
+            foreach (var player in result.Players)
+            {
+                var problem = player.Died || player.AngleError is >= LimitCutAnalyzer.FailureAngle;
+                ImGui.TableNextRow(ImGuiTableRowFlags.None, 30);
+                if (problem)
+                    ImGui.TableSetBgColor(ImGuiTableBgTarget.RowBg0, ImGui.GetColorU32(new Vector4(.45f, .08f, .08f, .22f)));
+                ImGui.TableNextColumn();
+                ImGui.TextUnformatted(player.Number?.ToString() ?? "?");
+                ImGui.TableNextColumn();
+                if (jobIcons.TryResolve(player.Job, out var texture) && texture!.TryGetWrap(out var icon, out _))
+                    ImGui.Image(icon.Handle, new Vector2(JobIconSize));
+                else
+                    ImGui.TextUnformatted(player.Job);
+                if (player.Died)
+                {
+                    ImGui.SameLine();
+                    ImGui.TextColored(new Vector4(1, .28f, .28f, 1), "X");
+                }
+                ImGui.TableNextColumn();
+                ImGui.TextDisabled(FormatAngle(player.Angle));
+                ImGui.TableNextColumn();
+                ImGui.TextDisabled(FormatAngle(player.ExpectedAngle));
+                ImGui.TableNextColumn();
+                var color = player.AngleError switch
+                {
+                    null => new Vector4(.6f, .62f, .68f, 1),
+                    < LimitCutAnalyzer.WarningAngle => new Vector4(.25f, .9f, .45f, 1),
+                    < LimitCutAnalyzer.FailureAngle => new Vector4(1, .75f, .25f, 1),
+                    _ => new Vector4(1, .3f, .3f, 1),
+                };
+                ImGui.TextColored(color, FormatAngle(player.AngleError));
+            }
+            ImGui.EndTable();
+        }
+        ImGui.EndChild();
+        ImGui.PopStyleColor();
+    }
+
+    private static void DrawRotationArrow(
+        ImDrawListPtr draw,
+        Func<Vector2, Vector2> toScreen,
+        double startAngle,
+        LimitCutRotation rotation,
+        float radius,
+        Vector4 color)
+    {
+        var direction = rotation == LimitCutRotation.Clockwise ? 1d : -1d;
+        var points = Enumerable.Range(0, 10)
+            .Select(index => toScreen(LimitCutAnalyzer.PositionAtAngle(startAngle + direction * index * 6, radius)))
+            .ToArray();
+        for (var index = 1; index < points.Length; index++) draw.AddLine(points[index - 1], points[index], ImGui.GetColorU32(color), 2);
+        var tip = points[^1];
+        var previous = points[^2];
+        var vector = Vector2.Normalize(tip - previous);
+        var perpendicular = new Vector2(-vector.Y, vector.X);
+        draw.AddTriangleFilled(tip, tip - vector * 9 + perpendicular * 4, tip - vector * 9 - perpendicular * 4, ImGui.GetColorU32(color));
+    }
+
+    private static void DrawCenteredText(ImDrawListPtr draw, Vector2 point, string text, Vector4 color)
+    {
+        var size = ImGui.CalcTextSize(text);
+        draw.AddText(point - size / 2, ImGui.GetColorU32(color), text);
+    }
+
+    private static string RotationLabel(LimitCutRotation? rotation) => rotation switch
+    {
+        LimitCutRotation.Clockwise => "CW",
+        LimitCutRotation.CounterClockwise => "CCW",
+        _ => "?",
+    };
+
+    private static string FormatAngle(double? angle) => angle is { } value ? $"{Math.Round(value * 2) / 2:0.#}°" : "-";
 
     private void DrawSnapshot(ArenaSnapshot snapshot)
     {

@@ -1,6 +1,5 @@
 using System.Numerics;
 using Dalamud.Bindings.ImGui;
-using Dalamud.Interface;
 using Dalamud.Interface.Windowing;
 using MidnightPlugin.Core;
 
@@ -30,7 +29,7 @@ public sealed class TimelineWindow : Window, IDisposable
 
     private readonly Plugin plugin;
     private readonly ActionIconResolver metadataResolver = new();
-    private bool practiceExpanded;
+    private bool practiceAvailable;
     private double liveViewOffsetSeconds;
     private double practiceViewOffsetSeconds;
 
@@ -38,6 +37,7 @@ public sealed class TimelineWindow : Window, IDisposable
         : base("Practice Timeline##MidnightTimelineWindowV2", ImGuiWindowFlags.NoResize)
     {
         this.plugin = plugin;
+        practiceAvailable = plugin.Practice is not null;
         SetWindowSize();
         SizeCondition = ImGuiCond.FirstUseEver;
     }
@@ -49,18 +49,25 @@ public sealed class TimelineWindow : Window, IDisposable
 
     public override void Draw()
     {
+        var currentlyAvailable = plugin.Practice is not null;
+        if (practiceAvailable != currentlyAvailable)
+        {
+            practiceAvailable = currentlyAvailable;
+            SetWindowSize();
+        }
+
         ImGui.PushStyleVar(ImGuiStyleVar.Alpha, plugin.Configuration.TimelineOpacity);
         try
         {
             DrawHeader();
 
-            if (plugin.Configuration.ShowLiveTimeline)
+            if (IsLiveTimelineVisible)
             {
                 var entries = plugin.Timeline.Snapshot();
                 DrawTimeline(entries, DateTimeOffset.UtcNow, "ActionTimelineCanvas");
             }
 
-            if (practiceExpanded)
+            if (practiceAvailable)
             {
                 DrawPracticePanel();
             }
@@ -73,25 +80,15 @@ public sealed class TimelineWindow : Window, IDisposable
 
     private void DrawHeader()
     {
-        var disclosureIcon = practiceExpanded ? FontAwesomeIcon.ChevronUp : FontAwesomeIcon.ChevronDown;
-        if (IconButtonHelper.IconTextButton(disclosureIcon, "Práctica", "###practice-disclosure", iconAfter: true))
-        {
-            SetPracticeExpanded(!practiceExpanded);
-        }
-
-        ImGui.SameLine();
-        var showLiveTimeline = plugin.Configuration.ShowLiveTimeline;
+        var showLiveTimeline = IsLiveTimelineVisible;
+        ImGui.BeginDisabled(!practiceAvailable);
         if (ImGui.Checkbox("Timeline en vivo", ref showLiveTimeline))
         {
             plugin.SetLiveTimelineVisible(showLiveTimeline);
         }
+        ImGui.EndDisabled();
 
-        if (plugin.Practice is null)
-        {
-            ImGui.SameLine();
-            ImGui.TextDisabled(plugin.SelectedReference.Error ?? "Referencia no disponible");
-        }
-        else if (!plugin.IsPracticeEligible)
+        if (plugin.Practice is not null && !plugin.IsPracticeEligible)
         {
             ImGui.SameLine();
             ImGui.TextDisabled($"La práctica requiere {plugin.Practice.Rotation.Job}");
@@ -157,7 +154,7 @@ public sealed class TimelineWindow : Window, IDisposable
         ImGui.TextDisabled(FormatPracticeStatus(snapshot));
 
         ImGui.SameLine();
-        ImGui.TextDisabled($"{snapshot.HitCount} aciertos  {snapshot.MissCount} fallos  {snapshot.WrongCount} errores");
+        ImGui.TextDisabled($"{snapshot.HitCount} aciertos  {snapshot.MissCount} fallos");
 
         DrawPracticeTimeline(snapshot);
     }
@@ -549,12 +546,6 @@ public sealed class TimelineWindow : Window, IDisposable
             : ImGui.GetColorU32(new Vector4(0.48f, 0.50f, 0.56f, 1f));
     }
 
-    private void SetPracticeExpanded(bool expanded)
-    {
-        practiceExpanded = expanded;
-        SetWindowSize();
-    }
-
     public void RefreshWindowSize()
     {
         SetWindowSize();
@@ -562,10 +553,10 @@ public sealed class TimelineWindow : Window, IDisposable
 
     private void SetWindowSize()
     {
-        var liveTimelineHeight = plugin.Configuration.ShowLiveTimeline ? CanvasHeight : 0f;
+        var liveTimelineHeight = IsLiveTimelineVisible ? CanvasHeight : 0f;
         var collapsedHeight = CollapsedWindowHeight - CanvasHeight + liveTimelineHeight;
         var expandedHeight = ExpandedWindowHeight - CanvasHeight + liveTimelineHeight;
-        var height = practiceExpanded ? expandedHeight : collapsedHeight;
+        var height = practiceAvailable ? expandedHeight : collapsedHeight;
         Size = new Vector2(WindowWidth, height);
         SizeConstraints = new WindowSizeConstraints
         {
@@ -573,4 +564,6 @@ public sealed class TimelineWindow : Window, IDisposable
             MaximumSize = new Vector2(WindowWidth, height),
         };
     }
+
+    private bool IsLiveTimelineVisible => plugin.Configuration.ShowLiveTimeline || !practiceAvailable;
 }

@@ -10,8 +10,8 @@
     <!-- Manifest fields (see https://github.com/goatcorp/DalamudPackager/blob/827d88dc/DalamudPackager/DalamudPackager.cs#L420) -->
     <Author>Izlude</Author>
     <Name>Midnight Timeline</Name>
-    <Punchline>Revisa las mecánicas de Forsaken y el timing de las acciones locales.</Punchline>
-    <Description>Midnight Timeline registra un timeline de acciones local ligero y proporciona evidencia retrospectiva de las mecánicas de Forsaken en Dancing Mad.</Description>
+    <Punchline>Revisa Forsaken, Limit Cut y el timing de las acciones locales.</Punchline>
+    <Description>Midnight Timeline registra un timeline de acciones local ligero y proporciona evidencia retrospectiva de Forsaken y P3 Limit Cut en Dancing Mad.</Description>
     <Tags>timeline;combat;training;analysis</Tags>
     <RepoUrl>https://github.com/Izlud3/midnight-plugin</RepoUrl>
     <IconUrl>https://raw.githubusercontent.com/Izlud3/midnight-plugin/main/MidnightPlugin/images/icon.png</IconUrl>

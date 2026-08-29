@@ -115,14 +115,22 @@ public sealed class EncounterSessionService
         lock (syncRoot) return history.ToArray();
     }
 
+    public bool TryRecordLimitCutResult(LimitCutResult result)
+    {
+        lock (syncRoot)
+        {
+            return ActivePull?.SetLimitCutResult(result) == true;
+        }
+    }
+
     public PullSession? FindReviewablePull(Guid pullId)
     {
         lock (syncRoot)
         {
-            if (ActivePull is { } active && active.Id == pullId && active.ForsakenResults.Count > 0)
+            if (ActivePull is { } active && active.Id == pullId && active.HasReviewEvidence)
                 return active;
 
-            return history.LastOrDefault(pull => pull.Id == pullId && pull.ForsakenResults.Count > 0);
+            return history.LastOrDefault(pull => pull.Id == pullId && pull.HasReviewEvidence);
         }
     }
 
@@ -130,10 +138,10 @@ public sealed class EncounterSessionService
     {
         lock (syncRoot)
         {
-            if (ActivePull is { } active && active.ForsakenResults.Count > 0)
+            if (ActivePull is { } active && active.HasReviewEvidence)
                 return active;
 
-            return history.LastOrDefault(pull => pull.ForsakenResults.Count > 0);
+            return history.LastOrDefault(pull => pull.HasReviewEvidence);
         }
     }
 

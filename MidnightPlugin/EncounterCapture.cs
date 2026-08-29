@@ -31,13 +31,20 @@ public sealed class EncounterCapture : IDisposable
         47804, 47806, 47807, 47808, 47809, 47810,
     };
 
+    private static readonly IReadOnlySet<uint> LimitCutEncounterActions = new HashSet<uint>
+    {
+        LimitCutAnalyzer.RotatingBlasterActionId,
+        LimitCutAnalyzer.FinalBlasterActionId,
+    };
+
     private static readonly IReadOnlySet<uint> DancingMadEncounterActions = new HashSet<uint>
     {
-        48370, 47804, 47839, 47858, 47847, 49884, 47936, 47938, 47925,
+        48370, 47804, 47839, 47843, 47844, 47858, 47847, 49884, 47936, 47938, 47925,
     };
 
     private readonly EncounterSessionService sessions;
     private readonly LiveForsakenTracker forsaken;
+    private readonly LiveLimitCutTracker limitCut;
     private readonly IFramework framework;
     private readonly IObjectTable objectTable;
     private readonly IPartyList partyList;
@@ -46,6 +53,7 @@ public sealed class EncounterCapture : IDisposable
     private readonly IDutyState dutyState;
     private readonly PersistentDiagnosticLog diagnostics;
     private readonly ActionEffectSource actionEffects;
+    private readonly TargetIconSource targetIcons;
     private TimeSpan lastPartySample = TimeSpan.MinValue;
     private bool wasDutyRecorderPlayback;
     private bool waitingForNextCombatStart;
@@ -55,6 +63,7 @@ public sealed class EncounterCapture : IDisposable
     public EncounterCapture(
         EncounterSessionService sessions,
         LiveForsakenTracker forsaken,
+        LiveLimitCutTracker limitCut,
         IFramework framework,
         IObjectTable objectTable,
         IPartyList partyList,
@@ -62,10 +71,12 @@ public sealed class EncounterCapture : IDisposable
         ICondition condition,
         IDutyState dutyState,
         PersistentDiagnosticLog diagnostics,
-        ActionEffectSource actionEffects)
+        ActionEffectSource actionEffects,
+        TargetIconSource targetIcons)
     {
         this.sessions = sessions;
         this.forsaken = forsaken;
+        this.limitCut = limitCut;
         this.framework = framework;
         this.objectTable = objectTable;
         this.partyList = partyList;
@@ -74,6 +85,7 @@ public sealed class EncounterCapture : IDisposable
         this.dutyState = dutyState;
         this.diagnostics = diagnostics;
         this.actionEffects = actionEffects;
+        this.targetIcons = targetIcons;
         wasDutyRecorderPlayback = condition[ConditionFlag.DutyRecorderPlayback];
 
         sessions.SetTerritory((ushort)clientState.TerritoryType);
@@ -82,6 +94,7 @@ public sealed class EncounterCapture : IDisposable
         dutyState.DutyWiped += OnDutyWiped;
         dutyState.DutyCompleted += OnDutyCompleted;
         actionEffects.ActionEffect += OnActionEffect;
+        targetIcons.TargetIcon += OnTargetIcon;
     }
 
     public void Dispose()
@@ -93,8 +106,10 @@ public sealed class EncounterCapture : IDisposable
         dutyState.DutyWiped -= OnDutyWiped;
         dutyState.DutyCompleted -= OnDutyCompleted;
         actionEffects.ActionEffect -= OnActionEffect;
+        targetIcons.TargetIcon -= OnTargetIcon;
         sessions.Clear();
         forsaken.Reset();
+        limitCut.Reset();
     }
 
     private void OnFrameworkUpdate(IFramework _)
@@ -126,7 +141,7 @@ public sealed class EncounterCapture : IDisposable
             lastPartySample = elapsed;
             PollParty(elapsed);
         }
-        if (forsaken.IsResolutionDue(elapsed))
+        if (forsaken.IsResolutionDue(elapsed) || limitCut.IsResolutionDue(elapsed))
         {
             // Refresh deaths and final positions after the follow-up shape effects
             // have settled, immediately before producing the retrospective verdict.
@@ -134,6 +149,7 @@ public sealed class EncounterCapture : IDisposable
             lastPartySample = elapsed;
         }
         forsaken.Advance(elapsed);
+        limitCut.Advance(elapsed);
     }
 
     private void PollParty(TimeSpan elapsed)
@@ -149,6 +165,7 @@ public sealed class EncounterCapture : IDisposable
         }
 
         forsaken.UpdateParty(observations);
+        limitCut.UpdateParty(observations);
     }
 
     private List<PartyObservation> PollDalamudParty()
@@ -239,7 +256,8 @@ public sealed class EncounterCapture : IDisposable
         EnsurePullStarted(hasEncounterSignal);
         if (sessions.ActivePull is null) return;
         var elapsed = sessions.CurrentElapsed();
-        if (ForsakenEncounterActions.Contains(actionEffect.Header.ActionId))
+        if (ForsakenEncounterActions.Contains(actionEffect.Header.ActionId) ||
+            LimitCutEncounterActions.Contains(actionEffect.Header.ActionId))
         {
             // Capture replay positions and markers at the mechanic event rather
             // than relying on the periodic one-second diagnostic sample.
@@ -247,6 +265,12 @@ public sealed class EncounterCapture : IDisposable
             lastPartySample = elapsed;
         }
         forsaken.OnActionEffect(actionEffect, elapsed);
+        limitCut.OnActionEffect(actionEffect, elapsed);
+    }
+
+    private void OnTargetIcon(TargetIconEvent targetIcon)
+    {
+        if (sessions.ActivePull is not null) limitCut.OnTargetIcon(targetIcon);
     }
 
     private void OnTerritoryChanged(uint territory)
@@ -254,6 +278,7 @@ public sealed class EncounterCapture : IDisposable
         var endedPull = sessions.ActivePull is not null;
         sessions.SetTerritory((ushort)territory);
         forsaken.Reset();
+        limitCut.Reset();
         if (endedPull) WaitForNextCombatStart();
         lastPartySample = TimeSpan.MinValue;
     }
@@ -295,6 +320,7 @@ public sealed class EncounterCapture : IDisposable
         if (sessions.StartPull(DateTimeOffset.UtcNow) is null) return;
 
         forsaken.Reset();
+        limitCut.Reset();
         lastPartySample = TimeSpan.MinValue;
         diagnostics.Add(
             "Encounter",
@@ -326,6 +352,7 @@ public sealed class EncounterCapture : IDisposable
     private bool IsStrongEncounterSignal(ActionEffectSet actionEffect) =>
         DancingMadEncounterActions.Contains(actionEffect.Header.ActionId) ||
         ForsakenEncounterActions.Contains(actionEffect.Header.ActionId) ||
+        LimitCutEncounterActions.Contains(actionEffect.Header.ActionId) ||
         actionEffect.Source is { } source && DancingMadBossObjectIds.Contains(source.BaseId);
 
     private bool TryRecognizeDancingMadActor()
@@ -358,6 +385,7 @@ public sealed class EncounterCapture : IDisposable
             diagnostics.Add("Encounter", null, $"Ended Dancing Mad pull capture as {state}. {reason}");
         }
         forsaken.Reset();
+        limitCut.Reset();
         lastPartySample = TimeSpan.MinValue;
     }
 
