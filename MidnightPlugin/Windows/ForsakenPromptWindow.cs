@@ -24,7 +24,7 @@ public sealed class ForsakenPromptWindow : Window, IDisposable
         Size = new Vector2(240, 82);
         SizeCondition = ImGuiCond.Always;
         Position = GetDefaultPosition();
-        PositionCondition = ImGuiCond.Appearing;
+        PositionCondition = ImGuiCond.FirstUseEver;
     }
 
     public void Dispose() { }
