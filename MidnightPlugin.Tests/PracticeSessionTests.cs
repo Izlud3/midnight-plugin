@@ -7,6 +7,25 @@ namespace MidnightPlugin.Tests;
 public sealed class PracticeSessionTests
 {
     [Fact]
+    public void ImportedSgeFixtureLoadsWithExpectedCoverageAndActionIds()
+    {
+        var path = Path.Combine(AppContext.BaseDirectory, "TestData", "sge-dancing-mad-v1.json");
+        var result = PracticeReferenceCatalog.Load(File.ReadAllText(path));
+
+        Assert.True(result.IsValid, result.Error);
+        var rotation = result.Rotation!;
+        Assert.Equal("SGE", rotation.Job);
+        Assert.Equal("Luciana Wolf", rotation.ProvenancePlayer);
+        Assert.Equal(1, rotation.ProvenanceRank);
+        Assert.Equal(385, rotation.Actions.Count);
+        Assert.Equal(260, rotation.Actions.Count(action => action.TimingClass == ActionTimingClass.Gcd));
+        Assert.Equal(125, rotation.Actions.Count(action => action.TimingClass == ActionTimingClass.Ogcd));
+        Assert.All(rotation.Actions, action => Assert.NotEqual(0u, action.ActionId));
+        Assert.Equal(new PracticeReferenceAction(24314, "Eukrasian Dosis III", ActionTimingClass.Gcd, TimeSpan.Zero), rotation.Actions[0]);
+        Assert.Equal(TimeSpan.FromMilliseconds(679221 - 1378), rotation.Actions[^1].Offset);
+    }
+
+    [Fact]
     public void ReviewedPldFixtureLoadsWithExpectedActionCounts()
     {
         var path = Path.Combine(AppContext.BaseDirectory, "TestData", "pld-dancing-mad-v1.json");

@@ -8,7 +8,7 @@ El timeline de acciones funciona en cualquier contenido. Las herramientas de rev
 
 - Timeline local de GCD y oGCD con iconos, clasificación y marcas de tiempo.
 - Práctica de rotación con referencias compartibles, cuenta regresiva y evaluación de aciertos, fallos y acciones incorrectas.
-- Referencia de PLD incluida, basada en una rotación revisada de Dancing Mad.
+- Referencias de PLD y SGE incluidas, basadas en rotaciones de Dancing Mad importadas en Midnight.
 - Opción para detener la práctica después de tres errores.
 - Historial compacto de hasta 10 pulls de Dancing Mad por sesión.
 - Revisión retrospectiva de torres, stacks, conos, muertes y posiciones durante Forsaken.
@@ -46,6 +46,8 @@ La ventana principal y la configuración están disponibles desde la interfaz de
 La práctica sigue automáticamente el job equipado cuando existe una referencia compatible. Se arma al entrar en combate y comienza cuando la primera acción del jugador coincide con la acción inicial de la referencia. Permite pausar, reiniciar o comenzar desde otro punto de la rotación.
 
 Las referencias son archivos JSON compartibles. Para añadir o reemplazar una, copia el archivo en la carpeta mostrada en **Configuración** y pulsa **Recargar referencias**. Una referencia del usuario reemplaza la incluida para el mismo job sin necesidad de modificar el plugin.
+
+La referencia de SGE corresponde a Luciana Wolf, marcada como rango 1 en los datos importados. Incluye el tramo disponible hasta 11:19 de un combate de 18:25; no cubre el combate completo. Omite el Toxikon II previo al pull y comienza con Eukrasian Dosis III.
 
 ## Revisión de DMU
 

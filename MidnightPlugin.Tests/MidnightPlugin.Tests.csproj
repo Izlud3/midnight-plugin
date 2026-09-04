@@ -17,5 +17,6 @@
 
   <ItemGroup>
     <None Include="..\MidnightPlugin\References\pld-dancing-mad-v1.json" Link="TestData\pld-dancing-mad-v1.json" CopyToOutputDirectory="PreserveNewest" />
+    <None Include="..\MidnightPlugin\References\sge-dancing-mad-v1.json" Link="TestData\sge-dancing-mad-v1.json" CopyToOutputDirectory="PreserveNewest" />
   </ItemGroup>
 </Project>
