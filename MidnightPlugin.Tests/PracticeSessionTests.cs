@@ -15,14 +15,20 @@ public sealed class PracticeSessionTests
         Assert.True(result.IsValid, result.Error);
         var rotation = result.Rotation!;
         Assert.Equal("SGE", rotation.Job);
-        Assert.Equal("Luciana Wolf", rotation.ProvenancePlayer);
-        Assert.Equal(1, rotation.ProvenanceRank);
-        Assert.Equal(385, rotation.Actions.Count);
-        Assert.Equal(260, rotation.Actions.Count(action => action.TimingClass == ActionTimingClass.Gcd));
-        Assert.Equal(125, rotation.Actions.Count(action => action.TimingClass == ActionTimingClass.Ogcd));
+        Assert.Equal("Skye Nyre", rotation.ProvenancePlayer);
+        Assert.Null(rotation.ProvenanceRank);
+        Assert.Equal(655, rotation.Actions.Count);
+        Assert.Equal(415, rotation.Actions.Count(action => action.TimingClass == ActionTimingClass.Gcd));
+        Assert.Equal(240, rotation.Actions.Count(action => action.TimingClass == ActionTimingClass.Ogcd));
         Assert.All(rotation.Actions, action => Assert.NotEqual(0u, action.ActionId));
-        Assert.Equal(new PracticeReferenceAction(24314, "Eukrasian Dosis III", ActionTimingClass.Gcd, TimeSpan.Zero), rotation.Actions[0]);
-        Assert.Equal(TimeSpan.FromMilliseconds(679221 - 1378), rotation.Actions[^1].Offset);
+        Assert.Equal(new PracticeReferenceAction(24285, "Kardia", ActionTimingClass.Ogcd, TimeSpan.Zero), rotation.Actions[0]);
+        Assert.Equal(new PracticeReferenceAction(24316, "Toxikon II", ActionTimingClass.Gcd, TimeSpan.FromMilliseconds(1104966 - 536)), rotation.Actions[^1]);
+
+        // Pneuma's second entry must also be merged when it falls on the next CSV page.
+        var pneuma = rotation.Actions.Where(action => action.ActionId == 24318).ToArray();
+        Assert.Equal(7, pneuma.Length);
+        Assert.Contains(pneuma, action => action.Offset == TimeSpan.FromMilliseconds(665834 - 536));
+        Assert.DoesNotContain(pneuma, action => action.Offset == TimeSpan.FromMilliseconds(666413 - 536));
     }
 
     [Fact]

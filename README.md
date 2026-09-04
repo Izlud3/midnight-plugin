@@ -8,7 +8,7 @@ El timeline de acciones funciona en cualquier contenido. Las herramientas de rev
 
 - Timeline local de GCD y oGCD con iconos, clasificación y marcas de tiempo.
 - Práctica de rotación con referencias compartibles, cuenta regresiva y evaluación de aciertos, fallos y acciones incorrectas.
-- Referencias de PLD y SGE incluidas, basadas en rotaciones de Dancing Mad importadas en Midnight.
+- Referencias de PLD y SGE incluidas, basadas en rotaciones de Dancing Mad.
 - Opción para detener la práctica después de tres errores.
 - Historial compacto de hasta 10 pulls de Dancing Mad por sesión.
 - Revisión retrospectiva de torres, stacks, conos, muertes y posiciones durante Forsaken.
@@ -47,7 +47,7 @@ La práctica sigue automáticamente el job equipado cuando existe una referencia
 
 Las referencias son archivos JSON compartibles. Para añadir o reemplazar una, copia el archivo en la carpeta mostrada en **Configuración** y pulsa **Recargar referencias**. Una referencia del usuario reemplaza la incluida para el mismo job sin necesidad de modificar el plugin.
 
-La referencia de SGE corresponde a Luciana Wolf, marcada como rango 1 en los datos importados. Incluye el tramo disponible hasta 11:19 de un combate de 18:25; no cubre el combate completo. Omite el Toxikon II previo al pull y comienza con Eukrasian Dosis III.
+La referencia de SGE corresponde a Skye Nyre y combina dos páginas CSV de FF Logs hasta 18:24.966. Incluye 655 acciones del job y comienza con Kardia. Omite los casts cancelados, Toxikon II y Psyche previos al pull, y las acciones de utilidad y objetos excluidas del catálogo SGE (Sprint, Swiftcast, Lucid Dreaming y pociones). Los registros dobles de Pneuma se consolidan en una sola acción. Los CSV no incluyen rango ni enlace al reporte.
 
 ## Revisión de DMU
 

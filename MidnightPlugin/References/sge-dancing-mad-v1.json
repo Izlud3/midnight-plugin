@@ -3,16 +3,22 @@
   "encounterKey": "dancing-mad",
   "territoryId": 1331,
   "job": "SGE",
-  "patch": "7.5",
-  "version": "dancing-mad-sge-rank-one-v1",
+  "patch": "unknown",
+  "version": "dancing-mad-sge-skye-nyre-v1",
   "provenance": {
-    "reportCode": "24K36hxvt8ygGYZT",
-    "fightId": 105,
-    "player": "Luciana Wolf",
-    "rank": 1,
-    "capturedAt": "2026-08-17T02:06:36.403Z",
-    "source": "Midnight fight_actions CSV export (csv-sge-top-1:1, csv-luciana-wolf, rotation-actions-v6); action IDs enriched from Midnight SGE job-action-catalog; rank from import metadata",
-    "notes": "Partial imported timeline: last action at 679221 ms of a 1105391 ms fight. One pre-pull Toxikon II at -1069 ms omitted; practice starts at Eukrasian Dosis III (1378 ms). capturedAt records the database import time."
+    "player": "Skye Nyre",
+    "source": "User-provided FF Logs cast CSV pages for Dancing Mad Kill (9:43 PM); action IDs and timing classes from Midnight SGE job-action-catalog",
+    "files": [
+      {
+        "file": "Events - Dancing Mad  Kill   (943 PM) - Report Dancing Mad  FF Logs.csv",
+        "sha256": "16b1c44cd5ba92020a9f9b5e5d95b89b4d36adc1cc47fb66fd04303d678f5036"
+      },
+      {
+        "file": "Events - Dancing Mad  Kill   (943 PM) - Report Dancing Mad  FF Logs (1).csv",
+        "sha256": "618084952fc8a8c5273f21f911e8b1747630002eab2eddda83c3be43c754a179"
+      }
+    ],
+    "notes": "Combined pages cover -1205 through 1104966 ms. Omitted 5 canceled casts, 2 pre-pull actions (Toxikon II and Psyche), and 29 utility/item actions (Sprint, Swiftcast, Lucid Dreaming, Grade 4 Gemdraught of Mind [HQ]) using the existing SGE catalog scope. Consolidated 7 paired Pneuma entries by retaining each earlier cast timestamp, including the pair across the page boundary. Practice starts at Kardia (536 ms). Report code, fight ID, rank, patch, and fight date are not provided by the CSVs."
   },
   "matcher": {
     "timingDriftThresholdMs": 400,
@@ -29,3091 +35,5251 @@
     {
       "key": "pull",
       "label": "Pull",
-      "timeMs": 442,
+      "timeMs": 0,
       "phase": "P1: Kefka",
       "confidence": "exact"
     }
   ],
   "actions": [
     {
-      "actionId": 24314,
-      "actionName": "Eukrasian Dosis III",
-      "timingClass": "gcd",
-      "timeMs": 1378,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 936
-    },
-    {
-      "actionId": 37033,
-      "actionName": "Psyche",
-      "timingClass": "ogcd",
-      "timeMs": 2045,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 1603
-    },
-    {
-      "actionId": 24313,
-      "actionName": "Phlegma III",
-      "timingClass": "gcd",
-      "timeMs": 2902,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 2460
-    },
-    {
-      "actionId": 24312,
-      "actionName": "Dosis III",
-      "timingClass": "gcd",
-      "timeMs": 6287,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 5845
-    },
-    {
-      "actionId": 24312,
-      "actionName": "Dosis III",
-      "timingClass": "gcd",
-      "timeMs": 8739,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 8297
-    },
-    {
-      "actionId": 24312,
-      "actionName": "Dosis III",
-      "timingClass": "gcd",
-      "timeMs": 11184,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 10742
-    },
-    {
-      "actionId": 24312,
-      "actionName": "Dosis III",
-      "timingClass": "gcd",
-      "timeMs": 13592,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 13150
-    },
-    {
-      "actionId": 24312,
-      "actionName": "Dosis III",
-      "timingClass": "gcd",
-      "timeMs": 15998,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 15556
-    },
-    {
-      "actionId": 24312,
-      "actionName": "Dosis III",
-      "timingClass": "gcd",
-      "timeMs": 18444,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 18002
-    },
-    {
-      "actionId": 24302,
-      "actionName": "Physis II",
-      "timingClass": "ogcd",
-      "timeMs": 19075,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 18633
-    },
-    {
-      "actionId": 24312,
-      "actionName": "Dosis III",
-      "timingClass": "gcd",
-      "timeMs": 20854,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 20412
-    },
-    {
-      "actionId": 24317,
-      "actionName": "Krasis",
-      "timingClass": "ogcd",
-      "timeMs": 21527,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 21085
-    },
-    {
-      "actionId": 24313,
-      "actionName": "Phlegma III",
-      "timingClass": "gcd",
-      "timeMs": 22419,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 21977
-    },
-    {
-      "actionId": 24298,
-      "actionName": "Kerachole",
-      "timingClass": "ogcd",
-      "timeMs": 23041,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 22599
-    },
-    {
-      "actionId": 24312,
-      "actionName": "Dosis III",
-      "timingClass": "gcd",
-      "timeMs": 25845,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 25403
-    },
-    {
-      "actionId": 24312,
-      "actionName": "Dosis III",
-      "timingClass": "gcd",
-      "timeMs": 28253,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 27811
-    },
-    {
-      "actionId": 24290,
-      "actionName": "Eukrasia",
-      "timingClass": "ogcd",
-      "timeMs": 29724,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 29282
-    },
-    {
-      "actionId": 24314,
-      "actionName": "Eukrasian Dosis III",
-      "timingClass": "gcd",
-      "timeMs": 30754,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 30312
-    },
-    {
-      "actionId": 24311,
-      "actionName": "Panhaima",
-      "timingClass": "ogcd",
-      "timeMs": 31424,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 30982
-    },
-    {
-      "actionId": 24312,
-      "actionName": "Dosis III",
-      "timingClass": "gcd",
-      "timeMs": 33162,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 32720
-    },
-    {
-      "actionId": 24312,
-      "actionName": "Dosis III",
-      "timingClass": "gcd",
-      "timeMs": 34675,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 34233
-    },
-    {
-      "actionId": 24300,
-      "actionName": "Zoe",
-      "timingClass": "ogcd",
-      "timeMs": 35291,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 34849
-    },
-    {
-      "actionId": 24312,
-      "actionName": "Dosis III",
-      "timingClass": "gcd",
-      "timeMs": 38059,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 37617
-    },
-    {
-      "actionId": 24312,
-      "actionName": "Dosis III",
-      "timingClass": "gcd",
-      "timeMs": 40503,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 40061
-    },
-    {
-      "actionId": 24312,
-      "actionName": "Dosis III",
-      "timingClass": "gcd",
-      "timeMs": 42908,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 42466
-    },
-    {
-      "actionId": 24312,
-      "actionName": "Dosis III",
-      "timingClass": "gcd",
-      "timeMs": 45349,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 44907
-    },
-    {
-      "actionId": 24318,
-      "actionName": "Pneuma",
-      "timingClass": "gcd",
-      "timeMs": 47801,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 47359
-    },
-    {
-      "actionId": 24318,
-      "actionName": "Pneuma",
-      "timingClass": "gcd",
-      "timeMs": 48387,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 47945
-    },
-    {
-      "actionId": 24313,
-      "actionName": "Phlegma III",
-      "timingClass": "gcd",
-      "timeMs": 49325,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 48883
-    },
-    {
-      "actionId": 24312,
-      "actionName": "Dosis III",
-      "timingClass": "gcd",
-      "timeMs": 52747,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 52305
-    },
-    {
-      "actionId": 24298,
-      "actionName": "Kerachole",
-      "timingClass": "ogcd",
-      "timeMs": 53331,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 52889
-    },
-    {
-      "actionId": 24312,
-      "actionName": "Dosis III",
-      "timingClass": "gcd",
-      "timeMs": 55200,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 54758
-    },
-    {
-      "actionId": 24299,
-      "actionName": "Ixochole",
-      "timingClass": "ogcd",
-      "timeMs": 55731,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 55289
-    },
-    {
-      "actionId": 24312,
-      "actionName": "Dosis III",
-      "timingClass": "gcd",
-      "timeMs": 57605,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 57163
-    },
-    {
-      "actionId": 24290,
-      "actionName": "Eukrasia",
-      "timingClass": "ogcd",
-      "timeMs": 59077,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 58635
-    },
-    {
-      "actionId": 24314,
-      "actionName": "Eukrasian Dosis III",
-      "timingClass": "gcd",
-      "timeMs": 60056,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 59614
-    },
-    {
-      "actionId": 24312,
-      "actionName": "Dosis III",
-      "timingClass": "gcd",
-      "timeMs": 62462,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 62020
-    },
-    {
-      "actionId": 37033,
-      "actionName": "Psyche",
-      "timingClass": "ogcd",
-      "timeMs": 63132,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 62690
-    },
-    {
-      "actionId": 24312,
-      "actionName": "Dosis III",
-      "timingClass": "gcd",
-      "timeMs": 64914,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 64472
-    },
-    {
-      "actionId": 24312,
-      "actionName": "Dosis III",
-      "timingClass": "gcd",
-      "timeMs": 67367,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 66925
-    },
-    {
-      "actionId": 24312,
-      "actionName": "Dosis III",
-      "timingClass": "gcd",
-      "timeMs": 69813,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 69371
-    },
-    {
-      "actionId": 24312,
-      "actionName": "Dosis III",
-      "timingClass": "gcd",
-      "timeMs": 72222,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 71780
-    },
-    {
-      "actionId": 24312,
-      "actionName": "Dosis III",
-      "timingClass": "gcd",
-      "timeMs": 74671,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 74229
-    },
-    {
-      "actionId": 24312,
-      "actionName": "Dosis III",
-      "timingClass": "gcd",
-      "timeMs": 77129,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 76687
-    },
-    {
-      "actionId": 24312,
-      "actionName": "Dosis III",
-      "timingClass": "gcd",
-      "timeMs": 79539,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 79097
-    },
-    {
       "actionId": 24285,
       "actionName": "Kardia",
       "timingClass": "ogcd",
-      "timeMs": 80204,
+      "timeMs": 536,
       "anchorKey": "pull",
-      "anchorOffsetMs": 79762
-    },
-    {
-      "actionId": 24312,
-      "actionName": "Dosis III",
-      "timingClass": "gcd",
-      "timeMs": 81992,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 81550
-    },
-    {
-      "actionId": 24312,
-      "actionName": "Dosis III",
-      "timingClass": "gcd",
-      "timeMs": 84442,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 84000
-    },
-    {
-      "actionId": 24298,
-      "actionName": "Kerachole",
-      "timingClass": "ogcd",
-      "timeMs": 85065,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 84623
-    },
-    {
-      "actionId": 24312,
-      "actionName": "Dosis III",
-      "timingClass": "gcd",
-      "timeMs": 86896,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 86454
-    },
-    {
-      "actionId": 24299,
-      "actionName": "Ixochole",
-      "timingClass": "ogcd",
-      "timeMs": 87517,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 87075
-    },
-    {
-      "actionId": 24290,
-      "actionName": "Eukrasia",
-      "timingClass": "ogcd",
-      "timeMs": 88414,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 87972
-    },
-    {
-      "actionId": 24314,
-      "actionName": "Eukrasian Dosis III",
-      "timingClass": "gcd",
-      "timeMs": 89399,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 88957
-    },
-    {
-      "actionId": 24294,
-      "actionName": "Soteria",
-      "timingClass": "ogcd",
-      "timeMs": 90058,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 89616
-    },
-    {
-      "actionId": 24312,
-      "actionName": "Dosis III",
-      "timingClass": "gcd",
-      "timeMs": 91845,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 91403
-    },
-    {
-      "actionId": 24312,
-      "actionName": "Dosis III",
-      "timingClass": "gcd",
-      "timeMs": 94291,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 93849
-    },
-    {
-      "actionId": 24305,
-      "actionName": "Haima",
-      "timingClass": "ogcd",
-      "timeMs": 94963,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 94521
-    },
-    {
-      "actionId": 24312,
-      "actionName": "Dosis III",
-      "timingClass": "gcd",
-      "timeMs": 96697,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 96255
-    },
-    {
-      "actionId": 24302,
-      "actionName": "Physis II",
-      "timingClass": "ogcd",
-      "timeMs": 97417,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 96975
-    },
-    {
-      "actionId": 24312,
-      "actionName": "Dosis III",
-      "timingClass": "gcd",
-      "timeMs": 99149,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 98707
-    },
-    {
-      "actionId": 37035,
-      "actionName": "Philosophia",
-      "timingClass": "ogcd",
-      "timeMs": 99827,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 99385
-    },
-    {
-      "actionId": 24312,
-      "actionName": "Dosis III",
-      "timingClass": "gcd",
-      "timeMs": 101612,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 101170
-    },
-    {
-      "actionId": 24312,
-      "actionName": "Dosis III",
-      "timingClass": "gcd",
-      "timeMs": 104067,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 103625
-    },
-    {
-      "actionId": 24312,
-      "actionName": "Dosis III",
-      "timingClass": "gcd",
-      "timeMs": 106510,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 106068
-    },
-    {
-      "actionId": 24312,
-      "actionName": "Dosis III",
-      "timingClass": "gcd",
-      "timeMs": 108033,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 107591
-    },
-    {
-      "actionId": 24312,
-      "actionName": "Dosis III",
-      "timingClass": "gcd",
-      "timeMs": 111371,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 110929
-    },
-    {
-      "actionId": 24312,
-      "actionName": "Dosis III",
-      "timingClass": "gcd",
-      "timeMs": 113823,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 113381
-    },
-    {
-      "actionId": 24310,
-      "actionName": "Holos",
-      "timingClass": "ogcd",
-      "timeMs": 114452,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 114010
-    },
-    {
-      "actionId": 24312,
-      "actionName": "Dosis III",
-      "timingClass": "gcd",
-      "timeMs": 116226,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 115784
-    },
-    {
-      "actionId": 24298,
-      "actionName": "Kerachole",
-      "timingClass": "ogcd",
-      "timeMs": 116894,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 116452
-    },
-    {
-      "actionId": 24290,
-      "actionName": "Eukrasia",
-      "timingClass": "ogcd",
-      "timeMs": 117784,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 117342
-    },
-    {
-      "actionId": 24314,
-      "actionName": "Eukrasian Dosis III",
-      "timingClass": "gcd",
-      "timeMs": 118761,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 118319
-    },
-    {
-      "actionId": 24299,
-      "actionName": "Ixochole",
-      "timingClass": "ogcd",
-      "timeMs": 119388,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 118946
-    },
-    {
-      "actionId": 24312,
-      "actionName": "Dosis III",
-      "timingClass": "gcd",
-      "timeMs": 121166,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 120724
-    },
-    {
-      "actionId": 24313,
-      "actionName": "Phlegma III",
-      "timingClass": "gcd",
-      "timeMs": 122734,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 122292
-    },
-    {
-      "actionId": 37033,
-      "actionName": "Psyche",
-      "timingClass": "ogcd",
-      "timeMs": 123354,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 122912
-    },
-    {
-      "actionId": 24312,
-      "actionName": "Dosis III",
-      "timingClass": "gcd",
-      "timeMs": 126158,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 125716
-    },
-    {
-      "actionId": 24312,
-      "actionName": "Dosis III",
-      "timingClass": "gcd",
-      "timeMs": 128565,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 128123
-    },
-    {
-      "actionId": 24312,
-      "actionName": "Dosis III",
-      "timingClass": "gcd",
-      "timeMs": 130971,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 130529
-    },
-    {
-      "actionId": 24312,
-      "actionName": "Dosis III",
-      "timingClass": "gcd",
-      "timeMs": 133401,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 132959
-    },
-    {
-      "actionId": 24312,
-      "actionName": "Dosis III",
-      "timingClass": "gcd",
-      "timeMs": 135837,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 135395
-    },
-    {
-      "actionId": 24309,
-      "actionName": "Rhizomata",
-      "timingClass": "ogcd",
-      "timeMs": 136455,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 136013
-    },
-    {
-      "actionId": 24290,
-      "actionName": "Eukrasia",
-      "timingClass": "ogcd",
-      "timeMs": 137308,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 136866
-    },
-    {
-      "actionId": 24313,
-      "actionName": "Phlegma III",
-      "timingClass": "gcd",
-      "timeMs": 138333,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 137891
-    },
-    {
-      "actionId": 24314,
-      "actionName": "Eukrasian Dosis III",
-      "timingClass": "gcd",
-      "timeMs": 140783,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 140341
-    },
-    {
-      "actionId": 24312,
-      "actionName": "Dosis III",
-      "timingClass": "gcd",
-      "timeMs": 143189,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 142747
-    },
-    {
-      "actionId": 24312,
-      "actionName": "Dosis III",
-      "timingClass": "gcd",
-      "timeMs": 145636,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 145194
-    },
-    {
-      "actionId": 24312,
-      "actionName": "Dosis III",
-      "timingClass": "gcd",
-      "timeMs": 148090,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 147648
-    },
-    {
-      "actionId": 24312,
-      "actionName": "Dosis III",
-      "timingClass": "gcd",
-      "timeMs": 150496,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 150054
-    },
-    {
-      "actionId": 24312,
-      "actionName": "Dosis III",
-      "timingClass": "gcd",
-      "timeMs": 152954,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 152512
-    },
-    {
-      "actionId": 24312,
-      "actionName": "Dosis III",
-      "timingClass": "gcd",
-      "timeMs": 155401,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 154959
-    },
-    {
-      "actionId": 24312,
-      "actionName": "Dosis III",
-      "timingClass": "gcd",
-      "timeMs": 156912,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 156470
-    },
-    {
-      "actionId": 24312,
-      "actionName": "Dosis III",
-      "timingClass": "gcd",
-      "timeMs": 160254,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 159812
-    },
-    {
-      "actionId": 24302,
-      "actionName": "Physis II",
-      "timingClass": "ogcd",
-      "timeMs": 160975,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 160533
-    },
-    {
-      "actionId": 24312,
-      "actionName": "Dosis III",
-      "timingClass": "gcd",
-      "timeMs": 162713,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 162271
-    },
-    {
-      "actionId": 24313,
-      "actionName": "Phlegma III",
-      "timingClass": "gcd",
-      "timeMs": 164261,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 163819
-    },
-    {
-      "actionId": 24298,
-      "actionName": "Kerachole",
-      "timingClass": "ogcd",
-      "timeMs": 164886,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 164444
-    },
-    {
-      "actionId": 24311,
-      "actionName": "Panhaima",
-      "timingClass": "ogcd",
-      "timeMs": 165556,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 165114
-    },
-    {
-      "actionId": 24312,
-      "actionName": "Dosis III",
-      "timingClass": "gcd",
-      "timeMs": 167649,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 167207
-    },
-    {
-      "actionId": 24299,
-      "actionName": "Ixochole",
-      "timingClass": "ogcd",
-      "timeMs": 168229,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 167787
-    },
-    {
-      "actionId": 24290,
-      "actionName": "Eukrasia",
-      "timingClass": "ogcd",
-      "timeMs": 169118,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 168676
-    },
-    {
-      "actionId": 24314,
-      "actionName": "Eukrasian Dosis III",
-      "timingClass": "gcd",
-      "timeMs": 170135,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 169693
-    },
-    {
-      "actionId": 24312,
-      "actionName": "Dosis III",
-      "timingClass": "gcd",
-      "timeMs": 172594,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 172152
-    },
-    {
-      "actionId": 24312,
-      "actionName": "Dosis III",
-      "timingClass": "gcd",
-      "timeMs": 181229,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 180787
+      "anchorOffsetMs": 536
     },
     {
       "actionId": 24316,
       "actionName": "Toxikon II",
       "timingClass": "gcd",
-      "timeMs": 182746,
+      "timeMs": 1206,
       "anchorKey": "pull",
-      "anchorOffsetMs": 182304
+      "anchorOffsetMs": 1206
     },
     {
-      "actionId": 37033,
-      "actionName": "Psyche",
-      "timingClass": "ogcd",
-      "timeMs": 183367,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 182925
-    },
-    {
-      "actionId": 24316,
-      "actionName": "Toxikon II",
+      "actionId": 24314,
+      "actionName": "Eukrasian Dosis III",
       "timingClass": "gcd",
-      "timeMs": 185148,
+      "timeMs": 3655,
       "anchorKey": "pull",
-      "anchorOffsetMs": 184706
-    },
-    {
-      "actionId": 24312,
-      "actionName": "Dosis III",
-      "timingClass": "gcd",
-      "timeMs": 188537,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 188095
-    },
-    {
-      "actionId": 24312,
-      "actionName": "Dosis III",
-      "timingClass": "gcd",
-      "timeMs": 190946,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 190504
-    },
-    {
-      "actionId": 24312,
-      "actionName": "Dosis III",
-      "timingClass": "gcd",
-      "timeMs": 193396,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 192954
-    },
-    {
-      "actionId": 24312,
-      "actionName": "Dosis III",
-      "timingClass": "gcd",
-      "timeMs": 195849,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 195407
-    },
-    {
-      "actionId": 24312,
-      "actionName": "Dosis III",
-      "timingClass": "gcd",
-      "timeMs": 197366,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 196924
-    },
-    {
-      "actionId": 24299,
-      "actionName": "Ixochole",
-      "timingClass": "ogcd",
-      "timeMs": 198213,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 197771
-    },
-    {
-      "actionId": 24290,
-      "actionName": "Eukrasia",
-      "timingClass": "ogcd",
-      "timeMs": 199817,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 199375
-    },
-    {
-      "actionId": 37034,
-      "actionName": "Eukrasian Prognosis II",
-      "timingClass": "gcd",
-      "timeMs": 200799,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 200357
-    },
-    {
-      "actionId": 24301,
-      "actionName": "Pepsis",
-      "timingClass": "ogcd",
-      "timeMs": 201423,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 200981
-    },
-    {
-      "actionId": 24290,
-      "actionName": "Eukrasia",
-      "timingClass": "ogcd",
-      "timeMs": 202314,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 201872
-    },
-    {
-      "actionId": 24291,
-      "actionName": "Eukrasian Diagnosis",
-      "timingClass": "gcd",
-      "timeMs": 203383,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 202941
+      "anchorOffsetMs": 3655
     },
     {
       "actionId": 24317,
       "actionName": "Krasis",
       "timingClass": "ogcd",
-      "timeMs": 204634,
+      "timeMs": 4277,
       "anchorKey": "pull",
-      "anchorOffsetMs": 204192
-    },
-    {
-      "actionId": 24290,
-      "actionName": "Eukrasia",
-      "timingClass": "ogcd",
-      "timeMs": 205303,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 204861
-    },
-    {
-      "actionId": 24314,
-      "actionName": "Eukrasian Dosis III",
-      "timingClass": "gcd",
-      "timeMs": 208111,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 207669
-    },
-    {
-      "actionId": 24312,
-      "actionName": "Dosis III",
-      "timingClass": "gcd",
-      "timeMs": 210564,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 210122
-    },
-    {
-      "actionId": 24312,
-      "actionName": "Dosis III",
-      "timingClass": "gcd",
-      "timeMs": 213018,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 212576
-    },
-    {
-      "actionId": 24312,
-      "actionName": "Dosis III",
-      "timingClass": "gcd",
-      "timeMs": 215425,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 214983
-    },
-    {
-      "actionId": 24312,
-      "actionName": "Dosis III",
-      "timingClass": "gcd",
-      "timeMs": 217879,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 217437
-    },
-    {
-      "actionId": 24312,
-      "actionName": "Dosis III",
-      "timingClass": "gcd",
-      "timeMs": 220327,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 219885
-    },
-    {
-      "actionId": 24300,
-      "actionName": "Zoe",
-      "timingClass": "ogcd",
-      "timeMs": 220952,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 220510
-    },
-    {
-      "actionId": 24312,
-      "actionName": "Dosis III",
-      "timingClass": "gcd",
-      "timeMs": 222779,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 222337
-    },
-    {
-      "actionId": 24312,
-      "actionName": "Dosis III",
-      "timingClass": "gcd",
-      "timeMs": 225187,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 224745
-    },
-    {
-      "actionId": 24312,
-      "actionName": "Dosis III",
-      "timingClass": "gcd",
-      "timeMs": 227640,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 227198
-    },
-    {
-      "actionId": 24312,
-      "actionName": "Dosis III",
-      "timingClass": "gcd",
-      "timeMs": 230087,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 229645
-    },
-    {
-      "actionId": 24298,
-      "actionName": "Kerachole",
-      "timingClass": "ogcd",
-      "timeMs": 230711,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 230269
-    },
-    {
-      "actionId": 24312,
-      "actionName": "Dosis III",
-      "timingClass": "gcd",
-      "timeMs": 232538,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 232096
-    },
-    {
-      "actionId": 24312,
-      "actionName": "Dosis III",
-      "timingClass": "gcd",
-      "timeMs": 234952,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 234510
-    },
-    {
-      "actionId": 24290,
-      "actionName": "Eukrasia",
-      "timingClass": "ogcd",
-      "timeMs": 236461,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 236019
-    },
-    {
-      "actionId": 24314,
-      "actionName": "Eukrasian Dosis III",
-      "timingClass": "gcd",
-      "timeMs": 237441,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 236999
-    },
-    {
-      "actionId": 24290,
-      "actionName": "Eukrasia",
-      "timingClass": "ogcd",
-      "timeMs": 238954,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 238512
-    },
-    {
-      "actionId": 37034,
-      "actionName": "Eukrasian Prognosis II",
-      "timingClass": "gcd",
-      "timeMs": 239981,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 239539
-    },
-    {
-      "actionId": 24294,
-      "actionName": "Soteria",
-      "timingClass": "ogcd",
-      "timeMs": 240605,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 240163
-    },
-    {
-      "actionId": 24312,
-      "actionName": "Dosis III",
-      "timingClass": "gcd",
-      "timeMs": 242387,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 241945
+      "anchorOffsetMs": 4277
     },
     {
       "actionId": 24313,
       "actionName": "Phlegma III",
       "timingClass": "gcd",
-      "timeMs": 243949,
+      "timeMs": 5122,
       "anchorKey": "pull",
-      "anchorOffsetMs": 243507
-    },
-    {
-      "actionId": 37033,
-      "actionName": "Psyche",
-      "timingClass": "ogcd",
-      "timeMs": 244572,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 244130
-    },
-    {
-      "actionId": 24302,
-      "actionName": "Physis II",
-      "timingClass": "ogcd",
-      "timeMs": 245198,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 244756
-    },
-    {
-      "actionId": 24312,
-      "actionName": "Dosis III",
-      "timingClass": "gcd",
-      "timeMs": 247341,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 246899
-    },
-    {
-      "actionId": 24312,
-      "actionName": "Dosis III",
-      "timingClass": "gcd",
-      "timeMs": 249747,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 249305
-    },
-    {
-      "actionId": 24312,
-      "actionName": "Dosis III",
-      "timingClass": "gcd",
-      "timeMs": 252157,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 251715
-    },
-    {
-      "actionId": 24310,
-      "actionName": "Holos",
-      "timingClass": "ogcd",
-      "timeMs": 252827,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 252385
-    },
-    {
-      "actionId": 24312,
-      "actionName": "Dosis III",
-      "timingClass": "gcd",
-      "timeMs": 254607,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 254165
-    },
-    {
-      "actionId": 24290,
-      "actionName": "Eukrasia",
-      "timingClass": "ogcd",
-      "timeMs": 256120,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 255678
-    },
-    {
-      "actionId": 24314,
-      "actionName": "Eukrasian Dosis III",
-      "timingClass": "gcd",
-      "timeMs": 257100,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 256658
-    },
-    {
-      "actionId": 24312,
-      "actionName": "Dosis III",
-      "timingClass": "gcd",
-      "timeMs": 259505,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 259063
-    },
-    {
-      "actionId": 24312,
-      "actionName": "Dosis III",
-      "timingClass": "gcd",
-      "timeMs": 261023,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 260581
-    },
-    {
-      "actionId": 24299,
-      "actionName": "Ixochole",
-      "timingClass": "ogcd",
-      "timeMs": 261736,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 261294
-    },
-    {
-      "actionId": 24312,
-      "actionName": "Dosis III",
-      "timingClass": "gcd",
-      "timeMs": 264411,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 263969
-    },
-    {
-      "actionId": 24298,
-      "actionName": "Kerachole",
-      "timingClass": "ogcd",
-      "timeMs": 265080,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 264638
-    },
-    {
-      "actionId": 24313,
-      "actionName": "Phlegma III",
-      "timingClass": "gcd",
-      "timeMs": 265926,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 265484
-    },
-    {
-      "actionId": 24312,
-      "actionName": "Dosis III",
-      "timingClass": "gcd",
-      "timeMs": 269312,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 268870
-    },
-    {
-      "actionId": 24312,
-      "actionName": "Dosis III",
-      "timingClass": "gcd",
-      "timeMs": 271720,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 271278
-    },
-    {
-      "actionId": 24318,
-      "actionName": "Pneuma",
-      "timingClass": "gcd",
-      "timeMs": 274166,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 273724
-    },
-    {
-      "actionId": 24318,
-      "actionName": "Pneuma",
-      "timingClass": "gcd",
-      "timeMs": 274744,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 274302
-    },
-    {
-      "actionId": 24312,
-      "actionName": "Dosis III",
-      "timingClass": "gcd",
-      "timeMs": 276616,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 276174
-    },
-    {
-      "actionId": 24312,
-      "actionName": "Dosis III",
-      "timingClass": "gcd",
-      "timeMs": 279062,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 278620
-    },
-    {
-      "actionId": 24312,
-      "actionName": "Dosis III",
-      "timingClass": "gcd",
-      "timeMs": 281469,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 281027
-    },
-    {
-      "actionId": 37035,
-      "actionName": "Philosophia",
-      "timingClass": "ogcd",
-      "timeMs": 282140,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 281698
-    },
-    {
-      "actionId": 24312,
-      "actionName": "Dosis III",
-      "timingClass": "gcd",
-      "timeMs": 283922,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 283480
-    },
-    {
-      "actionId": 24312,
-      "actionName": "Dosis III",
-      "timingClass": "gcd",
-      "timeMs": 286373,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 285931
-    },
-    {
-      "actionId": 24290,
-      "actionName": "Eukrasia",
-      "timingClass": "ogcd",
-      "timeMs": 287934,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 287492
-    },
-    {
-      "actionId": 24314,
-      "actionName": "Eukrasian Dosis III",
-      "timingClass": "gcd",
-      "timeMs": 288914,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 288472
-    },
-    {
-      "actionId": 24312,
-      "actionName": "Dosis III",
-      "timingClass": "gcd",
-      "timeMs": 291320,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 290878
-    },
-    {
-      "actionId": 24312,
-      "actionName": "Dosis III",
-      "timingClass": "gcd",
-      "timeMs": 293723,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 293281
-    },
-    {
-      "actionId": 24299,
-      "actionName": "Ixochole",
-      "timingClass": "ogcd",
-      "timeMs": 294435,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 293993
-    },
-    {
-      "actionId": 24312,
-      "actionName": "Dosis III",
-      "timingClass": "gcd",
-      "timeMs": 296174,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 295732
-    },
-    {
-      "actionId": 24298,
-      "actionName": "Kerachole",
-      "timingClass": "ogcd",
-      "timeMs": 296842,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 296400
-    },
-    {
-      "actionId": 24312,
-      "actionName": "Dosis III",
-      "timingClass": "gcd",
-      "timeMs": 298626,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 298184
-    },
-    {
-      "actionId": 24311,
-      "actionName": "Panhaima",
-      "timingClass": "ogcd",
-      "timeMs": 299248,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 298806
-    },
-    {
-      "actionId": 24312,
-      "actionName": "Dosis III",
-      "timingClass": "gcd",
-      "timeMs": 301076,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 300634
-    },
-    {
-      "actionId": 24312,
-      "actionName": "Dosis III",
-      "timingClass": "gcd",
-      "timeMs": 302592,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 302150
-    },
-    {
-      "actionId": 24309,
-      "actionName": "Rhizomata",
-      "timingClass": "ogcd",
-      "timeMs": 303260,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 302818
-    },
-    {
-      "actionId": 24313,
-      "actionName": "Phlegma III",
-      "timingClass": "gcd",
-      "timeMs": 305042,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 304600
-    },
-    {
-      "actionId": 37033,
-      "actionName": "Psyche",
-      "timingClass": "ogcd",
-      "timeMs": 305667,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 305225
-    },
-    {
-      "actionId": 24302,
-      "actionName": "Physis II",
-      "timingClass": "ogcd",
-      "timeMs": 306289,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 305847
-    },
-    {
-      "actionId": 24316,
-      "actionName": "Toxikon II",
-      "timingClass": "gcd",
-      "timeMs": 307491,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 307049
-    },
-    {
-      "actionId": 24316,
-      "actionName": "Toxikon II",
-      "timingClass": "gcd",
-      "timeMs": 309940,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 309498
-    },
-    {
-      "actionId": 24312,
-      "actionName": "Dosis III",
-      "timingClass": "gcd",
-      "timeMs": 313281,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 312839
-    },
-    {
-      "actionId": 24312,
-      "actionName": "Dosis III",
-      "timingClass": "gcd",
-      "timeMs": 315692,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 315250
-    },
-    {
-      "actionId": 24290,
-      "actionName": "Eukrasia",
-      "timingClass": "ogcd",
-      "timeMs": 317246,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 316804
-    },
-    {
-      "actionId": 24314,
-      "actionName": "Eukrasian Dosis III",
-      "timingClass": "gcd",
-      "timeMs": 318272,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 317830
-    },
-    {
-      "actionId": 24312,
-      "actionName": "Dosis III",
-      "timingClass": "gcd",
-      "timeMs": 320680,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 320238
-    },
-    {
-      "actionId": 24312,
-      "actionName": "Dosis III",
-      "timingClass": "gcd",
-      "timeMs": 323084,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 322642
-    },
-    {
-      "actionId": 24312,
-      "actionName": "Dosis III",
-      "timingClass": "gcd",
-      "timeMs": 325581,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 325139
-    },
-    {
-      "actionId": 24299,
-      "actionName": "Ixochole",
-      "timingClass": "ogcd",
-      "timeMs": 326207,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 325765
-    },
-    {
-      "actionId": 24312,
-      "actionName": "Dosis III",
-      "timingClass": "gcd",
-      "timeMs": 327990,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 327548
-    },
-    {
-      "actionId": 24298,
-      "actionName": "Kerachole",
-      "timingClass": "ogcd",
-      "timeMs": 328615,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 328173
-    },
-    {
-      "actionId": 24313,
-      "actionName": "Phlegma III",
-      "timingClass": "gcd",
-      "timeMs": 329506,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 329064
-    },
-    {
-      "actionId": 24312,
-      "actionName": "Dosis III",
-      "timingClass": "gcd",
-      "timeMs": 332891,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 332449
-    },
-    {
-      "actionId": 24312,
-      "actionName": "Dosis III",
-      "timingClass": "gcd",
-      "timeMs": 335338,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 334896
-    },
-    {
-      "actionId": 24312,
-      "actionName": "Dosis III",
-      "timingClass": "gcd",
-      "timeMs": 337746,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 337304
-    },
-    {
-      "actionId": 24312,
-      "actionName": "Dosis III",
-      "timingClass": "gcd",
-      "timeMs": 340153,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 339711
-    },
-    {
-      "actionId": 24312,
-      "actionName": "Dosis III",
-      "timingClass": "gcd",
-      "timeMs": 342602,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 342160
-    },
-    {
-      "actionId": 24312,
-      "actionName": "Dosis III",
-      "timingClass": "gcd",
-      "timeMs": 345055,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 344613
-    },
-    {
-      "actionId": 24290,
-      "actionName": "Eukrasia",
-      "timingClass": "ogcd",
-      "timeMs": 346567,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 346125
-    },
-    {
-      "actionId": 24314,
-      "actionName": "Eukrasian Dosis III",
-      "timingClass": "gcd",
-      "timeMs": 347547,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 347105
-    },
-    {
-      "actionId": 24312,
-      "actionName": "Dosis III",
-      "timingClass": "gcd",
-      "timeMs": 349999,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 349557
-    },
-    {
-      "actionId": 24312,
-      "actionName": "Dosis III",
-      "timingClass": "gcd",
-      "timeMs": 352448,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 352006
-    },
-    {
-      "actionId": 24312,
-      "actionName": "Dosis III",
-      "timingClass": "gcd",
-      "timeMs": 354851,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 354409
-    },
-    {
-      "actionId": 24312,
-      "actionName": "Dosis III",
-      "timingClass": "gcd",
-      "timeMs": 357298,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 356856
-    },
-    {
-      "actionId": 24312,
-      "actionName": "Dosis III",
-      "timingClass": "gcd",
-      "timeMs": 359747,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 359305
-    },
-    {
-      "actionId": 24294,
-      "actionName": "Soteria",
-      "timingClass": "ogcd",
-      "timeMs": 360373,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 359931
-    },
-    {
-      "actionId": 24312,
-      "actionName": "Dosis III",
-      "timingClass": "gcd",
-      "timeMs": 362199,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 361757
-    },
-    {
-      "actionId": 24317,
-      "actionName": "Krasis",
-      "timingClass": "ogcd",
-      "timeMs": 362867,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 362425
-    },
-    {
-      "actionId": 24312,
-      "actionName": "Dosis III",
-      "timingClass": "gcd",
-      "timeMs": 364649,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 364207
-    },
-    {
-      "actionId": 24313,
-      "actionName": "Phlegma III",
-      "timingClass": "gcd",
-      "timeMs": 366120,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 365678
-    },
-    {
-      "actionId": 37033,
-      "actionName": "Psyche",
-      "timingClass": "ogcd",
-      "timeMs": 366788,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 366346
-    },
-    {
-      "actionId": 24316,
-      "actionName": "Toxikon II",
-      "timingClass": "gcd",
-      "timeMs": 368614,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 368172
-    },
-    {
-      "actionId": 24298,
-      "actionName": "Kerachole",
-      "timingClass": "ogcd",
-      "timeMs": 369375,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 368933
-    },
-    {
-      "actionId": 24312,
-      "actionName": "Dosis III",
-      "timingClass": "gcd",
-      "timeMs": 371066,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 370624
-    },
-    {
-      "actionId": 24290,
-      "actionName": "Eukrasia",
-      "timingClass": "ogcd",
-      "timeMs": 373471,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 373029
-    },
-    {
-      "actionId": 24291,
-      "actionName": "Eukrasian Diagnosis",
-      "timingClass": "gcd",
-      "timeMs": 374492,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 374050
-    },
-    {
-      "actionId": 24290,
-      "actionName": "Eukrasia",
-      "timingClass": "ogcd",
-      "timeMs": 375961,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 375519
-    },
-    {
-      "actionId": 24291,
-      "actionName": "Eukrasian Diagnosis",
-      "timingClass": "gcd",
-      "timeMs": 376941,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 376499
-    },
-    {
-      "actionId": 24290,
-      "actionName": "Eukrasia",
-      "timingClass": "ogcd",
-      "timeMs": 387683,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 387241
-    },
-    {
-      "actionId": 24291,
-      "actionName": "Eukrasian Diagnosis",
-      "timingClass": "gcd",
-      "timeMs": 422537,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 422095
-    },
-    {
-      "actionId": 24290,
-      "actionName": "Eukrasia",
-      "timingClass": "ogcd",
-      "timeMs": 424007,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 423565
-    },
-    {
-      "actionId": 37034,
-      "actionName": "Eukrasian Prognosis II",
-      "timingClass": "gcd",
-      "timeMs": 425032,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 424590
-    },
-    {
-      "actionId": 24290,
-      "actionName": "Eukrasia",
-      "timingClass": "ogcd",
-      "timeMs": 426501,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 426059
-    },
-    {
-      "actionId": 24314,
-      "actionName": "Eukrasian Dosis III",
-      "timingClass": "gcd",
-      "timeMs": 428061,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 427619
-    },
-    {
-      "actionId": 37033,
-      "actionName": "Psyche",
-      "timingClass": "ogcd",
-      "timeMs": 428728,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 428286
-    },
-    {
-      "actionId": 24318,
-      "actionName": "Pneuma",
-      "timingClass": "gcd",
-      "timeMs": 429578,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 429136
-    },
-    {
-      "actionId": 24318,
-      "actionName": "Pneuma",
-      "timingClass": "gcd",
-      "timeMs": 430159,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 429717
-    },
-    {
-      "actionId": 24312,
-      "actionName": "Dosis III",
-      "timingClass": "gcd",
-      "timeMs": 432967,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 432525
-    },
-    {
-      "actionId": 24313,
-      "actionName": "Phlegma III",
-      "timingClass": "gcd",
-      "timeMs": 434478,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 434036
-    },
-    {
-      "actionId": 24312,
-      "actionName": "Dosis III",
-      "timingClass": "gcd",
-      "timeMs": 437906,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 437464
-    },
-    {
-      "actionId": 24312,
-      "actionName": "Dosis III",
-      "timingClass": "gcd",
-      "timeMs": 440310,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 439868
-    },
-    {
-      "actionId": 24312,
-      "actionName": "Dosis III",
-      "timingClass": "gcd",
-      "timeMs": 442714,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 442272
-    },
-    {
-      "actionId": 24312,
-      "actionName": "Dosis III",
-      "timingClass": "gcd",
-      "timeMs": 445166,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 444724
-    },
-    {
-      "actionId": 24312,
-      "actionName": "Dosis III",
-      "timingClass": "gcd",
-      "timeMs": 447575,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 447133
-    },
-    {
-      "actionId": 24298,
-      "actionName": "Kerachole",
-      "timingClass": "ogcd",
-      "timeMs": 448243,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 447801
-    },
-    {
-      "actionId": 24312,
-      "actionName": "Dosis III",
-      "timingClass": "gcd",
-      "timeMs": 450027,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 449585
-    },
-    {
-      "actionId": 24317,
-      "actionName": "Krasis",
-      "timingClass": "ogcd",
-      "timeMs": 450651,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 450209
-    },
-    {
-      "actionId": 24312,
-      "actionName": "Dosis III",
-      "timingClass": "gcd",
-      "timeMs": 452478,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 452036
-    },
-    {
-      "actionId": 24305,
-      "actionName": "Haima",
-      "timingClass": "ogcd",
-      "timeMs": 453102,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 452660
-    },
-    {
-      "actionId": 24312,
-      "actionName": "Dosis III",
-      "timingClass": "gcd",
-      "timeMs": 454930,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 454488
-    },
-    {
-      "actionId": 24290,
-      "actionName": "Eukrasia",
-      "timingClass": "ogcd",
-      "timeMs": 456401,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 455959
-    },
-    {
-      "actionId": 24314,
-      "actionName": "Eukrasian Dosis III",
-      "timingClass": "gcd",
-      "timeMs": 457428,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 456986
-    },
-    {
-      "actionId": 24312,
-      "actionName": "Dosis III",
-      "timingClass": "gcd",
-      "timeMs": 459832,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 459390
-    },
-    {
-      "actionId": 24300,
-      "actionName": "Zoe",
-      "timingClass": "ogcd",
-      "timeMs": 460499,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 460057
-    },
-    {
-      "actionId": 24312,
-      "actionName": "Dosis III",
-      "timingClass": "gcd",
-      "timeMs": 462282,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 461840
-    },
-    {
-      "actionId": 37035,
-      "actionName": "Philosophia",
-      "timingClass": "ogcd",
-      "timeMs": 462903,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 462461
-    },
-    {
-      "actionId": 24290,
-      "actionName": "Eukrasia",
-      "timingClass": "ogcd",
-      "timeMs": 463794,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 463352
-    },
-    {
-      "actionId": 24314,
-      "actionName": "Eukrasian Dosis III",
-      "timingClass": "gcd",
-      "timeMs": 464819,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 464377
-    },
-    {
-      "actionId": 24312,
-      "actionName": "Dosis III",
-      "timingClass": "gcd",
-      "timeMs": 467221,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 466779
-    },
-    {
-      "actionId": 24312,
-      "actionName": "Dosis III",
-      "timingClass": "gcd",
-      "timeMs": 469671,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 469229
-    },
-    {
-      "actionId": 24312,
-      "actionName": "Dosis III",
-      "timingClass": "gcd",
-      "timeMs": 472124,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 471682
-    },
-    {
-      "actionId": 24312,
-      "actionName": "Dosis III",
-      "timingClass": "gcd",
-      "timeMs": 474529,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 474087
-    },
-    {
-      "actionId": 24312,
-      "actionName": "Dosis III",
-      "timingClass": "gcd",
-      "timeMs": 476980,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 476538
+      "anchorOffsetMs": 5122
     },
     {
       "actionId": 24303,
       "actionName": "Taurochole",
       "timingClass": "ogcd",
-      "timeMs": 477604,
+      "timeMs": 5834,
       "anchorKey": "pull",
-      "anchorOffsetMs": 477162
-    },
-    {
-      "actionId": 24312,
-      "actionName": "Dosis III",
-      "timingClass": "gcd",
-      "timeMs": 479431,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 478989
-    },
-    {
-      "actionId": 24290,
-      "actionName": "Eukrasia",
-      "timingClass": "ogcd",
-      "timeMs": 480988,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 480546
-    },
-    {
-      "actionId": 37034,
-      "actionName": "Eukrasian Prognosis II",
-      "timingClass": "gcd",
-      "timeMs": 481969,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 481527
-    },
-    {
-      "actionId": 24313,
-      "actionName": "Phlegma III",
-      "timingClass": "gcd",
-      "timeMs": 483488,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 483046
-    },
-    {
-      "actionId": 24311,
-      "actionName": "Panhaima",
-      "timingClass": "ogcd",
-      "timeMs": 484157,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 483715
-    },
-    {
-      "actionId": 24298,
-      "actionName": "Kerachole",
-      "timingClass": "ogcd",
-      "timeMs": 484779,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 484337
-    },
-    {
-      "actionId": 24290,
-      "actionName": "Eukrasia",
-      "timingClass": "ogcd",
-      "timeMs": 485937,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 485495
-    },
-    {
-      "actionId": 24314,
-      "actionName": "Eukrasian Dosis III",
-      "timingClass": "gcd",
-      "timeMs": 486917,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 486475
-    },
-    {
-      "actionId": 24302,
-      "actionName": "Physis II",
-      "timingClass": "ogcd",
-      "timeMs": 487542,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 487100
-    },
-    {
-      "actionId": 24316,
-      "actionName": "Toxikon II",
-      "timingClass": "gcd",
-      "timeMs": 488387,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 487945
-    },
-    {
-      "actionId": 37033,
-      "actionName": "Psyche",
-      "timingClass": "ogcd",
-      "timeMs": 489059,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 488617
-    },
-    {
-      "actionId": 24316,
-      "actionName": "Toxikon II",
-      "timingClass": "gcd",
-      "timeMs": 490842,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 490400
-    },
-    {
-      "actionId": 24290,
-      "actionName": "Eukrasia",
-      "timingClass": "ogcd",
-      "timeMs": 493287,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 492845
-    },
-    {
-      "actionId": 24314,
-      "actionName": "Eukrasian Dosis III",
-      "timingClass": "gcd",
-      "timeMs": 494267,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 493825
-    },
-    {
-      "actionId": 24313,
-      "actionName": "Phlegma III",
-      "timingClass": "gcd",
-      "timeMs": 495737,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 495295
-    },
-    {
-      "actionId": 24316,
-      "actionName": "Toxikon II",
-      "timingClass": "gcd",
-      "timeMs": 498189,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 497747
-    },
-    {
-      "actionId": 24316,
-      "actionName": "Toxikon II",
-      "timingClass": "gcd",
-      "timeMs": 500685,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 500243
-    },
-    {
-      "actionId": 24312,
-      "actionName": "Dosis III",
-      "timingClass": "gcd",
-      "timeMs": 504028,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 503586
-    },
-    {
-      "actionId": 24312,
-      "actionName": "Dosis III",
-      "timingClass": "gcd",
-      "timeMs": 506435,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 505993
-    },
-    {
-      "actionId": 24312,
-      "actionName": "Dosis III",
-      "timingClass": "gcd",
-      "timeMs": 508886,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 508444
-    },
-    {
-      "actionId": 24312,
-      "actionName": "Dosis III",
-      "timingClass": "gcd",
-      "timeMs": 511338,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 510896
-    },
-    {
-      "actionId": 24312,
-      "actionName": "Dosis III",
-      "timingClass": "gcd",
-      "timeMs": 513785,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 513343
-    },
-    {
-      "actionId": 24312,
-      "actionName": "Dosis III",
-      "timingClass": "gcd",
-      "timeMs": 515304,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 514862
-    },
-    {
-      "actionId": 24310,
-      "actionName": "Holos",
-      "timingClass": "ogcd",
-      "timeMs": 516018,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 515576
-    },
-    {
-      "actionId": 24298,
-      "actionName": "Kerachole",
-      "timingClass": "ogcd",
-      "timeMs": 516686,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 516244
-    },
-    {
-      "actionId": 24290,
-      "actionName": "Eukrasia",
-      "timingClass": "ogcd",
-      "timeMs": 517709,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 517267
-    },
-    {
-      "actionId": 24314,
-      "actionName": "Eukrasian Dosis III",
-      "timingClass": "gcd",
-      "timeMs": 518779,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 518337
-    },
-    {
-      "actionId": 24299,
-      "actionName": "Ixochole",
-      "timingClass": "ogcd",
-      "timeMs": 519402,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 518960
-    },
-    {
-      "actionId": 24312,
-      "actionName": "Dosis III",
-      "timingClass": "gcd",
-      "timeMs": 521185,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 520743
-    },
-    {
-      "actionId": 24290,
-      "actionName": "Eukrasia",
-      "timingClass": "ogcd",
-      "timeMs": 522700,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 522258
-    },
-    {
-      "actionId": 24314,
-      "actionName": "Eukrasian Dosis III",
-      "timingClass": "gcd",
-      "timeMs": 523723,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 523281
-    },
-    {
-      "actionId": 24312,
-      "actionName": "Dosis III",
-      "timingClass": "gcd",
-      "timeMs": 526172,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 525730
-    },
-    {
-      "actionId": 24312,
-      "actionName": "Dosis III",
-      "timingClass": "gcd",
-      "timeMs": 528756,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 528314
-    },
-    {
-      "actionId": 24312,
-      "actionName": "Dosis III",
-      "timingClass": "gcd",
-      "timeMs": 531156,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 530714
-    },
-    {
-      "actionId": 24313,
-      "actionName": "Phlegma III",
-      "timingClass": "gcd",
-      "timeMs": 532674,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 532232
+      "anchorOffsetMs": 5834
     },
     {
       "actionId": 24294,
       "actionName": "Soteria",
       "timingClass": "ogcd",
-      "timeMs": 533654,
+      "timeMs": 6459,
       "anchorKey": "pull",
-      "anchorOffsetMs": 533212
+      "anchorOffsetMs": 6459
     },
     {
       "actionId": 24312,
       "actionName": "Dosis III",
       "timingClass": "gcd",
-      "timeMs": 536061,
+      "timeMs": 8507,
       "anchorKey": "pull",
-      "anchorOffsetMs": 535619
+      "anchorOffsetMs": 8507
     },
     {
       "actionId": 24312,
       "actionName": "Dosis III",
       "timingClass": "gcd",
-      "timeMs": 538514,
+      "timeMs": 10910,
       "anchorKey": "pull",
-      "anchorOffsetMs": 538072
-    },
-    {
-      "actionId": 24303,
-      "actionName": "Taurochole",
-      "timingClass": "ogcd",
-      "timeMs": 539139,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 538697
+      "anchorOffsetMs": 10910
     },
     {
       "actionId": 24312,
       "actionName": "Dosis III",
       "timingClass": "gcd",
-      "timeMs": 540921,
+      "timeMs": 13312,
       "anchorKey": "pull",
-      "anchorOffsetMs": 540479
+      "anchorOffsetMs": 13312
     },
     {
       "actionId": 24312,
       "actionName": "Dosis III",
       "timingClass": "gcd",
-      "timeMs": 543366,
+      "timeMs": 15718,
       "anchorKey": "pull",
-      "anchorOffsetMs": 542924
-    },
-    {
-      "actionId": 24312,
-      "actionName": "Dosis III",
-      "timingClass": "gcd",
-      "timeMs": 545818,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 545376
-    },
-    {
-      "actionId": 24312,
-      "actionName": "Dosis III",
-      "timingClass": "gcd",
-      "timeMs": 548266,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 547824
-    },
-    {
-      "actionId": 37033,
-      "actionName": "Psyche",
-      "timingClass": "ogcd",
-      "timeMs": 549024,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 548582
-    },
-    {
-      "actionId": 24312,
-      "actionName": "Dosis III",
-      "timingClass": "gcd",
-      "timeMs": 550673,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 550231
-    },
-    {
-      "actionId": 24290,
-      "actionName": "Eukrasia",
-      "timingClass": "ogcd",
-      "timeMs": 552234,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 551792
-    },
-    {
-      "actionId": 24314,
-      "actionName": "Eukrasian Dosis III",
-      "timingClass": "gcd",
-      "timeMs": 553213,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 552771
-    },
-    {
-      "actionId": 24312,
-      "actionName": "Dosis III",
-      "timingClass": "gcd",
-      "timeMs": 555617,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 555175
-    },
-    {
-      "actionId": 24302,
-      "actionName": "Physis II",
-      "timingClass": "ogcd",
-      "timeMs": 556284,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 555842
-    },
-    {
-      "actionId": 24312,
-      "actionName": "Dosis III",
-      "timingClass": "gcd",
-      "timeMs": 558065,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 557623
-    },
-    {
-      "actionId": 24300,
-      "actionName": "Zoe",
-      "timingClass": "ogcd",
-      "timeMs": 558732,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 558290
-    },
-    {
-      "actionId": 24312,
-      "actionName": "Dosis III",
-      "timingClass": "gcd",
-      "timeMs": 560514,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 560072
-    },
-    {
-      "actionId": 24318,
-      "actionName": "Pneuma",
-      "timingClass": "gcd",
-      "timeMs": 562968,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 562526
-    },
-    {
-      "actionId": 24318,
-      "actionName": "Pneuma",
-      "timingClass": "gcd",
-      "timeMs": 563547,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 563105
+      "anchorOffsetMs": 15718
     },
     {
       "actionId": 24296,
       "actionName": "Druochole",
       "timingClass": "ogcd",
-      "timeMs": 563636,
+      "timeMs": 16344,
       "anchorKey": "pull",
-      "anchorOffsetMs": 563194
+      "anchorOffsetMs": 16344
     },
     {
       "actionId": 24312,
       "actionName": "Dosis III",
       "timingClass": "gcd",
-      "timeMs": 565416,
+      "timeMs": 18128,
       "anchorKey": "pull",
-      "anchorOffsetMs": 564974
+      "anchorOffsetMs": 18128
     },
     {
-      "actionId": 24313,
-      "actionName": "Phlegma III",
-      "timingClass": "gcd",
-      "timeMs": 566930,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 566488
-    },
-    {
-      "actionId": 24299,
-      "actionName": "Ixochole",
+      "actionId": 24300,
+      "actionName": "Zoe",
       "timingClass": "ogcd",
-      "timeMs": 568131,
+      "timeMs": 18754,
       "anchorKey": "pull",
-      "anchorOffsetMs": 567689
-    },
-    {
-      "actionId": 24312,
-      "actionName": "Dosis III",
-      "timingClass": "gcd",
-      "timeMs": 570313,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 569871
+      "anchorOffsetMs": 18754
     },
     {
       "actionId": 24309,
       "actionName": "Rhizomata",
       "timingClass": "ogcd",
-      "timeMs": 570893,
+      "timeMs": 19377,
       "anchorKey": "pull",
-      "anchorOffsetMs": 570451
+      "anchorOffsetMs": 19377
+    },
+    {
+      "actionId": 24312,
+      "actionName": "Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 20980,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 20980
+    },
+    {
+      "actionId": 24296,
+      "actionName": "Druochole",
+      "timingClass": "ogcd",
+      "timeMs": 21606,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 21606
     },
     {
       "actionId": 24290,
       "actionName": "Eukrasia",
       "timingClass": "ogcd",
-      "timeMs": 571830,
+      "timeMs": 22451,
       "anchorKey": "pull",
-      "anchorOffsetMs": 571388
+      "anchorOffsetMs": 22451
     },
     {
       "actionId": 37034,
       "actionName": "Eukrasian Prognosis II",
       "timingClass": "gcd",
-      "timeMs": 572813,
+      "timeMs": 23431,
       "anchorKey": "pull",
-      "anchorOffsetMs": 572371
+      "anchorOffsetMs": 23431
+    },
+    {
+      "actionId": 24312,
+      "actionName": "Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 25882,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 25882
     },
     {
       "actionId": 24298,
       "actionName": "Kerachole",
       "timingClass": "ogcd",
-      "timeMs": 573479,
+      "timeMs": 26507,
       "anchorKey": "pull",
-      "anchorOffsetMs": 573037
+      "anchorOffsetMs": 26507
     },
     {
       "actionId": 24312,
       "actionName": "Dosis III",
       "timingClass": "gcd",
-      "timeMs": 575219,
+      "timeMs": 28287,
       "anchorKey": "pull",
-      "anchorOffsetMs": 574777
+      "anchorOffsetMs": 28287
     },
     {
       "actionId": 24312,
       "actionName": "Dosis III",
       "timingClass": "gcd",
-      "timeMs": 577673,
+      "timeMs": 30697,
       "anchorKey": "pull",
-      "anchorOffsetMs": 577231
-    },
-    {
-      "actionId": 24305,
-      "actionName": "Haima",
-      "timingClass": "ogcd",
-      "timeMs": 578295,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 577853
-    },
-    {
-      "actionId": 24312,
-      "actionName": "Dosis III",
-      "timingClass": "gcd",
-      "timeMs": 580121,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 579679
+      "anchorOffsetMs": 30697
     },
     {
       "actionId": 24290,
       "actionName": "Eukrasia",
       "timingClass": "ogcd",
-      "timeMs": 581634,
+      "timeMs": 32165,
       "anchorKey": "pull",
-      "anchorOffsetMs": 581192
+      "anchorOffsetMs": 32165
     },
     {
       "actionId": 24314,
       "actionName": "Eukrasian Dosis III",
       "timingClass": "gcd",
-      "timeMs": 582660,
+      "timeMs": 33147,
       "anchorKey": "pull",
-      "anchorOffsetMs": 582218
-    },
-    {
-      "actionId": 24312,
-      "actionName": "Dosis III",
-      "timingClass": "gcd",
-      "timeMs": 585070,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 584628
-    },
-    {
-      "actionId": 24312,
-      "actionName": "Dosis III",
-      "timingClass": "gcd",
-      "timeMs": 587477,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 587035
-    },
-    {
-      "actionId": 24312,
-      "actionName": "Dosis III",
-      "timingClass": "gcd",
-      "timeMs": 589039,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 588597
-    },
-    {
-      "actionId": 24312,
-      "actionName": "Dosis III",
-      "timingClass": "gcd",
-      "timeMs": 592382,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 591940
-    },
-    {
-      "actionId": 24312,
-      "actionName": "Dosis III",
-      "timingClass": "gcd",
-      "timeMs": 594790,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 594348
-    },
-    {
-      "actionId": 24317,
-      "actionName": "Krasis",
-      "timingClass": "ogcd",
-      "timeMs": 595458,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 595016
-    },
-    {
-      "actionId": 24312,
-      "actionName": "Dosis III",
-      "timingClass": "gcd",
-      "timeMs": 597243,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 596801
-    },
-    {
-      "actionId": 24312,
-      "actionName": "Dosis III",
-      "timingClass": "gcd",
-      "timeMs": 599695,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 599253
-    },
-    {
-      "actionId": 24303,
-      "actionName": "Taurochole",
-      "timingClass": "ogcd",
-      "timeMs": 600367,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 599925
-    },
-    {
-      "actionId": 24312,
-      "actionName": "Dosis III",
-      "timingClass": "gcd",
-      "timeMs": 602108,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 601666
-    },
-    {
-      "actionId": 24312,
-      "actionName": "Dosis III",
-      "timingClass": "gcd",
-      "timeMs": 604785,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 604343
-    },
-    {
-      "actionId": 24298,
-      "actionName": "Kerachole",
-      "timingClass": "ogcd",
-      "timeMs": 605411,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 604969
-    },
-    {
-      "actionId": 24313,
-      "actionName": "Phlegma III",
-      "timingClass": "gcd",
-      "timeMs": 606303,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 605861
-    },
-    {
-      "actionId": 24311,
-      "actionName": "Panhaima",
-      "timingClass": "ogcd",
-      "timeMs": 606971,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 606529
-    },
-    {
-      "actionId": 24312,
-      "actionName": "Dosis III",
-      "timingClass": "gcd",
-      "timeMs": 609731,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 609289
-    },
-    {
-      "actionId": 37033,
-      "actionName": "Psyche",
-      "timingClass": "ogcd",
-      "timeMs": 610309,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 609867
-    },
-    {
-      "actionId": 24290,
-      "actionName": "Eukrasia",
-      "timingClass": "ogcd",
-      "timeMs": 611201,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 610759
-    },
-    {
-      "actionId": 24314,
-      "actionName": "Eukrasian Dosis III",
-      "timingClass": "gcd",
-      "timeMs": 612182,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 611740
-    },
-    {
-      "actionId": 24312,
-      "actionName": "Dosis III",
-      "timingClass": "gcd",
-      "timeMs": 614587,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 614145
-    },
-    {
-      "actionId": 24312,
-      "actionName": "Dosis III",
-      "timingClass": "gcd",
-      "timeMs": 617040,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 616598
+      "anchorOffsetMs": 33147
     },
     {
       "actionId": 24302,
       "actionName": "Physis II",
       "timingClass": "ogcd",
-      "timeMs": 617665,
+      "timeMs": 33861,
       "anchorKey": "pull",
-      "anchorOffsetMs": 617223
+      "anchorOffsetMs": 33861
     },
     {
       "actionId": 24312,
       "actionName": "Dosis III",
       "timingClass": "gcd",
-      "timeMs": 619448,
+      "timeMs": 35596,
       "anchorKey": "pull",
-      "anchorOffsetMs": 619006
+      "anchorOffsetMs": 35596
     },
     {
       "actionId": 24312,
       "actionName": "Dosis III",
       "timingClass": "gcd",
-      "timeMs": 621900,
+      "timeMs": 38048,
       "anchorKey": "pull",
-      "anchorOffsetMs": 621458
-    },
-    {
-      "actionId": 24299,
-      "actionName": "Ixochole",
-      "timingClass": "ogcd",
-      "timeMs": 622657,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 622215
-    },
-    {
-      "actionId": 24312,
-      "actionName": "Dosis III",
-      "timingClass": "gcd",
-      "timeMs": 624350,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 623908
-    },
-    {
-      "actionId": 24312,
-      "actionName": "Dosis III",
-      "timingClass": "gcd",
-      "timeMs": 626803,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 626361
-    },
-    {
-      "actionId": 24312,
-      "actionName": "Dosis III",
-      "timingClass": "gcd",
-      "timeMs": 629211,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 628769
-    },
-    {
-      "actionId": 24312,
-      "actionName": "Dosis III",
-      "timingClass": "gcd",
-      "timeMs": 630773,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 630331
-    },
-    {
-      "actionId": 24312,
-      "actionName": "Dosis III",
-      "timingClass": "gcd",
-      "timeMs": 634122,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 633680
-    },
-    {
-      "actionId": 24294,
-      "actionName": "Soteria",
-      "timingClass": "ogcd",
-      "timeMs": 634792,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 634350
-    },
-    {
-      "actionId": 24312,
-      "actionName": "Dosis III",
-      "timingClass": "gcd",
-      "timeMs": 636577,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 636135
-    },
-    {
-      "actionId": 24285,
-      "actionName": "Kardia",
-      "timingClass": "ogcd",
-      "timeMs": 637201,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 636759
-    },
-    {
-      "actionId": 24312,
-      "actionName": "Dosis III",
-      "timingClass": "gcd",
-      "timeMs": 638986,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 638544
-    },
-    {
-      "actionId": 24290,
-      "actionName": "Eukrasia",
-      "timingClass": "ogcd",
-      "timeMs": 640546,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 640104
-    },
-    {
-      "actionId": 24314,
-      "actionName": "Eukrasian Dosis III",
-      "timingClass": "gcd",
-      "timeMs": 641527,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 641085
-    },
-    {
-      "actionId": 24312,
-      "actionName": "Dosis III",
-      "timingClass": "gcd",
-      "timeMs": 643934,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 643492
-    },
-    {
-      "actionId": 37035,
-      "actionName": "Philosophia",
-      "timingClass": "ogcd",
-      "timeMs": 644560,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 644118
-    },
-    {
-      "actionId": 24312,
-      "actionName": "Dosis III",
-      "timingClass": "gcd",
-      "timeMs": 646389,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 645947
-    },
-    {
-      "actionId": 24312,
-      "actionName": "Dosis III",
-      "timingClass": "gcd",
-      "timeMs": 648800,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 648358
-    },
-    {
-      "actionId": 24312,
-      "actionName": "Dosis III",
-      "timingClass": "gcd",
-      "timeMs": 651253,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 650811
-    },
-    {
-      "actionId": 24312,
-      "actionName": "Dosis III",
-      "timingClass": "gcd",
-      "timeMs": 653702,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 653260
+      "anchorOffsetMs": 38048
     },
     {
       "actionId": 24310,
       "actionName": "Holos",
       "timingClass": "ogcd",
-      "timeMs": 654328,
+      "timeMs": 38674,
       "anchorKey": "pull",
-      "anchorOffsetMs": 653886
+      "anchorOffsetMs": 38674
     },
     {
       "actionId": 24312,
       "actionName": "Dosis III",
       "timingClass": "gcd",
-      "timeMs": 656153,
+      "timeMs": 40459,
       "anchorKey": "pull",
-      "anchorOffsetMs": 655711
+      "anchorOffsetMs": 40459
     },
     {
       "actionId": 24312,
       "actionName": "Dosis III",
       "timingClass": "gcd",
-      "timeMs": 658604,
+      "timeMs": 42861,
       "anchorKey": "pull",
-      "anchorOffsetMs": 658162
-    },
-    {
-      "actionId": 24312,
-      "actionName": "Dosis III",
-      "timingClass": "gcd",
-      "timeMs": 661005,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 660563
-    },
-    {
-      "actionId": 24285,
-      "actionName": "Kardia",
-      "timingClass": "ogcd",
-      "timeMs": 662073,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 661631
-    },
-    {
-      "actionId": 24312,
-      "actionName": "Dosis III",
-      "timingClass": "gcd",
-      "timeMs": 663633,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 663191
-    },
-    {
-      "actionId": 24299,
-      "actionName": "Ixochole",
-      "timingClass": "ogcd",
-      "timeMs": 664303,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 663861
-    },
-    {
-      "actionId": 24312,
-      "actionName": "Dosis III",
-      "timingClass": "gcd",
-      "timeMs": 666081,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 665639
-    },
-    {
-      "actionId": 24312,
-      "actionName": "Dosis III",
-      "timingClass": "gcd",
-      "timeMs": 668533,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 668091
-    },
-    {
-      "actionId": 24298,
-      "actionName": "Kerachole",
-      "timingClass": "ogcd",
-      "timeMs": 669155,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 668713
-    },
-    {
-      "actionId": 24290,
-      "actionName": "Eukrasia",
-      "timingClass": "ogcd",
-      "timeMs": 670225,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 669783
-    },
-    {
-      "actionId": 24314,
-      "actionName": "Eukrasian Dosis III",
-      "timingClass": "gcd",
-      "timeMs": 671204,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 670762
-    },
-    {
-      "actionId": 37033,
-      "actionName": "Psyche",
-      "timingClass": "ogcd",
-      "timeMs": 671784,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 671342
+      "anchorOffsetMs": 42861
     },
     {
       "actionId": 24313,
       "actionName": "Phlegma III",
       "timingClass": "gcd",
-      "timeMs": 672719,
+      "timeMs": 44331,
       "anchorKey": "pull",
-      "anchorOffsetMs": 672277
-    },
-    {
-      "actionId": 24290,
-      "actionName": "Eukrasia",
-      "timingClass": "ogcd",
-      "timeMs": 675169,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 674727
-    },
-    {
-      "actionId": 37034,
-      "actionName": "Eukrasian Prognosis II",
-      "timingClass": "gcd",
-      "timeMs": 676149,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 675707
-    },
-    {
-      "actionId": 24285,
-      "actionName": "Kardia",
-      "timingClass": "ogcd",
-      "timeMs": 676727,
-      "anchorKey": "pull",
-      "anchorOffsetMs": 676285
+      "anchorOffsetMs": 44331
     },
     {
       "actionId": 24312,
       "actionName": "Dosis III",
       "timingClass": "gcd",
-      "timeMs": 678551,
+      "timeMs": 47717,
       "anchorKey": "pull",
-      "anchorOffsetMs": 678109
+      "anchorOffsetMs": 47717
+    },
+    {
+      "actionId": 24299,
+      "actionName": "Ixochole",
+      "timingClass": "ogcd",
+      "timeMs": 48297,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 48297
+    },
+    {
+      "actionId": 24312,
+      "actionName": "Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 50122,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 50122
+    },
+    {
+      "actionId": 24313,
+      "actionName": "Phlegma III",
+      "timingClass": "gcd",
+      "timeMs": 51591,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 51591
+    },
+    {
+      "actionId": 24312,
+      "actionName": "Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 54975,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 54975
+    },
+    {
+      "actionId": 24312,
+      "actionName": "Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 57382,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 57382
+    },
+    {
+      "actionId": 24298,
+      "actionName": "Kerachole",
+      "timingClass": "ogcd",
+      "timeMs": 57963,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 57963
+    },
+    {
+      "actionId": 24312,
+      "actionName": "Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 59789,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 59789
+    },
+    {
+      "actionId": 37033,
+      "actionName": "Psyche",
+      "timingClass": "ogcd",
+      "timeMs": 60371,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 60371
+    },
+    {
+      "actionId": 24312,
+      "actionName": "Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 62199,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 62199
+    },
+    {
+      "actionId": 24290,
+      "actionName": "Eukrasia",
+      "timingClass": "ogcd",
+      "timeMs": 63670,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 63670
+    },
+    {
+      "actionId": 24305,
+      "actionName": "Haima",
+      "timingClass": "ogcd",
+      "timeMs": 64383,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 64383
+    },
+    {
+      "actionId": 24314,
+      "actionName": "Eukrasian Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 65009,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 65009
+    },
+    {
+      "actionId": 24317,
+      "actionName": "Krasis",
+      "timingClass": "ogcd",
+      "timeMs": 65676,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 65676
+    },
+    {
+      "actionId": 24312,
+      "actionName": "Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 67461,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 67461
+    },
+    {
+      "actionId": 24294,
+      "actionName": "Soteria",
+      "timingClass": "ogcd",
+      "timeMs": 68085,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 68085
+    },
+    {
+      "actionId": 24312,
+      "actionName": "Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 69868,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 69868
+    },
+    {
+      "actionId": 24312,
+      "actionName": "Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 72273,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 72273
+    },
+    {
+      "actionId": 24312,
+      "actionName": "Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 74678,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 74678
+    },
+    {
+      "actionId": 24312,
+      "actionName": "Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 77085,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 77085
+    },
+    {
+      "actionId": 24312,
+      "actionName": "Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 79492,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 79492
+    },
+    {
+      "actionId": 24312,
+      "actionName": "Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 81899,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 81899
+    },
+    {
+      "actionId": 24312,
+      "actionName": "Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 84343,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 84343
+    },
+    {
+      "actionId": 24312,
+      "actionName": "Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 86748,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 86748
+    },
+    {
+      "actionId": 24313,
+      "actionName": "Phlegma III",
+      "timingClass": "gcd",
+      "timeMs": 88263,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 88263
+    },
+    {
+      "actionId": 24312,
+      "actionName": "Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 91651,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 91651
+    },
+    {
+      "actionId": 24299,
+      "actionName": "Ixochole",
+      "timingClass": "ogcd",
+      "timeMs": 92232,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 92232
+    },
+    {
+      "actionId": 24312,
+      "actionName": "Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 94056,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 94056
+    },
+    {
+      "actionId": 24318,
+      "actionName": "Pneuma",
+      "timingClass": "gcd",
+      "timeMs": 96462,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 96462
+    },
+    {
+      "actionId": 24298,
+      "actionName": "Kerachole",
+      "timingClass": "ogcd",
+      "timeMs": 97588,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 97588
+    },
+    {
+      "actionId": 24290,
+      "actionName": "Eukrasia",
+      "timingClass": "ogcd",
+      "timeMs": 98156,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 98156
+    },
+    {
+      "actionId": 24314,
+      "actionName": "Eukrasian Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 99181,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 99181
     },
     {
       "actionId": 24302,
       "actionName": "Physis II",
       "timingClass": "ogcd",
-      "timeMs": 679221,
+      "timeMs": 99895,
       "anchorKey": "pull",
-      "anchorOffsetMs": 678779
+      "anchorOffsetMs": 99895
+    },
+    {
+      "actionId": 24312,
+      "actionName": "Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 101588,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 101588
+    },
+    {
+      "actionId": 37035,
+      "actionName": "Philosophia",
+      "timingClass": "ogcd",
+      "timeMs": 102257,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 102257
+    },
+    {
+      "actionId": 24312,
+      "actionName": "Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 103991,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 103991
+    },
+    {
+      "actionId": 24312,
+      "actionName": "Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 106400,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 106400
+    },
+    {
+      "actionId": 24312,
+      "actionName": "Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 107913,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 107913
+    },
+    {
+      "actionId": 24300,
+      "actionName": "Zoe",
+      "timingClass": "ogcd",
+      "timeMs": 108758,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 108758
+    },
+    {
+      "actionId": 24309,
+      "actionName": "Rhizomata",
+      "timingClass": "ogcd",
+      "timeMs": 109427,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 109427
+    },
+    {
+      "actionId": 24312,
+      "actionName": "Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 111252,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 111252
+    },
+    {
+      "actionId": 24290,
+      "actionName": "Eukrasia",
+      "timingClass": "ogcd",
+      "timeMs": 112765,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 112765
+    },
+    {
+      "actionId": 37034,
+      "actionName": "Eukrasian Prognosis II",
+      "timingClass": "gcd",
+      "timeMs": 113745,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 113745
+    },
+    {
+      "actionId": 24312,
+      "actionName": "Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 116149,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 116149
+    },
+    {
+      "actionId": 24311,
+      "actionName": "Panhaima",
+      "timingClass": "ogcd",
+      "timeMs": 116773,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 116773
+    },
+    {
+      "actionId": 24312,
+      "actionName": "Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 118555,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 118555
+    },
+    {
+      "actionId": 24312,
+      "actionName": "Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 120960,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 120960
+    },
+    {
+      "actionId": 37033,
+      "actionName": "Psyche",
+      "timingClass": "ogcd",
+      "timeMs": 121630,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 121630
+    },
+    {
+      "actionId": 24312,
+      "actionName": "Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 123370,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 123370
+    },
+    {
+      "actionId": 24312,
+      "actionName": "Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 125777,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 125777
+    },
+    {
+      "actionId": 24312,
+      "actionName": "Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 128228,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 128228
+    },
+    {
+      "actionId": 24298,
+      "actionName": "Kerachole",
+      "timingClass": "ogcd",
+      "timeMs": 128851,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 128851
+    },
+    {
+      "actionId": 24290,
+      "actionName": "Eukrasia",
+      "timingClass": "ogcd",
+      "timeMs": 129695,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 129695
+    },
+    {
+      "actionId": 24314,
+      "actionName": "Eukrasian Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 130677,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 130677
+    },
+    {
+      "actionId": 24312,
+      "actionName": "Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 133127,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 133127
+    },
+    {
+      "actionId": 24303,
+      "actionName": "Taurochole",
+      "timingClass": "ogcd",
+      "timeMs": 133751,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 133751
+    },
+    {
+      "actionId": 24312,
+      "actionName": "Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 135534,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 135534
+    },
+    {
+      "actionId": 24312,
+      "actionName": "Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 137947,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 137947
+    },
+    {
+      "actionId": 24312,
+      "actionName": "Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 140353,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 140353
+    },
+    {
+      "actionId": 24312,
+      "actionName": "Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 142762,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 142762
+    },
+    {
+      "actionId": 24312,
+      "actionName": "Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 145168,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 145168
+    },
+    {
+      "actionId": 24312,
+      "actionName": "Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 147572,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 147572
+    },
+    {
+      "actionId": 24317,
+      "actionName": "Krasis",
+      "timingClass": "ogcd",
+      "timeMs": 148196,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 148196
+    },
+    {
+      "actionId": 24312,
+      "actionName": "Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 149978,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 149978
+    },
+    {
+      "actionId": 24312,
+      "actionName": "Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 152387,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 152387
+    },
+    {
+      "actionId": 24312,
+      "actionName": "Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 154792,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 154792
+    },
+    {
+      "actionId": 24312,
+      "actionName": "Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 157244,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 157244
+    },
+    {
+      "actionId": 24312,
+      "actionName": "Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 159651,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 159651
+    },
+    {
+      "actionId": 24290,
+      "actionName": "Eukrasia",
+      "timingClass": "ogcd",
+      "timeMs": 161124,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 161124
+    },
+    {
+      "actionId": 24314,
+      "actionName": "Eukrasian Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 162104,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 162104
+    },
+    {
+      "actionId": 24313,
+      "actionName": "Phlegma III",
+      "timingClass": "gcd",
+      "timeMs": 163662,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 163662
+    },
+    {
+      "actionId": 24302,
+      "actionName": "Physis II",
+      "timingClass": "ogcd",
+      "timeMs": 164285,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 164285
+    },
+    {
+      "actionId": 24312,
+      "actionName": "Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 166113,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 166113
+    },
+    {
+      "actionId": 24313,
+      "actionName": "Phlegma III",
+      "timingClass": "gcd",
+      "timeMs": 168520,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 168520
+    },
+    {
+      "actionId": 24299,
+      "actionName": "Ixochole",
+      "timingClass": "ogcd",
+      "timeMs": 169143,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 169143
+    },
+    {
+      "actionId": 24316,
+      "actionName": "Toxikon II",
+      "timingClass": "gcd",
+      "timeMs": 170967,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 170967
+    },
+    {
+      "actionId": 24298,
+      "actionName": "Kerachole",
+      "timingClass": "ogcd",
+      "timeMs": 171546,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 171546
+    },
+    {
+      "actionId": 24316,
+      "actionName": "Toxikon II",
+      "timingClass": "gcd",
+      "timeMs": 173373,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 173373
+    },
+    {
+      "actionId": 24312,
+      "actionName": "Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 181125,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 181125
+    },
+    {
+      "actionId": 37033,
+      "actionName": "Psyche",
+      "timingClass": "ogcd",
+      "timeMs": 181791,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 181791
+    },
+    {
+      "actionId": 24316,
+      "actionName": "Toxikon II",
+      "timingClass": "gcd",
+      "timeMs": 182636,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 182636
+    },
+    {
+      "actionId": 24312,
+      "actionName": "Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 185977,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 185977
+    },
+    {
+      "actionId": 24294,
+      "actionName": "Soteria",
+      "timingClass": "ogcd",
+      "timeMs": 186603,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 186603
+    },
+    {
+      "actionId": 24312,
+      "actionName": "Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 188381,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 188381
+    },
+    {
+      "actionId": 24312,
+      "actionName": "Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 190791,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 190791
+    },
+    {
+      "actionId": 24312,
+      "actionName": "Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 193196,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 193196
+    },
+    {
+      "actionId": 24312,
+      "actionName": "Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 195600,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 195600
+    },
+    {
+      "actionId": 24299,
+      "actionName": "Ixochole",
+      "timingClass": "ogcd",
+      "timeMs": 199165,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 199165
+    },
+    {
+      "actionId": 24309,
+      "actionName": "Rhizomata",
+      "timingClass": "ogcd",
+      "timeMs": 200234,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 200234
+    },
+    {
+      "actionId": 24290,
+      "actionName": "Eukrasia",
+      "timingClass": "ogcd",
+      "timeMs": 200992,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 200992
+    },
+    {
+      "actionId": 24314,
+      "actionName": "Eukrasian Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 208119,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 208119
+    },
+    {
+      "actionId": 24305,
+      "actionName": "Haima",
+      "timingClass": "ogcd",
+      "timeMs": 208788,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 208788
+    },
+    {
+      "actionId": 24312,
+      "actionName": "Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 210568,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 210568
+    },
+    {
+      "actionId": 24317,
+      "actionName": "Krasis",
+      "timingClass": "ogcd",
+      "timeMs": 211190,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 211190
+    },
+    {
+      "actionId": 24312,
+      "actionName": "Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 212973,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 212973
+    },
+    {
+      "actionId": 24303,
+      "actionName": "Taurochole",
+      "timingClass": "ogcd",
+      "timeMs": 213596,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 213596
+    },
+    {
+      "actionId": 24312,
+      "actionName": "Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 215376,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 215376
+    },
+    {
+      "actionId": 24312,
+      "actionName": "Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 217784,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 217784
+    },
+    {
+      "actionId": 24310,
+      "actionName": "Holos",
+      "timingClass": "ogcd",
+      "timeMs": 218409,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 218409
+    },
+    {
+      "actionId": 24312,
+      "actionName": "Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 220190,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 220190
+    },
+    {
+      "actionId": 24312,
+      "actionName": "Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 222640,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 222640
+    },
+    {
+      "actionId": 24312,
+      "actionName": "Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 225047,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 225047
+    },
+    {
+      "actionId": 24312,
+      "actionName": "Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 227454,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 227454
+    },
+    {
+      "actionId": 24300,
+      "actionName": "Zoe",
+      "timingClass": "ogcd",
+      "timeMs": 228079,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 228079
+    },
+    {
+      "actionId": 24312,
+      "actionName": "Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 229862,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 229862
+    },
+    {
+      "actionId": 24298,
+      "actionName": "Kerachole",
+      "timingClass": "ogcd",
+      "timeMs": 230573,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 230573
+    },
+    {
+      "actionId": 24290,
+      "actionName": "Eukrasia",
+      "timingClass": "ogcd",
+      "timeMs": 231330,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 231330
+    },
+    {
+      "actionId": 37034,
+      "actionName": "Eukrasian Prognosis II",
+      "timingClass": "gcd",
+      "timeMs": 232310,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 232310
+    },
+    {
+      "actionId": 24312,
+      "actionName": "Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 234761,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 234761
+    },
+    {
+      "actionId": 24312,
+      "actionName": "Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 237167,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 237167
+    },
+    {
+      "actionId": 24299,
+      "actionName": "Ixochole",
+      "timingClass": "ogcd",
+      "timeMs": 237789,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 237789
+    },
+    {
+      "actionId": 24290,
+      "actionName": "Eukrasia",
+      "timingClass": "ogcd",
+      "timeMs": 238635,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 238635
+    },
+    {
+      "actionId": 24314,
+      "actionName": "Eukrasian Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 239705,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 239705
+    },
+    {
+      "actionId": 24312,
+      "actionName": "Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 242107,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 242107
+    },
+    {
+      "actionId": 24302,
+      "actionName": "Physis II",
+      "timingClass": "ogcd",
+      "timeMs": 242730,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 242730
+    },
+    {
+      "actionId": 24313,
+      "actionName": "Phlegma III",
+      "timingClass": "gcd",
+      "timeMs": 243576,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 243576
+    },
+    {
+      "actionId": 37033,
+      "actionName": "Psyche",
+      "timingClass": "ogcd",
+      "timeMs": 244243,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 244243
+    },
+    {
+      "actionId": 24311,
+      "actionName": "Panhaima",
+      "timingClass": "ogcd",
+      "timeMs": 244911,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 244911
+    },
+    {
+      "actionId": 24312,
+      "actionName": "Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 246961,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 246961
+    },
+    {
+      "actionId": 24294,
+      "actionName": "Soteria",
+      "timingClass": "ogcd",
+      "timeMs": 247541,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 247541
+    },
+    {
+      "actionId": 24312,
+      "actionName": "Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 249368,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 249368
+    },
+    {
+      "actionId": 24312,
+      "actionName": "Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 251770,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 251770
+    },
+    {
+      "actionId": 24312,
+      "actionName": "Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 254171,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 254171
+    },
+    {
+      "actionId": 24312,
+      "actionName": "Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 256575,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 256575
+    },
+    {
+      "actionId": 24312,
+      "actionName": "Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 258982,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 258982
+    },
+    {
+      "actionId": 24312,
+      "actionName": "Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 261387,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 261387
+    },
+    {
+      "actionId": 24312,
+      "actionName": "Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 263792,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 263792
+    },
+    {
+      "actionId": 24313,
+      "actionName": "Phlegma III",
+      "timingClass": "gcd",
+      "timeMs": 265308,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 265308
+    },
+    {
+      "actionId": 24298,
+      "actionName": "Kerachole",
+      "timingClass": "ogcd",
+      "timeMs": 266467,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 266467
+    },
+    {
+      "actionId": 24312,
+      "actionName": "Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 268690,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 268690
+    },
+    {
+      "actionId": 24290,
+      "actionName": "Eukrasia",
+      "timingClass": "ogcd",
+      "timeMs": 270162,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 270162
+    },
+    {
+      "actionId": 24314,
+      "actionName": "Eukrasian Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 271143,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 271143
+    },
+    {
+      "actionId": 24317,
+      "actionName": "Krasis",
+      "timingClass": "ogcd",
+      "timeMs": 271768,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 271768
+    },
+    {
+      "actionId": 24312,
+      "actionName": "Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 273551,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 273551
+    },
+    {
+      "actionId": 24299,
+      "actionName": "Ixochole",
+      "timingClass": "ogcd",
+      "timeMs": 274174,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 274174
+    },
+    {
+      "actionId": 24312,
+      "actionName": "Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 275954,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 275954
+    },
+    {
+      "actionId": 24312,
+      "actionName": "Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 278364,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 278364
+    },
+    {
+      "actionId": 24312,
+      "actionName": "Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 279835,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 279835
+    },
+    {
+      "actionId": 24312,
+      "actionName": "Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 283176,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 283176
+    },
+    {
+      "actionId": 24312,
+      "actionName": "Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 285583,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 285583
+    },
+    {
+      "actionId": 24312,
+      "actionName": "Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 287990,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 287990
+    },
+    {
+      "actionId": 24312,
+      "actionName": "Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 290398,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 290398
+    },
+    {
+      "actionId": 24309,
+      "actionName": "Rhizomata",
+      "timingClass": "ogcd",
+      "timeMs": 290890,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 290890
+    },
+    {
+      "actionId": 24312,
+      "actionName": "Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 292806,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 292806
+    },
+    {
+      "actionId": 24312,
+      "actionName": "Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 295211,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 295211
+    },
+    {
+      "actionId": 24318,
+      "actionName": "Pneuma",
+      "timingClass": "gcd",
+      "timeMs": 297661,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 297661
+    },
+    {
+      "actionId": 24312,
+      "actionName": "Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 300107,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 300107
+    },
+    {
+      "actionId": 37035,
+      "actionName": "Philosophia",
+      "timingClass": "ogcd",
+      "timeMs": 300641,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 300641
+    },
+    {
+      "actionId": 24290,
+      "actionName": "Eukrasia",
+      "timingClass": "ogcd",
+      "timeMs": 301577,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 301577
+    },
+    {
+      "actionId": 24314,
+      "actionName": "Eukrasian Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 302558,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 302558
+    },
+    {
+      "actionId": 24313,
+      "actionName": "Phlegma III",
+      "timingClass": "gcd",
+      "timeMs": 304025,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 304025
+    },
+    {
+      "actionId": 24299,
+      "actionName": "Ixochole",
+      "timingClass": "ogcd",
+      "timeMs": 304696,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 304696
+    },
+    {
+      "actionId": 37033,
+      "actionName": "Psyche",
+      "timingClass": "ogcd",
+      "timeMs": 305363,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 305363
+    },
+    {
+      "actionId": 24312,
+      "actionName": "Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 307414,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 307414
+    },
+    {
+      "actionId": 24294,
+      "actionName": "Soteria",
+      "timingClass": "ogcd",
+      "timeMs": 307992,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 307992
+    },
+    {
+      "actionId": 24298,
+      "actionName": "Kerachole",
+      "timingClass": "ogcd",
+      "timeMs": 308660,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 308660
+    },
+    {
+      "actionId": 24312,
+      "actionName": "Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 310175,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 310175
+    },
+    {
+      "actionId": 24302,
+      "actionName": "Physis II",
+      "timingClass": "ogcd",
+      "timeMs": 310846,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 310846
+    },
+    {
+      "actionId": 24312,
+      "actionName": "Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 312583,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 312583
+    },
+    {
+      "actionId": 24312,
+      "actionName": "Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 314989,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 314989
+    },
+    {
+      "actionId": 24312,
+      "actionName": "Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 317396,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 317396
+    },
+    {
+      "actionId": 24312,
+      "actionName": "Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 319846,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 319846
+    },
+    {
+      "actionId": 24312,
+      "actionName": "Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 322251,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 322251
+    },
+    {
+      "actionId": 24312,
+      "actionName": "Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 324657,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 324657
+    },
+    {
+      "actionId": 24312,
+      "actionName": "Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 327068,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 327068
+    },
+    {
+      "actionId": 24312,
+      "actionName": "Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 329476,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 329476
+    },
+    {
+      "actionId": 24305,
+      "actionName": "Haima",
+      "timingClass": "ogcd",
+      "timeMs": 330100,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 330100
+    },
+    {
+      "actionId": 24300,
+      "actionName": "Zoe",
+      "timingClass": "ogcd",
+      "timeMs": 330724,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 330724
+    },
+    {
+      "actionId": 24290,
+      "actionName": "Eukrasia",
+      "timingClass": "ogcd",
+      "timeMs": 331346,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 331346
+    },
+    {
+      "actionId": 24314,
+      "actionName": "Eukrasian Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 332375,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 332375
+    },
+    {
+      "actionId": 24312,
+      "actionName": "Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 334785,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 334785
+    },
+    {
+      "actionId": 24290,
+      "actionName": "Eukrasia",
+      "timingClass": "ogcd",
+      "timeMs": 336258,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 336258
+    },
+    {
+      "actionId": 37034,
+      "actionName": "Eukrasian Prognosis II",
+      "timingClass": "gcd",
+      "timeMs": 337284,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 337284
+    },
+    {
+      "actionId": 24298,
+      "actionName": "Kerachole",
+      "timingClass": "ogcd",
+      "timeMs": 338619,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 338619
+    },
+    {
+      "actionId": 24312,
+      "actionName": "Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 340174,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 340174
+    },
+    {
+      "actionId": 24312,
+      "actionName": "Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 342628,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 342628
+    },
+    {
+      "actionId": 24312,
+      "actionName": "Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 345032,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 345032
+    },
+    {
+      "actionId": 24299,
+      "actionName": "Ixochole",
+      "timingClass": "ogcd",
+      "timeMs": 345613,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 345613
+    },
+    {
+      "actionId": 24312,
+      "actionName": "Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 347438,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 347438
+    },
+    {
+      "actionId": 24312,
+      "actionName": "Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 349844,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 349844
+    },
+    {
+      "actionId": 24312,
+      "actionName": "Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 352249,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 352249
+    },
+    {
+      "actionId": 24312,
+      "actionName": "Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 354654,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 354654
+    },
+    {
+      "actionId": 24312,
+      "actionName": "Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 357057,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 357057
+    },
+    {
+      "actionId": 24312,
+      "actionName": "Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 359469,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 359469
+    },
+    {
+      "actionId": 24290,
+      "actionName": "Eukrasia",
+      "timingClass": "ogcd",
+      "timeMs": 360937,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 360937
+    },
+    {
+      "actionId": 24314,
+      "actionName": "Eukrasian Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 361961,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 361961
+    },
+    {
+      "actionId": 24313,
+      "actionName": "Phlegma III",
+      "timingClass": "gcd",
+      "timeMs": 363477,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 363477
+    },
+    {
+      "actionId": 24311,
+      "actionName": "Panhaima",
+      "timingClass": "ogcd",
+      "timeMs": 364947,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 364947
+    },
+    {
+      "actionId": 24313,
+      "actionName": "Phlegma III",
+      "timingClass": "gcd",
+      "timeMs": 365926,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 365926
+    },
+    {
+      "actionId": 37033,
+      "actionName": "Psyche",
+      "timingClass": "ogcd",
+      "timeMs": 366593,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 366593
+    },
+    {
+      "actionId": 24312,
+      "actionName": "Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 369308,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 369308
+    },
+    {
+      "actionId": 24298,
+      "actionName": "Kerachole",
+      "timingClass": "ogcd",
+      "timeMs": 369843,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 369843
+    },
+    {
+      "actionId": 24312,
+      "actionName": "Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 371713,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 371713
+    },
+    {
+      "actionId": 24296,
+      "actionName": "Druochole",
+      "timingClass": "ogcd",
+      "timeMs": 372290,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 372290
+    },
+    {
+      "actionId": 24312,
+      "actionName": "Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 374117,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 374117
+    },
+    {
+      "actionId": 24312,
+      "actionName": "Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 376526,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 376526
+    },
+    {
+      "actionId": 24312,
+      "actionName": "Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 378929,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 378929
+    },
+    {
+      "actionId": 24312,
+      "actionName": "Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 381336,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 381336
+    },
+    {
+      "actionId": 24290,
+      "actionName": "Eukrasia",
+      "timingClass": "ogcd",
+      "timeMs": 420875,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 420875
+    },
+    {
+      "actionId": 24291,
+      "actionName": "Eukrasian Diagnosis",
+      "timingClass": "gcd",
+      "timeMs": 421857,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 421857
+    },
+    {
+      "actionId": 24290,
+      "actionName": "Eukrasia",
+      "timingClass": "ogcd",
+      "timeMs": 423772,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 423772
+    },
+    {
+      "actionId": 24291,
+      "actionName": "Eukrasian Diagnosis",
+      "timingClass": "gcd",
+      "timeMs": 424752,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 424752
+    },
+    {
+      "actionId": 24290,
+      "actionName": "Eukrasia",
+      "timingClass": "ogcd",
+      "timeMs": 426222,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 426222
+    },
+    {
+      "actionId": 24314,
+      "actionName": "Eukrasian Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 427603,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 427603
+    },
+    {
+      "actionId": 37033,
+      "actionName": "Psyche",
+      "timingClass": "ogcd",
+      "timeMs": 428270,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 428270
+    },
+    {
+      "actionId": 24312,
+      "actionName": "Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 430007,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 430007
+    },
+    {
+      "actionId": 24312,
+      "actionName": "Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 432414,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 432414
+    },
+    {
+      "actionId": 24294,
+      "actionName": "Soteria",
+      "timingClass": "ogcd",
+      "timeMs": 432992,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 432992
+    },
+    {
+      "actionId": 24312,
+      "actionName": "Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 434821,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 434821
+    },
+    {
+      "actionId": 24298,
+      "actionName": "Kerachole",
+      "timingClass": "ogcd",
+      "timeMs": 436112,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 436112
+    },
+    {
+      "actionId": 24312,
+      "actionName": "Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 437674,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 437674
+    },
+    {
+      "actionId": 24312,
+      "actionName": "Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 440077,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 440077
+    },
+    {
+      "actionId": 24300,
+      "actionName": "Zoe",
+      "timingClass": "ogcd",
+      "timeMs": 440701,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 440701
+    },
+    {
+      "actionId": 24312,
+      "actionName": "Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 442527,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 442527
+    },
+    {
+      "actionId": 24313,
+      "actionName": "Phlegma III",
+      "timingClass": "gcd",
+      "timeMs": 443999,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 443999
+    },
+    {
+      "actionId": 24302,
+      "actionName": "Physis II",
+      "timingClass": "ogcd",
+      "timeMs": 445114,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 445114
+    },
+    {
+      "actionId": 24312,
+      "actionName": "Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 447389,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 447389
+    },
+    {
+      "actionId": 24317,
+      "actionName": "Krasis",
+      "timingClass": "ogcd",
+      "timeMs": 447969,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 447969
+    },
+    {
+      "actionId": 24312,
+      "actionName": "Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 449796,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 449796
+    },
+    {
+      "actionId": 24305,
+      "actionName": "Haima",
+      "timingClass": "ogcd",
+      "timeMs": 451088,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 451088
+    },
+    {
+      "actionId": 24290,
+      "actionName": "Eukrasia",
+      "timingClass": "ogcd",
+      "timeMs": 451758,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 451758
+    },
+    {
+      "actionId": 37034,
+      "actionName": "Eukrasian Prognosis II",
+      "timingClass": "gcd",
+      "timeMs": 452740,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 452740
+    },
+    {
+      "actionId": 24303,
+      "actionName": "Taurochole",
+      "timingClass": "ogcd",
+      "timeMs": 453409,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 453409
+    },
+    {
+      "actionId": 24309,
+      "actionName": "Rhizomata",
+      "timingClass": "ogcd",
+      "timeMs": 454167,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 454167
+    },
+    {
+      "actionId": 24312,
+      "actionName": "Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 455725,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 455725
+    },
+    {
+      "actionId": 24290,
+      "actionName": "Eukrasia",
+      "timingClass": "ogcd",
+      "timeMs": 457196,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 457196
+    },
+    {
+      "actionId": 24314,
+      "actionName": "Eukrasian Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 458177,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 458177
+    },
+    {
+      "actionId": 24299,
+      "actionName": "Ixochole",
+      "timingClass": "ogcd",
+      "timeMs": 458846,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 458846
+    },
+    {
+      "actionId": 24312,
+      "actionName": "Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 460582,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 460582
+    },
+    {
+      "actionId": 24312,
+      "actionName": "Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 463030,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 463030
+    },
+    {
+      "actionId": 24312,
+      "actionName": "Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 465431,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 465431
+    },
+    {
+      "actionId": 24298,
+      "actionName": "Kerachole",
+      "timingClass": "ogcd",
+      "timeMs": 466279,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 466279
+    },
+    {
+      "actionId": 24312,
+      "actionName": "Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 467885,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 467885
+    },
+    {
+      "actionId": 24290,
+      "actionName": "Eukrasia",
+      "timingClass": "ogcd",
+      "timeMs": 469355,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 469355
+    },
+    {
+      "actionId": 24314,
+      "actionName": "Eukrasian Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 470379,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 470379
+    },
+    {
+      "actionId": 24312,
+      "actionName": "Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 472784,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 472784
+    },
+    {
+      "actionId": 24296,
+      "actionName": "Druochole",
+      "timingClass": "ogcd",
+      "timeMs": 473451,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 473451
+    },
+    {
+      "actionId": 24312,
+      "actionName": "Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 475229,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 475229
+    },
+    {
+      "actionId": 24312,
+      "actionName": "Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 477633,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 477633
+    },
+    {
+      "actionId": 24310,
+      "actionName": "Holos",
+      "timingClass": "ogcd",
+      "timeMs": 478212,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 478212
+    },
+    {
+      "actionId": 24312,
+      "actionName": "Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 480043,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 480043
+    },
+    {
+      "actionId": 24312,
+      "actionName": "Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 482453,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 482453
+    },
+    {
+      "actionId": 24313,
+      "actionName": "Phlegma III",
+      "timingClass": "gcd",
+      "timeMs": 483925,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 483925
+    },
+    {
+      "actionId": 24313,
+      "actionName": "Phlegma III",
+      "timingClass": "gcd",
+      "timeMs": 486377,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 486377
+    },
+    {
+      "actionId": 24290,
+      "actionName": "Eukrasia",
+      "timingClass": "ogcd",
+      "timeMs": 488826,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 488826
+    },
+    {
+      "actionId": 24314,
+      "actionName": "Eukrasian Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 489810,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 489810
+    },
+    {
+      "actionId": 37033,
+      "actionName": "Psyche",
+      "timingClass": "ogcd",
+      "timeMs": 490434,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 490434
+    },
+    {
+      "actionId": 24316,
+      "actionName": "Toxikon II",
+      "timingClass": "gcd",
+      "timeMs": 491279,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 491279
+    },
+    {
+      "actionId": 24316,
+      "actionName": "Toxikon II",
+      "timingClass": "gcd",
+      "timeMs": 493685,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 493685
+    },
+    {
+      "actionId": 24294,
+      "actionName": "Soteria",
+      "timingClass": "ogcd",
+      "timeMs": 494397,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 494397
+    },
+    {
+      "actionId": 24316,
+      "actionName": "Toxikon II",
+      "timingClass": "gcd",
+      "timeMs": 496090,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 496090
+    },
+    {
+      "actionId": 24290,
+      "actionName": "Eukrasia",
+      "timingClass": "ogcd",
+      "timeMs": 498499,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 498499
+    },
+    {
+      "actionId": 24314,
+      "actionName": "Eukrasian Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 499479,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 499479
+    },
+    {
+      "actionId": 24299,
+      "actionName": "Ixochole",
+      "timingClass": "ogcd",
+      "timeMs": 500149,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 500149
+    },
+    {
+      "actionId": 24312,
+      "actionName": "Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 501885,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 501885
+    },
+    {
+      "actionId": 24312,
+      "actionName": "Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 504290,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 504290
+    },
+    {
+      "actionId": 24311,
+      "actionName": "Panhaima",
+      "timingClass": "ogcd",
+      "timeMs": 504957,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 504957
+    },
+    {
+      "actionId": 24298,
+      "actionName": "Kerachole",
+      "timingClass": "ogcd",
+      "timeMs": 505537,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 505537
+    },
+    {
+      "actionId": 24312,
+      "actionName": "Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 507140,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 507140
+    },
+    {
+      "actionId": 24317,
+      "actionName": "Krasis",
+      "timingClass": "ogcd",
+      "timeMs": 507945,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 507945
+    },
+    {
+      "actionId": 24312,
+      "actionName": "Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 509550,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 509550
+    },
+    {
+      "actionId": 24302,
+      "actionName": "Physis II",
+      "timingClass": "ogcd",
+      "timeMs": 510173,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 510173
+    },
+    {
+      "actionId": 24312,
+      "actionName": "Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 511956,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 511956
+    },
+    {
+      "actionId": 24312,
+      "actionName": "Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 513426,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 513426
+    },
+    {
+      "actionId": 24312,
+      "actionName": "Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 516770,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 516770
+    },
+    {
+      "actionId": 24290,
+      "actionName": "Eukrasia",
+      "timingClass": "ogcd",
+      "timeMs": 518241,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 518241
+    },
+    {
+      "actionId": 24314,
+      "actionName": "Eukrasian Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 519265,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 519265
+    },
+    {
+      "actionId": 24312,
+      "actionName": "Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 521673,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 521673
+    },
+    {
+      "actionId": 24312,
+      "actionName": "Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 524080,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 524080
+    },
+    {
+      "actionId": 24290,
+      "actionName": "Eukrasia",
+      "timingClass": "ogcd",
+      "timeMs": 525593,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 525593
+    },
+    {
+      "actionId": 24314,
+      "actionName": "Eukrasian Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 526572,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 526572
+    },
+    {
+      "actionId": 24312,
+      "actionName": "Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 529020,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 529020
+    },
+    {
+      "actionId": 24312,
+      "actionName": "Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 531424,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 531424
+    },
+    {
+      "actionId": 24312,
+      "actionName": "Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 533830,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 533830
+    },
+    {
+      "actionId": 24303,
+      "actionName": "Taurochole",
+      "timingClass": "ogcd",
+      "timeMs": 534453,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 534453
+    },
+    {
+      "actionId": 24318,
+      "actionName": "Pneuma",
+      "timingClass": "gcd",
+      "timeMs": 536280,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 536280
+    },
+    {
+      "actionId": 24300,
+      "actionName": "Zoe",
+      "timingClass": "ogcd",
+      "timeMs": 536903,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 536903
+    },
+    {
+      "actionId": 24312,
+      "actionName": "Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 538730,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 538730
+    },
+    {
+      "actionId": 24290,
+      "actionName": "Eukrasia",
+      "timingClass": "ogcd",
+      "timeMs": 540200,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 540200
+    },
+    {
+      "actionId": 37034,
+      "actionName": "Eukrasian Prognosis II",
+      "timingClass": "gcd",
+      "timeMs": 541180,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 541180
+    },
+    {
+      "actionId": 24313,
+      "actionName": "Phlegma III",
+      "timingClass": "gcd",
+      "timeMs": 542648,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 542648
+    },
+    {
+      "actionId": 24296,
+      "actionName": "Druochole",
+      "timingClass": "ogcd",
+      "timeMs": 543274,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 543274
+    },
+    {
+      "actionId": 24309,
+      "actionName": "Rhizomata",
+      "timingClass": "ogcd",
+      "timeMs": 544165,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 544165
+    },
+    {
+      "actionId": 24312,
+      "actionName": "Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 546036,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 546036
+    },
+    {
+      "actionId": 24312,
+      "actionName": "Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 548445,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 548445
+    },
+    {
+      "actionId": 24290,
+      "actionName": "Eukrasia",
+      "timingClass": "ogcd",
+      "timeMs": 549915,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 549915
+    },
+    {
+      "actionId": 24314,
+      "actionName": "Eukrasian Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 551118,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 551118
+    },
+    {
+      "actionId": 37033,
+      "actionName": "Psyche",
+      "timingClass": "ogcd",
+      "timeMs": 551696,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 551696
+    },
+    {
+      "actionId": 24312,
+      "actionName": "Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 553522,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 553522
+    },
+    {
+      "actionId": 24312,
+      "actionName": "Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 555926,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 555926
+    },
+    {
+      "actionId": 24312,
+      "actionName": "Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 558338,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 558338
+    },
+    {
+      "actionId": 24312,
+      "actionName": "Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 560744,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 560744
+    },
+    {
+      "actionId": 24299,
+      "actionName": "Ixochole",
+      "timingClass": "ogcd",
+      "timeMs": 561322,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 561322
+    },
+    {
+      "actionId": 24312,
+      "actionName": "Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 563153,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 563153
+    },
+    {
+      "actionId": 37035,
+      "actionName": "Philosophia",
+      "timingClass": "ogcd",
+      "timeMs": 563777,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 563777
+    },
+    {
+      "actionId": 24298,
+      "actionName": "Kerachole",
+      "timingClass": "ogcd",
+      "timeMs": 564398,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 564398
+    },
+    {
+      "actionId": 24312,
+      "actionName": "Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 565957,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 565957
+    },
+    {
+      "actionId": 24294,
+      "actionName": "Soteria",
+      "timingClass": "ogcd",
+      "timeMs": 566581,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 566581
+    },
+    {
+      "actionId": 24312,
+      "actionName": "Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 568362,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 568362
+    },
+    {
+      "actionId": 24312,
+      "actionName": "Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 570767,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 570767
+    },
+    {
+      "actionId": 24302,
+      "actionName": "Physis II",
+      "timingClass": "ogcd",
+      "timeMs": 571437,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 571437
+    },
+    {
+      "actionId": 24312,
+      "actionName": "Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 573176,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 573176
+    },
+    {
+      "actionId": 24312,
+      "actionName": "Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 575628,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 575628
+    },
+    {
+      "actionId": 24317,
+      "actionName": "Krasis",
+      "timingClass": "ogcd",
+      "timeMs": 576206,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 576206
+    },
+    {
+      "actionId": 24312,
+      "actionName": "Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 578033,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 578033
+    },
+    {
+      "actionId": 24290,
+      "actionName": "Eukrasia",
+      "timingClass": "ogcd",
+      "timeMs": 579501,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 579501
+    },
+    {
+      "actionId": 24305,
+      "actionName": "Haima",
+      "timingClass": "ogcd",
+      "timeMs": 580215,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 580215
+    },
+    {
+      "actionId": 24314,
+      "actionName": "Eukrasian Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 580883,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 580883
+    },
+    {
+      "actionId": 24312,
+      "actionName": "Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 583290,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 583290
+    },
+    {
+      "actionId": 24303,
+      "actionName": "Taurochole",
+      "timingClass": "ogcd",
+      "timeMs": 583958,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 583958
+    },
+    {
+      "actionId": 24312,
+      "actionName": "Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 585695,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 585695
+    },
+    {
+      "actionId": 24312,
+      "actionName": "Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 588101,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 588101
+    },
+    {
+      "actionId": 24312,
+      "actionName": "Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 590509,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 590509
+    },
+    {
+      "actionId": 24312,
+      "actionName": "Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 592921,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 592921
+    },
+    {
+      "actionId": 24312,
+      "actionName": "Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 595326,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 595326
+    },
+    {
+      "actionId": 24312,
+      "actionName": "Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 597734,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 597734
+    },
+    {
+      "actionId": 24312,
+      "actionName": "Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 600135,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 600135
+    },
+    {
+      "actionId": 24312,
+      "actionName": "Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 602586,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 602586
+    },
+    {
+      "actionId": 24298,
+      "actionName": "Kerachole",
+      "timingClass": "ogcd",
+      "timeMs": 603210,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 603210
+    },
+    {
+      "actionId": 24313,
+      "actionName": "Phlegma III",
+      "timingClass": "gcd",
+      "timeMs": 604056,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 604056
+    },
+    {
+      "actionId": 24310,
+      "actionName": "Holos",
+      "timingClass": "ogcd",
+      "timeMs": 605571,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 605571
+    },
+    {
+      "actionId": 24312,
+      "actionName": "Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 607442,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 607442
+    },
+    {
+      "actionId": 24312,
+      "actionName": "Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 609849,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 609849
+    },
+    {
+      "actionId": 24290,
+      "actionName": "Eukrasia",
+      "timingClass": "ogcd",
+      "timeMs": 611320,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 611320
+    },
+    {
+      "actionId": 24314,
+      "actionName": "Eukrasian Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 612300,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 612300
+    },
+    {
+      "actionId": 37033,
+      "actionName": "Psyche",
+      "timingClass": "ogcd",
+      "timeMs": 612922,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 612922
+    },
+    {
+      "actionId": 24312,
+      "actionName": "Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 614706,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 614706
+    },
+    {
+      "actionId": 24312,
+      "actionName": "Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 617109,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 617109
+    },
+    {
+      "actionId": 24312,
+      "actionName": "Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 619513,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 619513
+    },
+    {
+      "actionId": 24312,
+      "actionName": "Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 621919,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 621919
+    },
+    {
+      "actionId": 24312,
+      "actionName": "Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 624370,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 624370
+    },
+    {
+      "actionId": 24312,
+      "actionName": "Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 626778,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 626778
+    },
+    {
+      "actionId": 24300,
+      "actionName": "Zoe",
+      "timingClass": "ogcd",
+      "timeMs": 627401,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 627401
+    },
+    {
+      "actionId": 24313,
+      "actionName": "Phlegma III",
+      "timingClass": "gcd",
+      "timeMs": 628293,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 628293
+    },
+    {
+      "actionId": 24294,
+      "actionName": "Soteria",
+      "timingClass": "ogcd",
+      "timeMs": 629004,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 629004
+    },
+    {
+      "actionId": 24290,
+      "actionName": "Eukrasia",
+      "timingClass": "ogcd",
+      "timeMs": 630742,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 630742
+    },
+    {
+      "actionId": 37034,
+      "actionName": "Eukrasian Prognosis II",
+      "timingClass": "gcd",
+      "timeMs": 631721,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 631721
+    },
+    {
+      "actionId": 24298,
+      "actionName": "Kerachole",
+      "timingClass": "ogcd",
+      "timeMs": 633194,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 633194
+    },
+    {
+      "actionId": 24311,
+      "actionName": "Panhaima",
+      "timingClass": "ogcd",
+      "timeMs": 633817,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 633817
+    },
+    {
+      "actionId": 24309,
+      "actionName": "Rhizomata",
+      "timingClass": "ogcd",
+      "timeMs": 634531,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 634531
+    },
+    {
+      "actionId": 24312,
+      "actionName": "Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 636045,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 636045
+    },
+    {
+      "actionId": 24316,
+      "actionName": "Toxikon II",
+      "timingClass": "gcd",
+      "timeMs": 637515,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 637515
+    },
+    {
+      "actionId": 24317,
+      "actionName": "Krasis",
+      "timingClass": "ogcd",
+      "timeMs": 638232,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 638232
+    },
+    {
+      "actionId": 24303,
+      "actionName": "Taurochole",
+      "timingClass": "ogcd",
+      "timeMs": 638855,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 638855
+    },
+    {
+      "actionId": 24312,
+      "actionName": "Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 640864,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 640864
+    },
+    {
+      "actionId": 24290,
+      "actionName": "Eukrasia",
+      "timingClass": "ogcd",
+      "timeMs": 642332,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 642332
+    },
+    {
+      "actionId": 24314,
+      "actionName": "Eukrasian Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 643360,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 643360
+    },
+    {
+      "actionId": 24312,
+      "actionName": "Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 645771,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 645771
+    },
+    {
+      "actionId": 24312,
+      "actionName": "Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 648184,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 648184
+    },
+    {
+      "actionId": 24312,
+      "actionName": "Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 650590,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 650590
+    },
+    {
+      "actionId": 24312,
+      "actionName": "Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 652996,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 652996
+    },
+    {
+      "actionId": 24312,
+      "actionName": "Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 655448,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 655448
+    },
+    {
+      "actionId": 24313,
+      "actionName": "Phlegma III",
+      "timingClass": "gcd",
+      "timeMs": 657630,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 657630
+    },
+    {
+      "actionId": 24312,
+      "actionName": "Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 661021,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 661021
+    },
+    {
+      "actionId": 24312,
+      "actionName": "Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 663428,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 663428
+    },
+    {
+      "actionId": 24318,
+      "actionName": "Pneuma",
+      "timingClass": "gcd",
+      "timeMs": 665834,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 665834
+    },
+    {
+      "actionId": 24299,
+      "actionName": "Ixochole",
+      "timingClass": "ogcd",
+      "timeMs": 666368,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 666368
+    },
+    {
+      "actionId": 24312,
+      "actionName": "Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 668283,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 668283
+    },
+    {
+      "actionId": 24312,
+      "actionName": "Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 670690,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 670690
+    },
+    {
+      "actionId": 24298,
+      "actionName": "Kerachole",
+      "timingClass": "ogcd",
+      "timeMs": 671848,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 671848
+    },
+    {
+      "actionId": 24290,
+      "actionName": "Eukrasia",
+      "timingClass": "ogcd",
+      "timeMs": 672472,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 672472
+    },
+    {
+      "actionId": 24314,
+      "actionName": "Eukrasian Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 673455,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 673455
+    },
+    {
+      "actionId": 37033,
+      "actionName": "Psyche",
+      "timingClass": "ogcd",
+      "timeMs": 674124,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 674124
+    },
+    {
+      "actionId": 24312,
+      "actionName": "Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 674972,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 674972
+    },
+    {
+      "actionId": 24312,
+      "actionName": "Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 678309,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 678309
+    },
+    {
+      "actionId": 24312,
+      "actionName": "Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 680714,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 680714
+    },
+    {
+      "actionId": 24312,
+      "actionName": "Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 683122,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 683122
+    },
+    {
+      "actionId": 24312,
+      "actionName": "Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 685525,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 685525
+    },
+    {
+      "actionId": 24312,
+      "actionName": "Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 687930,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 687930
+    },
+    {
+      "actionId": 24312,
+      "actionName": "Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 690334,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 690334
+    },
+    {
+      "actionId": 24290,
+      "actionName": "Eukrasia",
+      "timingClass": "ogcd",
+      "timeMs": 691848,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 691848
+    },
+    {
+      "actionId": 37034,
+      "actionName": "Eukrasian Prognosis II",
+      "timingClass": "gcd",
+      "timeMs": 692874,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 692874
+    },
+    {
+      "actionId": 24312,
+      "actionName": "Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 695279,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 695279
+    },
+    {
+      "actionId": 24302,
+      "actionName": "Physis II",
+      "timingClass": "ogcd",
+      "timeMs": 695902,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 695902
+    },
+    {
+      "actionId": 24312,
+      "actionName": "Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 697682,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 697682
+    },
+    {
+      "actionId": 24313,
+      "actionName": "Phlegma III",
+      "timingClass": "gcd",
+      "timeMs": 699198,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 699198
+    },
+    {
+      "actionId": 24312,
+      "actionName": "Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 702587,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 702587
+    },
+    {
+      "actionId": 24298,
+      "actionName": "Kerachole",
+      "timingClass": "ogcd",
+      "timeMs": 703120,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 703120
+    },
+    {
+      "actionId": 24290,
+      "actionName": "Eukrasia",
+      "timingClass": "ogcd",
+      "timeMs": 704057,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 704057
+    },
+    {
+      "actionId": 24314,
+      "actionName": "Eukrasian Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 705038,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 705038
+    },
+    {
+      "actionId": 24290,
+      "actionName": "Eukrasia",
+      "timingClass": "ogcd",
+      "timeMs": 706507,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 706507
+    },
+    {
+      "actionId": 37034,
+      "actionName": "Eukrasian Prognosis II",
+      "timingClass": "gcd",
+      "timeMs": 707533,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 707533
+    },
+    {
+      "actionId": 24299,
+      "actionName": "Ixochole",
+      "timingClass": "ogcd",
+      "timeMs": 708199,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 708199
+    },
+    {
+      "actionId": 24312,
+      "actionName": "Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 709935,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 709935
+    },
+    {
+      "actionId": 24290,
+      "actionName": "Eukrasia",
+      "timingClass": "ogcd",
+      "timeMs": 711405,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 711405
+    },
+    {
+      "actionId": 24314,
+      "actionName": "Eukrasian Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 712384,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 712384
+    },
+    {
+      "actionId": 24316,
+      "actionName": "Toxikon II",
+      "timingClass": "gcd",
+      "timeMs": 714748,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 714748
+    },
+    {
+      "actionId": 24312,
+      "actionName": "Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 718094,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 718094
+    },
+    {
+      "actionId": 24290,
+      "actionName": "Eukrasia",
+      "timingClass": "ogcd",
+      "timeMs": 721261,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 721261
+    },
+    {
+      "actionId": 24314,
+      "actionName": "Eukrasian Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 723981,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 723981
+    },
+    {
+      "actionId": 24309,
+      "actionName": "Rhizomata",
+      "timingClass": "ogcd",
+      "timeMs": 724604,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 724604
+    },
+    {
+      "actionId": 24312,
+      "actionName": "Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 726388,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 726388
+    },
+    {
+      "actionId": 24305,
+      "actionName": "Haima",
+      "timingClass": "ogcd",
+      "timeMs": 727012,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 727012
+    },
+    {
+      "actionId": 24312,
+      "actionName": "Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 728795,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 728795
+    },
+    {
+      "actionId": 24317,
+      "actionName": "Krasis",
+      "timingClass": "ogcd",
+      "timeMs": 729418,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 729418
+    },
+    {
+      "actionId": 24312,
+      "actionName": "Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 731201,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 731201
+    },
+    {
+      "actionId": 24312,
+      "actionName": "Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 733609,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 733609
+    },
+    {
+      "actionId": 24312,
+      "actionName": "Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 736013,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 736013
+    },
+    {
+      "actionId": 24303,
+      "actionName": "Taurochole",
+      "timingClass": "ogcd",
+      "timeMs": 736637,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 736637
+    },
+    {
+      "actionId": 24312,
+      "actionName": "Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 738416,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 738416
+    },
+    {
+      "actionId": 37033,
+      "actionName": "Psyche",
+      "timingClass": "ogcd",
+      "timeMs": 739038,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 739038
+    },
+    {
+      "actionId": 24312,
+      "actionName": "Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 740818,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 740818
+    },
+    {
+      "actionId": 24298,
+      "actionName": "Kerachole",
+      "timingClass": "ogcd",
+      "timeMs": 741442,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 741442
+    },
+    {
+      "actionId": 24312,
+      "actionName": "Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 743224,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 743224
+    },
+    {
+      "actionId": 37035,
+      "actionName": "Philosophia",
+      "timingClass": "ogcd",
+      "timeMs": 743848,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 743848
+    },
+    {
+      "actionId": 24290,
+      "actionName": "Eukrasia",
+      "timingClass": "ogcd",
+      "timeMs": 744693,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 744693
+    },
+    {
+      "actionId": 24310,
+      "actionName": "Holos",
+      "timingClass": "ogcd",
+      "timeMs": 745364,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 745364
+    },
+    {
+      "actionId": 37034,
+      "actionName": "Eukrasian Prognosis II",
+      "timingClass": "gcd",
+      "timeMs": 745986,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 745986
+    },
+    {
+      "actionId": 24312,
+      "actionName": "Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 748435,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 748435
+    },
+    {
+      "actionId": 24299,
+      "actionName": "Ixochole",
+      "timingClass": "ogcd",
+      "timeMs": 749147,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 749147
+    },
+    {
+      "actionId": 24290,
+      "actionName": "Eukrasia",
+      "timingClass": "ogcd",
+      "timeMs": 749906,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 749906
+    },
+    {
+      "actionId": 37034,
+      "actionName": "Eukrasian Prognosis II",
+      "timingClass": "gcd",
+      "timeMs": 750888,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 750888
+    },
+    {
+      "actionId": 24294,
+      "actionName": "Soteria",
+      "timingClass": "ogcd",
+      "timeMs": 751646,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 751646
+    },
+    {
+      "actionId": 24290,
+      "actionName": "Eukrasia",
+      "timingClass": "ogcd",
+      "timeMs": 752404,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 752404
+    },
+    {
+      "actionId": 24314,
+      "actionName": "Eukrasian Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 753384,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 753384
+    },
+    {
+      "actionId": 24312,
+      "actionName": "Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 755836,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 755836
+    },
+    {
+      "actionId": 24311,
+      "actionName": "Panhaima",
+      "timingClass": "ogcd",
+      "timeMs": 756504,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 756504
+    },
+    {
+      "actionId": 24312,
+      "actionName": "Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 758241,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 758241
+    },
+    {
+      "actionId": 24290,
+      "actionName": "Eukrasia",
+      "timingClass": "ogcd",
+      "timeMs": 759711,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 759711
+    },
+    {
+      "actionId": 37034,
+      "actionName": "Eukrasian Prognosis II",
+      "timingClass": "gcd",
+      "timeMs": 760738,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 760738
+    },
+    {
+      "actionId": 24312,
+      "actionName": "Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 763141,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 763141
+    },
+    {
+      "actionId": 24290,
+      "actionName": "Eukrasia",
+      "timingClass": "ogcd",
+      "timeMs": 764653,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 764653
+    },
+    {
+      "actionId": 37034,
+      "actionName": "Eukrasian Prognosis II",
+      "timingClass": "gcd",
+      "timeMs": 765636,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 765636
+    },
+    {
+      "actionId": 24302,
+      "actionName": "Physis II",
+      "timingClass": "ogcd",
+      "timeMs": 766347,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 766347
+    },
+    {
+      "actionId": 24313,
+      "actionName": "Phlegma III",
+      "timingClass": "gcd",
+      "timeMs": 767149,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 767149
+    },
+    {
+      "actionId": 24312,
+      "actionName": "Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 770539,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 770539
+    },
+    {
+      "actionId": 24300,
+      "actionName": "Zoe",
+      "timingClass": "ogcd",
+      "timeMs": 771120,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 771120
+    },
+    {
+      "actionId": 24312,
+      "actionName": "Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 772949,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 772949
+    },
+    {
+      "actionId": 24290,
+      "actionName": "Eukrasia",
+      "timingClass": "ogcd",
+      "timeMs": 774421,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 774421
+    },
+    {
+      "actionId": 37034,
+      "actionName": "Eukrasian Prognosis II",
+      "timingClass": "gcd",
+      "timeMs": 775403,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 775403
+    },
+    {
+      "actionId": 24312,
+      "actionName": "Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 777806,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 777806
+    },
+    {
+      "actionId": 24312,
+      "actionName": "Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 780212,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 780212
+    },
+    {
+      "actionId": 24299,
+      "actionName": "Ixochole",
+      "timingClass": "ogcd",
+      "timeMs": 780835,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 780835
+    },
+    {
+      "actionId": 24290,
+      "actionName": "Eukrasia",
+      "timingClass": "ogcd",
+      "timeMs": 781683,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 781683
+    },
+    {
+      "actionId": 24314,
+      "actionName": "Eukrasian Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 782665,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 782665
+    },
+    {
+      "actionId": 24298,
+      "actionName": "Kerachole",
+      "timingClass": "ogcd",
+      "timeMs": 783466,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 783466
+    },
+    {
+      "actionId": 24312,
+      "actionName": "Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 785115,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 785115
+    },
+    {
+      "actionId": 24312,
+      "actionName": "Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 787519,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 787519
+    },
+    {
+      "actionId": 24312,
+      "actionName": "Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 789930,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 789930
+    },
+    {
+      "actionId": 24317,
+      "actionName": "Krasis",
+      "timingClass": "ogcd",
+      "timeMs": 790553,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 790553
+    },
+    {
+      "actionId": 24318,
+      "actionName": "Pneuma",
+      "timingClass": "gcd",
+      "timeMs": 792381,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 792381
+    },
+    {
+      "actionId": 24313,
+      "actionName": "Phlegma III",
+      "timingClass": "gcd",
+      "timeMs": 794564,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 794564
+    },
+    {
+      "actionId": 24316,
+      "actionName": "Toxikon II",
+      "timingClass": "gcd",
+      "timeMs": 797014,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 797014
+    },
+    {
+      "actionId": 24316,
+      "actionName": "Toxikon II",
+      "timingClass": "gcd",
+      "timeMs": 799425,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 799425
+    },
+    {
+      "actionId": 37033,
+      "actionName": "Psyche",
+      "timingClass": "ogcd",
+      "timeMs": 800050,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 800050
+    },
+    {
+      "actionId": 24312,
+      "actionName": "Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 802766,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 802766
+    },
+    {
+      "actionId": 24312,
+      "actionName": "Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 805173,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 805173
+    },
+    {
+      "actionId": 24312,
+      "actionName": "Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 807581,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 807581
+    },
+    {
+      "actionId": 24312,
+      "actionName": "Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 809988,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 809988
+    },
+    {
+      "actionId": 24290,
+      "actionName": "Eukrasia",
+      "timingClass": "ogcd",
+      "timeMs": 811456,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 811456
+    },
+    {
+      "actionId": 24314,
+      "actionName": "Eukrasian Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 812436,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 812436
+    },
+    {
+      "actionId": 24298,
+      "actionName": "Kerachole",
+      "timingClass": "ogcd",
+      "timeMs": 813860,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 813860
+    },
+    {
+      "actionId": 24290,
+      "actionName": "Eukrasia",
+      "timingClass": "ogcd",
+      "timeMs": 814484,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 814484
+    },
+    {
+      "actionId": 37034,
+      "actionName": "Eukrasian Prognosis II",
+      "timingClass": "gcd",
+      "timeMs": 815465,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 815465
+    },
+    {
+      "actionId": 24312,
+      "actionName": "Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 817916,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 817916
+    },
+    {
+      "actionId": 24312,
+      "actionName": "Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 819386,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 819386
+    },
+    {
+      "actionId": 24299,
+      "actionName": "Ixochole",
+      "timingClass": "ogcd",
+      "timeMs": 820051,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 820051
+    },
+    {
+      "actionId": 24309,
+      "actionName": "Rhizomata",
+      "timingClass": "ogcd",
+      "timeMs": 820721,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 820721
+    },
+    {
+      "actionId": 24313,
+      "actionName": "Phlegma III",
+      "timingClass": "gcd",
+      "timeMs": 821835,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 821835
+    },
+    {
+      "actionId": 24312,
+      "actionName": "Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 825220,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 825220
+    },
+    {
+      "actionId": 24316,
+      "actionName": "Toxikon II",
+      "timingClass": "gcd",
+      "timeMs": 826689,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 826689
+    },
+    {
+      "actionId": 24302,
+      "actionName": "Physis II",
+      "timingClass": "ogcd",
+      "timeMs": 827268,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 827268
+    },
+    {
+      "actionId": 24296,
+      "actionName": "Druochole",
+      "timingClass": "ogcd",
+      "timeMs": 827934,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 827934
+    },
+    {
+      "actionId": 24312,
+      "actionName": "Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 830027,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 830027
+    },
+    {
+      "actionId": 24312,
+      "actionName": "Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 832438,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 832438
+    },
+    {
+      "actionId": 24312,
+      "actionName": "Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 834841,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 834841
+    },
+    {
+      "actionId": 24312,
+      "actionName": "Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 837249,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 837249
+    },
+    {
+      "actionId": 24316,
+      "actionName": "Toxikon II",
+      "timingClass": "gcd",
+      "timeMs": 838723,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 838723
+    },
+    {
+      "actionId": 24290,
+      "actionName": "Eukrasia",
+      "timingClass": "ogcd",
+      "timeMs": 841131,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 841131
+    },
+    {
+      "actionId": 24314,
+      "actionName": "Eukrasian Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 842114,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 842114
+    },
+    {
+      "actionId": 24294,
+      "actionName": "Soteria",
+      "timingClass": "ogcd",
+      "timeMs": 842738,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 842738
+    },
+    {
+      "actionId": 24312,
+      "actionName": "Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 844521,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 844521
+    },
+    {
+      "actionId": 24312,
+      "actionName": "Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 846927,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 846927
+    },
+    {
+      "actionId": 24305,
+      "actionName": "Haima",
+      "timingClass": "ogcd",
+      "timeMs": 847598,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 847598
+    },
+    {
+      "actionId": 24312,
+      "actionName": "Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 849333,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 849333
+    },
+    {
+      "actionId": 24312,
+      "actionName": "Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 851741,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 851741
+    },
+    {
+      "actionId": 24317,
+      "actionName": "Krasis",
+      "timingClass": "ogcd",
+      "timeMs": 852410,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 852410
+    },
+    {
+      "actionId": 24298,
+      "actionName": "Kerachole",
+      "timingClass": "ogcd",
+      "timeMs": 852988,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 852988
+    },
+    {
+      "actionId": 24290,
+      "actionName": "Eukrasia",
+      "timingClass": "ogcd",
+      "timeMs": 853657,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 853657
+    },
+    {
+      "actionId": 24314,
+      "actionName": "Eukrasian Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 854639,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 854639
+    },
+    {
+      "actionId": 24300,
+      "actionName": "Zoe",
+      "timingClass": "ogcd",
+      "timeMs": 882207,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 882207
+    },
+    {
+      "actionId": 24290,
+      "actionName": "Eukrasia",
+      "timingClass": "ogcd",
+      "timeMs": 884260,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 884260
+    },
+    {
+      "actionId": 37034,
+      "actionName": "Eukrasian Prognosis II",
+      "timingClass": "gcd",
+      "timeMs": 885241,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 885241
+    },
+    {
+      "actionId": 24290,
+      "actionName": "Eukrasia",
+      "timingClass": "ogcd",
+      "timeMs": 886756,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 886756
+    },
+    {
+      "actionId": 24314,
+      "actionName": "Eukrasian Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 887780,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 887780
+    },
+    {
+      "actionId": 37033,
+      "actionName": "Psyche",
+      "timingClass": "ogcd",
+      "timeMs": 888449,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 888449
+    },
+    {
+      "actionId": 24310,
+      "actionName": "Holos",
+      "timingClass": "ogcd",
+      "timeMs": 889208,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 889208
+    },
+    {
+      "actionId": 24313,
+      "actionName": "Phlegma III",
+      "timingClass": "gcd",
+      "timeMs": 889830,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 889830
+    },
+    {
+      "actionId": 24298,
+      "actionName": "Kerachole",
+      "timingClass": "ogcd",
+      "timeMs": 891745,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 891745
+    },
+    {
+      "actionId": 24312,
+      "actionName": "Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 893303,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 893303
+    },
+    {
+      "actionId": 24312,
+      "actionName": "Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 895704,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 895704
+    },
+    {
+      "actionId": 24312,
+      "actionName": "Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 898106,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 898106
+    },
+    {
+      "actionId": 24302,
+      "actionName": "Physis II",
+      "timingClass": "ogcd",
+      "timeMs": 898728,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 898728
+    },
+    {
+      "actionId": 24312,
+      "actionName": "Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 900555,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 900555
+    },
+    {
+      "actionId": 24312,
+      "actionName": "Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 902962,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 902962
+    },
+    {
+      "actionId": 24299,
+      "actionName": "Ixochole",
+      "timingClass": "ogcd",
+      "timeMs": 903541,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 903541
+    },
+    {
+      "actionId": 24312,
+      "actionName": "Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 905368,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 905368
+    },
+    {
+      "actionId": 24311,
+      "actionName": "Panhaima",
+      "timingClass": "ogcd",
+      "timeMs": 906126,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 906126
+    },
+    {
+      "actionId": 24312,
+      "actionName": "Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 907776,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 907776
+    },
+    {
+      "actionId": 24294,
+      "actionName": "Soteria",
+      "timingClass": "ogcd",
+      "timeMs": 908535,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 908535
+    },
+    {
+      "actionId": 24312,
+      "actionName": "Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 910185,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 910185
+    },
+    {
+      "actionId": 24312,
+      "actionName": "Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 912593,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 912593
+    },
+    {
+      "actionId": 24313,
+      "actionName": "Phlegma III",
+      "timingClass": "gcd",
+      "timeMs": 914108,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 914108
+    },
+    {
+      "actionId": 24290,
+      "actionName": "Eukrasia",
+      "timingClass": "ogcd",
+      "timeMs": 916557,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 916557
+    },
+    {
+      "actionId": 24318,
+      "actionName": "Pneuma",
+      "timingClass": "gcd",
+      "timeMs": 918474,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 918474
+    },
+    {
+      "actionId": 24314,
+      "actionName": "Eukrasian Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 919986,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 919986
+    },
+    {
+      "actionId": 24303,
+      "actionName": "Taurochole",
+      "timingClass": "ogcd",
+      "timeMs": 920563,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 920563
+    },
+    {
+      "actionId": 24312,
+      "actionName": "Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 922391,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 922391
+    },
+    {
+      "actionId": 24309,
+      "actionName": "Rhizomata",
+      "timingClass": "ogcd",
+      "timeMs": 922969,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 922969
+    },
+    {
+      "actionId": 24312,
+      "actionName": "Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 924792,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 924792
+    },
+    {
+      "actionId": 24298,
+      "actionName": "Kerachole",
+      "timingClass": "ogcd",
+      "timeMs": 925727,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 925727
+    },
+    {
+      "actionId": 24312,
+      "actionName": "Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 927329,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 927329
+    },
+    {
+      "actionId": 24312,
+      "actionName": "Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 929737,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 929737
+    },
+    {
+      "actionId": 24312,
+      "actionName": "Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 932140,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 932140
+    },
+    {
+      "actionId": 24312,
+      "actionName": "Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 934541,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 934541
+    },
+    {
+      "actionId": 24299,
+      "actionName": "Ixochole",
+      "timingClass": "ogcd",
+      "timeMs": 935165,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 935165
+    },
+    {
+      "actionId": 24312,
+      "actionName": "Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 936946,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 936946
+    },
+    {
+      "actionId": 24312,
+      "actionName": "Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 939347,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 939347
+    },
+    {
+      "actionId": 24312,
+      "actionName": "Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 941754,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 941754
+    },
+    {
+      "actionId": 24312,
+      "actionName": "Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 944160,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 944160
+    },
+    {
+      "actionId": 24312,
+      "actionName": "Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 946566,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 946566
+    },
+    {
+      "actionId": 24312,
+      "actionName": "Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 948970,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 948970
+    },
+    {
+      "actionId": 37033,
+      "actionName": "Psyche",
+      "timingClass": "ogcd",
+      "timeMs": 949593,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 949593
+    },
+    {
+      "actionId": 24290,
+      "actionName": "Eukrasia",
+      "timingClass": "ogcd",
+      "timeMs": 950440,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 950440
+    },
+    {
+      "actionId": 24314,
+      "actionName": "Eukrasian Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 951462,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 951462
+    },
+    {
+      "actionId": 24312,
+      "actionName": "Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 953909,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 953909
+    },
+    {
+      "actionId": 24312,
+      "actionName": "Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 956318,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 956318
+    },
+    {
+      "actionId": 24290,
+      "actionName": "Eukrasia",
+      "timingClass": "ogcd",
+      "timeMs": 957832,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 957832
+    },
+    {
+      "actionId": 37034,
+      "actionName": "Eukrasian Prognosis II",
+      "timingClass": "gcd",
+      "timeMs": 958811,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 958811
+    },
+    {
+      "actionId": 24302,
+      "actionName": "Physis II",
+      "timingClass": "ogcd",
+      "timeMs": 959521,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 959521
+    },
+    {
+      "actionId": 24312,
+      "actionName": "Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 961212,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 961212
+    },
+    {
+      "actionId": 24312,
+      "actionName": "Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 963619,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 963619
+    },
+    {
+      "actionId": 24312,
+      "actionName": "Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 966023,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 966023
+    },
+    {
+      "actionId": 24313,
+      "actionName": "Phlegma III",
+      "timingClass": "gcd",
+      "timeMs": 967494,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 967494
+    },
+    {
+      "actionId": 24312,
+      "actionName": "Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 970883,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 970883
+    },
+    {
+      "actionId": 24298,
+      "actionName": "Kerachole",
+      "timingClass": "ogcd",
+      "timeMs": 971509,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 971509
+    },
+    {
+      "actionId": 24313,
+      "actionName": "Phlegma III",
+      "timingClass": "gcd",
+      "timeMs": 972354,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 972354
+    },
+    {
+      "actionId": 24317,
+      "actionName": "Krasis",
+      "timingClass": "ogcd",
+      "timeMs": 973067,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 973067
+    },
+    {
+      "actionId": 24294,
+      "actionName": "Soteria",
+      "timingClass": "ogcd",
+      "timeMs": 973690,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 973690
+    },
+    {
+      "actionId": 24290,
+      "actionName": "Eukrasia",
+      "timingClass": "ogcd",
+      "timeMs": 974802,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 974802
+    },
+    {
+      "actionId": 37034,
+      "actionName": "Eukrasian Prognosis II",
+      "timingClass": "gcd",
+      "timeMs": 975781,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 975781
+    },
+    {
+      "actionId": 24305,
+      "actionName": "Haima",
+      "timingClass": "ogcd",
+      "timeMs": 976402,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 976402
+    },
+    {
+      "actionId": 24312,
+      "actionName": "Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 978182,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 978182
+    },
+    {
+      "actionId": 24312,
+      "actionName": "Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 980586,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 980586
+    },
+    {
+      "actionId": 24290,
+      "actionName": "Eukrasia",
+      "timingClass": "ogcd",
+      "timeMs": 982054,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 982054
+    },
+    {
+      "actionId": 24314,
+      "actionName": "Eukrasian Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 983074,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 983074
+    },
+    {
+      "actionId": 24312,
+      "actionName": "Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 985522,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 985522
+    },
+    {
+      "actionId": 24312,
+      "actionName": "Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 987932,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 987932
+    },
+    {
+      "actionId": 24312,
+      "actionName": "Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 990341,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 990341
+    },
+    {
+      "actionId": 24312,
+      "actionName": "Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 992747,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 992747
+    },
+    {
+      "actionId": 24312,
+      "actionName": "Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 995159,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 995159
+    },
+    {
+      "actionId": 24312,
+      "actionName": "Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 997567,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 997567
+    },
+    {
+      "actionId": 24312,
+      "actionName": "Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 999981,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 999981
+    },
+    {
+      "actionId": 24312,
+      "actionName": "Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 1002393,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 1002393
+    },
+    {
+      "actionId": 24316,
+      "actionName": "Toxikon II",
+      "timingClass": "gcd",
+      "timeMs": 1003913,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 1003913
+    },
+    {
+      "actionId": 24312,
+      "actionName": "Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 1007261,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 1007261
+    },
+    {
+      "actionId": 24312,
+      "actionName": "Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 1009669,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 1009669
+    },
+    {
+      "actionId": 37033,
+      "actionName": "Psyche",
+      "timingClass": "ogcd",
+      "timeMs": 1010249,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 1010249
+    },
+    {
+      "actionId": 24312,
+      "actionName": "Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 1012077,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 1012077
+    },
+    {
+      "actionId": 24290,
+      "actionName": "Eukrasia",
+      "timingClass": "ogcd",
+      "timeMs": 1013550,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 1013550
+    },
+    {
+      "actionId": 24298,
+      "actionName": "Kerachole",
+      "timingClass": "ogcd",
+      "timeMs": 1014128,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 1014128
+    },
+    {
+      "actionId": 37034,
+      "actionName": "Eukrasian Prognosis II",
+      "timingClass": "gcd",
+      "timeMs": 1014797,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 1014797
+    },
+    {
+      "actionId": 24290,
+      "actionName": "Eukrasia",
+      "timingClass": "ogcd",
+      "timeMs": 1016266,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 1016266
+    },
+    {
+      "actionId": 24314,
+      "actionName": "Eukrasian Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 1017289,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 1017289
+    },
+    {
+      "actionId": 24303,
+      "actionName": "Taurochole",
+      "timingClass": "ogcd",
+      "timeMs": 1017956,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 1017956
+    },
+    {
+      "actionId": 24312,
+      "actionName": "Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 1019739,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 1019739
+    },
+    {
+      "actionId": 24309,
+      "actionName": "Rhizomata",
+      "timingClass": "ogcd",
+      "timeMs": 1020407,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 1020407
+    },
+    {
+      "actionId": 24312,
+      "actionName": "Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 1022145,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 1022145
+    },
+    {
+      "actionId": 24312,
+      "actionName": "Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 1024550,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 1024550
+    },
+    {
+      "actionId": 24312,
+      "actionName": "Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 1026954,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 1026954
+    },
+    {
+      "actionId": 24290,
+      "actionName": "Eukrasia",
+      "timingClass": "ogcd",
+      "timeMs": 1028424,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 1028424
+    },
+    {
+      "actionId": 37034,
+      "actionName": "Eukrasian Prognosis II",
+      "timingClass": "gcd",
+      "timeMs": 1029448,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 1029448
+    },
+    {
+      "actionId": 24312,
+      "actionName": "Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 1031850,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 1031850
+    },
+    {
+      "actionId": 24312,
+      "actionName": "Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 1034293,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 1034293
+    },
+    {
+      "actionId": 24317,
+      "actionName": "Krasis",
+      "timingClass": "ogcd",
+      "timeMs": 1034915,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 1034915
+    },
+    {
+      "actionId": 24300,
+      "actionName": "Zoe",
+      "timingClass": "ogcd",
+      "timeMs": 1035539,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 1035539
+    },
+    {
+      "actionId": 24312,
+      "actionName": "Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 1037095,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 1037095
+    },
+    {
+      "actionId": 24294,
+      "actionName": "Soteria",
+      "timingClass": "ogcd",
+      "timeMs": 1037762,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 1037762
+    },
+    {
+      "actionId": 24290,
+      "actionName": "Eukrasia",
+      "timingClass": "ogcd",
+      "timeMs": 1038563,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 1038563
+    },
+    {
+      "actionId": 37034,
+      "actionName": "Eukrasian Prognosis II",
+      "timingClass": "gcd",
+      "timeMs": 1039587,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 1039587
+    },
+    {
+      "actionId": 24310,
+      "actionName": "Holos",
+      "timingClass": "ogcd",
+      "timeMs": 1040877,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 1040877
+    },
+    {
+      "actionId": 24312,
+      "actionName": "Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 1042480,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 1042480
+    },
+    {
+      "actionId": 24298,
+      "actionName": "Kerachole",
+      "timingClass": "ogcd",
+      "timeMs": 1044169,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 1044169
+    },
+    {
+      "actionId": 24312,
+      "actionName": "Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 1045728,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 1045728
+    },
+    {
+      "actionId": 37035,
+      "actionName": "Philosophia",
+      "timingClass": "ogcd",
+      "timeMs": 1047065,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 1047065
+    },
+    {
+      "actionId": 24318,
+      "actionName": "Pneuma",
+      "timingClass": "gcd",
+      "timeMs": 1047776,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 1047776
+    },
+    {
+      "actionId": 24290,
+      "actionName": "Eukrasia",
+      "timingClass": "ogcd",
+      "timeMs": 1050222,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 1050222
+    },
+    {
+      "actionId": 24314,
+      "actionName": "Eukrasian Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 1051202,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 1051202
+    },
+    {
+      "actionId": 24311,
+      "actionName": "Panhaima",
+      "timingClass": "ogcd",
+      "timeMs": 1052357,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 1052357
+    },
+    {
+      "actionId": 24290,
+      "actionName": "Eukrasia",
+      "timingClass": "ogcd",
+      "timeMs": 1052981,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 1052981
+    },
+    {
+      "actionId": 37034,
+      "actionName": "Eukrasian Prognosis II",
+      "timingClass": "gcd",
+      "timeMs": 1054004,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 1054004
+    },
+    {
+      "actionId": 24299,
+      "actionName": "Ixochole",
+      "timingClass": "ogcd",
+      "timeMs": 1054625,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 1054625
+    },
+    {
+      "actionId": 24313,
+      "actionName": "Phlegma III",
+      "timingClass": "gcd",
+      "timeMs": 1055516,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 1055516
+    },
+    {
+      "actionId": 24302,
+      "actionName": "Physis II",
+      "timingClass": "ogcd",
+      "timeMs": 1056893,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 1056893
+    },
+    {
+      "actionId": 24290,
+      "actionName": "Eukrasia",
+      "timingClass": "ogcd",
+      "timeMs": 1057958,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 1057958
+    },
+    {
+      "actionId": 37034,
+      "actionName": "Eukrasian Prognosis II",
+      "timingClass": "gcd",
+      "timeMs": 1058938,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 1058938
+    },
+    {
+      "actionId": 24290,
+      "actionName": "Eukrasia",
+      "timingClass": "ogcd",
+      "timeMs": 1060406,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 1060406
+    },
+    {
+      "actionId": 37034,
+      "actionName": "Eukrasian Prognosis II",
+      "timingClass": "gcd",
+      "timeMs": 1061427,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 1061427
+    },
+    {
+      "actionId": 24313,
+      "actionName": "Phlegma III",
+      "timingClass": "gcd",
+      "timeMs": 1063695,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 1063695
+    },
+    {
+      "actionId": 24316,
+      "actionName": "Toxikon II",
+      "timingClass": "gcd",
+      "timeMs": 1066141,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 1066141
+    },
+    {
+      "actionId": 24290,
+      "actionName": "Eukrasia",
+      "timingClass": "ogcd",
+      "timeMs": 1068542,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 1068542
+    },
+    {
+      "actionId": 37034,
+      "actionName": "Eukrasian Prognosis II",
+      "timingClass": "gcd",
+      "timeMs": 1069518,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 1069518
+    },
+    {
+      "actionId": 37033,
+      "actionName": "Psyche",
+      "timingClass": "ogcd",
+      "timeMs": 1070229,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 1070229
+    },
+    {
+      "actionId": 24312,
+      "actionName": "Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 1071919,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 1071919
+    },
+    {
+      "actionId": 24316,
+      "actionName": "Toxikon II",
+      "timingClass": "gcd",
+      "timeMs": 1073431,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 1073431
+    },
+    {
+      "actionId": 24298,
+      "actionName": "Kerachole",
+      "timingClass": "ogcd",
+      "timeMs": 1074186,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 1074186
+    },
+    {
+      "actionId": 24312,
+      "actionName": "Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 1076810,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 1076810
+    },
+    {
+      "actionId": 24312,
+      "actionName": "Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 1079215,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 1079215
+    },
+    {
+      "actionId": 24290,
+      "actionName": "Eukrasia",
+      "timingClass": "ogcd",
+      "timeMs": 1080686,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 1080686
+    },
+    {
+      "actionId": 24314,
+      "actionName": "Eukrasian Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 1081709,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 1081709
+    },
+    {
+      "actionId": 24312,
+      "actionName": "Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 1084148,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 1084148
+    },
+    {
+      "actionId": 24312,
+      "actionName": "Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 1086549,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 1086549
+    },
+    {
+      "actionId": 24312,
+      "actionName": "Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 1088949,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 1088949
+    },
+    {
+      "actionId": 24312,
+      "actionName": "Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 1091350,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 1091350
+    },
+    {
+      "actionId": 24312,
+      "actionName": "Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 1093795,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 1093795
+    },
+    {
+      "actionId": 24312,
+      "actionName": "Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 1096199,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 1096199
+    },
+    {
+      "actionId": 24312,
+      "actionName": "Dosis III",
+      "timingClass": "gcd",
+      "timeMs": 1098599,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 1098599
+    },
+    {
+      "actionId": 24294,
+      "actionName": "Soteria",
+      "timingClass": "ogcd",
+      "timeMs": 1099221,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 1099221
+    },
+    {
+      "actionId": 24313,
+      "actionName": "Phlegma III",
+      "timingClass": "gcd",
+      "timeMs": 1100113,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 1100113
+    },
+    {
+      "actionId": 24317,
+      "actionName": "Krasis",
+      "timingClass": "ogcd",
+      "timeMs": 1100872,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 1100872
+    },
+    {
+      "actionId": 24316,
+      "actionName": "Toxikon II",
+      "timingClass": "gcd",
+      "timeMs": 1102565,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 1102565
+    },
+    {
+      "actionId": 24305,
+      "actionName": "Haima",
+      "timingClass": "ogcd",
+      "timeMs": 1104255,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 1104255
+    },
+    {
+      "actionId": 24316,
+      "actionName": "Toxikon II",
+      "timingClass": "gcd",
+      "timeMs": 1104966,
+      "anchorKey": "pull",
+      "anchorOffsetMs": 1104966
     }
   ]
 }
