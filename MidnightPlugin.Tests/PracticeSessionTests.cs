@@ -45,6 +45,8 @@ public sealed class PracticeSessionTests
         Assert.Equal(351, result.Rotation.Actions.Count(action => action.TimingClass == ActionTimingClass.Gcd));
         Assert.Equal(145, result.Rotation.Actions.Count(action => action.TimingClass == ActionTimingClass.Ogcd));
         Assert.DoesNotContain(result.Rotation.Actions, action => PracticeActionIgnoreList.Contains(action.ActionId, action.ActionName));
+        Assert.True(result.Rotation.AlertActions.Count > result.Rotation.Actions.Count);
+        Assert.Contains(result.Rotation.AlertActions, action => action.ActionId == 7535 && action.ActionName == "Reprisal");
     }
 
     [Theory]

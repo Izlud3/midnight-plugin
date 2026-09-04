@@ -91,7 +91,12 @@ public sealed record PracticeReferenceRotation(
     string ProvenancePlayer,
     int? ProvenanceRank,
     string ProvenanceSource,
-    IReadOnlyList<PracticeReferenceAction> Actions);
+    IReadOnlyList<PracticeReferenceAction> Actions)
+{
+    // Includes actions intentionally excluded from practice scoring (for example,
+    // mitigation) so they can still be used by reference-timed reminders.
+    public IReadOnlyList<PracticeReferenceAction> AlertActions { get; init; } = Actions;
+}
 
 public sealed record PracticeReferenceLoadResult(
     PracticeReferenceRotation? Rotation,
@@ -155,6 +160,7 @@ public static class PracticeReferenceCatalog
             }
 
             var previousTimeMs = int.MinValue;
+            var validatedActions = new List<(ReferenceActionDocument Action, ActionTimingClass TimingClass)>();
             var includedActions = new List<(ReferenceActionDocument Action, ActionTimingClass TimingClass)>();
             for (var index = 0; index < document.Actions.Count; index++)
             {
@@ -184,13 +190,9 @@ public static class PracticeReferenceCatalog
                     return new(null, $"Reference action {index} has unsupported timing class '{action.TimingClass ?? "missing"}'.");
                 }
 
-                if (PracticeActionIgnoreList.Contains(action.ActionId, action.ActionName))
-                {
-                    previousTimeMs = action.TimeMs;
-                    continue;
-                }
-
-                includedActions.Add((action, timingClass));
+                validatedActions.Add((action, timingClass));
+                if (!PracticeActionIgnoreList.Contains(action.ActionId, action.ActionName))
+                    includedActions.Add((action, timingClass));
                 previousTimeMs = action.TimeMs;
             }
 
@@ -201,6 +203,13 @@ public static class PracticeReferenceCatalog
 
             var firstTimeMs = includedActions[0].Action.TimeMs;
             var actions = includedActions
+                .Select(item => new PracticeReferenceAction(
+                    item.Action.ActionId,
+                    item.Action.ActionName?.Trim() ?? $"Action {item.Action.ActionId}",
+                    item.TimingClass,
+                    TimeSpan.FromMilliseconds(item.Action.TimeMs - firstTimeMs)))
+                .ToArray();
+            var alertActions = validatedActions
                 .Select(item => new PracticeReferenceAction(
                     item.Action.ActionId,
                     item.Action.ActionName?.Trim() ?? $"Action {item.Action.ActionId}",
@@ -219,7 +228,10 @@ public static class PracticeReferenceCatalog
                     provenance.Player ?? "Unknown player",
                     provenance.Rank,
                     provenance.Source ?? "Unknown source",
-                    actions.ToArray()),
+                    actions.ToArray())
+                {
+                    AlertActions = alertActions,
+                },
                 null);
         }
         catch (JsonException exception)

@@ -49,6 +49,7 @@ public sealed class Plugin : IDalamudPlugin
     private DiagnosticsWindow DiagnosticsWindow { get; init; }
     private ForsakenWindow ForsakenWindow { get; init; }
     private ForsakenPromptWindow ForsakenPromptWindow { get; init; }
+    private ReferenceAlertWindow ReferenceAlertWindow { get; init; }
     private ActionEventCapture ActionEventCapture { get; init; }
     private EncounterCapture EncounterCapture { get; init; }
     private ActionEffectSource ActionEffects { get; init; }
@@ -123,6 +124,7 @@ public sealed class Plugin : IDalamudPlugin
         DiagnosticsWindow = new DiagnosticsWindow(this);
         ForsakenWindow = new ForsakenWindow(this);
         ForsakenPromptWindow = new ForsakenPromptWindow(this);
+        ReferenceAlertWindow = new ReferenceAlertWindow(this);
 
         WindowSystem.AddWindow(ConfigWindow);
         WindowSystem.AddWindow(MainWindow);
@@ -130,6 +132,8 @@ public sealed class Plugin : IDalamudPlugin
         WindowSystem.AddWindow(DiagnosticsWindow);
         WindowSystem.AddWindow(ForsakenWindow);
         WindowSystem.AddWindow(ForsakenPromptWindow);
+        WindowSystem.AddWindow(ReferenceAlertWindow);
+        ReferenceAlertWindow.IsOpen = true;
 
         CommandManager.AddHandler(CommandName, new CommandInfo(OnCommand)
         {
@@ -164,6 +168,7 @@ public sealed class Plugin : IDalamudPlugin
         DiagnosticsWindow.Dispose();
         ForsakenWindow.Dispose();
         ForsakenPromptWindow.Dispose();
+        ReferenceAlertWindow.Dispose();
         EncounterCapture.Dispose();
         ActionEventCapture.Dispose();
         ActionEffects.Dispose();
@@ -337,6 +342,37 @@ public sealed class Plugin : IDalamudPlugin
         ForsakenWindow.SelectPull(pull.Id);
         ForsakenPromptWindow.Show(pull.Id);
     }
+
+    public bool TryGetReferenceAlerts(out IReadOnlyList<ReferenceAlertDisplay> alerts)
+    {
+        alerts = Array.Empty<ReferenceAlertDisplay>();
+        var config = Configuration;
+        if (config.ReferenceAlertScope == ReferenceAlertScope.Off ||
+            Practice is not { } practice || !IsPracticeEligible ||
+            !Condition[ConditionFlag.InCombat]) return false;
+        if (config.ReferenceAlertScope == ReferenceAlertScope.DancingMad && !EncounterSessions.IsDancingMad)
+            return false;
+
+        var snapshot = practice.Snapshot();
+        if (snapshot.State != PracticeState.Running) return false;
+        if (!config.ReferenceAlertActionsByJob.TryGetValue(practice.Rotation.Job, out var selected) || selected.Count == 0)
+            return false;
+
+        var selectedKeys = selected.ToHashSet(StringComparer.Ordinal);
+        var lead = config.ReferenceAlertLeadSeconds;
+        alerts = practice.Rotation.AlertActions
+            .Select(action => new ReferenceAlertDisplay(action, (action.Offset - snapshot.Elapsed).TotalSeconds))
+            .Where(alert => selectedKeys.Contains(ReferenceAlertKey(alert.Action)) &&
+                            alert.SecondsUntil <= lead && alert.SecondsUntil >= -1d)
+            .Take(2)
+            .ToArray();
+        return alerts.Count > 0;
+    }
+
+    public static string ReferenceAlertKey(PracticeReferenceAction action) =>
+        $"name:{ActionNameNormalizer.Normalize(action.ActionName)}";
+
+    public void PreviewReferenceAlert() => ReferenceAlertWindow.ShowPreview();
 
     private void OnLimitCutResult(LimitCutResult result)
     {

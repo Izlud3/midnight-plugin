@@ -6,13 +6,17 @@ namespace MidnightPlugin;
 [Serializable]
 public class Configuration : IPluginConfiguration
 {
-    public const int CurrentVersion = 13;
+    public const int CurrentVersion = 14;
     public const int DefaultTimelineHistoryLimit = 30;
 
     public int Version { get; set; } = CurrentVersion;
 
     public bool ShowLiveTimeline { get; set; } = true;
     public float TimelineOpacity { get; set; } = 1f;
+    public ReferenceAlertScope ReferenceAlertScope { get; set; } = ReferenceAlertScope.Off;
+    public float ReferenceAlertLeadSeconds { get; set; } = 6f;
+    public bool LockReferenceAlertPosition { get; set; }
+    public Dictionary<string, List<string>> ReferenceAlertActionsByJob { get; set; } = new(StringComparer.OrdinalIgnoreCase);
 
     public void Normalize()
     {
@@ -20,6 +24,10 @@ public class Configuration : IPluginConfiguration
         {
             TimelineOpacity = 1f;
         }
+
+        if (ReferenceAlertLeadSeconds is < 1f or > 15f)
+            ReferenceAlertLeadSeconds = 6f;
+        ReferenceAlertActionsByJob ??= new(StringComparer.OrdinalIgnoreCase);
 
         Version = CurrentVersion;
     }
@@ -29,4 +37,11 @@ public class Configuration : IPluginConfiguration
     {
         Plugin.PluginInterface.SavePluginConfig(this);
     }
+}
+
+public enum ReferenceAlertScope
+{
+    Off,
+    DancingMad,
+    AnyCombat,
 }
